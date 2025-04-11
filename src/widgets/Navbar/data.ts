@@ -1,6 +1,6 @@
 export const menuItems = [
     {
-        href: '/my-calls',
+        href: '/orders',
         title: 'Мои вызовы',
         icon: {
             url: '/icons/done.svg',

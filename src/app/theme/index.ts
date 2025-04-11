@@ -48,18 +48,45 @@ export const appTheme = createTheme({
             fontSize: 15,
         },
     },
+
+    shape: {
+        borderRadius: 10,
+    },
     components: {
         MuiButton: {
-            styleOverrides: {
-                root: {
-                    borderRadius: '8px',
+            defaultProps: {
+                disableElevation: true,
+                sx: {
+                    padding: '10px 0',
+                    fontSize: '14px',
+                    textTransform: 'none',
                 },
             },
         },
-        MuiCard: {
+        MuiBottomNavigation: {
             styleOverrides: {
                 root: {
-                    boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.1)',
+                    backgroundColor: '#4D4D4D',
+                    borderRadius: '40px',
+                    minHeight: '71px',
+                    position: 'relative',
+                },
+            },
+        },
+        MuiBottomNavigationAction: {
+            styleOverrides: {
+                root: {
+                    color: '#FFFFFF',
+                    justifyContent: 'end',
+                    paddingBottom: '10px',
+                    borderRadius: '40px',
+                    '& .MuiBottomNavigationAction-label': {
+                        fontSize: '13px',
+                    },
+                    '&.Mui-selected .MuiBottomNavigationAction-label': {
+                        fontSize: '13px',
+                        color: 'white',
+                    },
                 },
             },
         },

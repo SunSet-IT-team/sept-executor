@@ -17,4 +17,14 @@ export enum SlugPages {
      * Чат
      */
     CHAT = 'chat',
+
+    /**
+     * Заказы
+     */
+    ORDERS = 'orders',
+
+    /**
+     * Заказы
+     */
+    PROFILE = 'profile',
 }

@@ -2,9 +2,15 @@ import {StylesDictionary} from '../../../shared/types/share';
 
 export const useStyles = (): StylesDictionary => {
     return {
-        container: {
-            padding: '20px',
+        layout: {
+            position: 'relative',
         },
-        content: {height: 500, width: '100%', mt: 3},
+        navigation: {
+            position: 'fixed',
+            bottom: '20px',
+            left: '20px',
+            right: '20px',
+            background: 'none',
+        },
     };
 };

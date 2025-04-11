@@ -1,4 +1,4 @@
-import {Box, Container} from '@mui/material';
+import {Box, Container, Paper} from '@mui/material';
 import {Outlet} from 'react-router-dom';
 import {useStyles} from './styles';
 import {Navbar} from '../../../widgets/Navbar';
@@ -10,13 +10,11 @@ export const NavLayout = () => {
     const styles = useStyles();
 
     return (
-        <div className="app">
-            <Container maxWidth="lg" sx={styles.container}>
-                <Box className="main" component="main" sx={styles.content}>
-                    <Outlet />
-                </Box>
+        <Box sx={location.pathname.includes('profile') ? {} : styles.layout}>
+            <Outlet />
+            <Paper sx={styles.navigation} elevation={0}>
                 <Navbar />
-            </Container>
-        </div>
+            </Paper>
+        </Box>
     );
 };
