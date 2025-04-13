@@ -4,6 +4,11 @@
 
 export enum SlugPages {
     /**
+     * Страница авторизации
+     */
+    AUTH = 'auth',
+
+    /**
      * Страница логина
      */
     LOGIN = 'login',

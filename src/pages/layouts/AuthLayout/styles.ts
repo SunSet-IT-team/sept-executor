@@ -4,7 +4,7 @@ export const useStyles = (): StylesDictionary => {
     return {
         container: {
             padding: '20px',
-            height: '100vh',
+            minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -12,18 +12,19 @@ export const useStyles = (): StylesDictionary => {
         },
         content: {
             width: '100%',
-            mt: 3,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
         },
         logo: {
+            bottom: "20px",
             objectFit: 'cover',
             objectPosition: 'center',
             width: 'auto',
             height: {xs: 90, md: 120},
             mb: 2,
+            zIndex: -1
         },
     };
 };
