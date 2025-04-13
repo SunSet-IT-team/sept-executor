@@ -1,6 +1,6 @@
 import {Box} from '@mui/material';
 import {FC} from 'react';
-import {PageTitle} from '../../feature/PageTitle/PageTitle';
+import {PageTitle} from '../../feature/PageTitle';
 import {ordersData} from './data';
 import {MyOrdersList} from '../../widgets/MyOrdersList/MyOrdersList';
 

@@ -1,13 +1,12 @@
-import {Route, Routes, Navigate} from 'react-router-dom';
+import {Route, Routes, Navigate, Outlet} from 'react-router-dom';
 import {NavLayout} from '../../pages/layouts/NavLayout';
 import {SlugPages} from './pages';
-import {AuthLayout} from '../../pages/layouts/AuthLayout';
 import {AuthPage} from '../../pages/AuthPage';
 import HomePage from '../../pages/HomePage';
 import {OrdersPage} from '../../pages/OrdersPage';
 import {ServiceFormTypePage} from '../../pages/ServiceFormTypePage';
 import {LoginPage} from '../../pages/LoginPage';
-import { RegistrationPage } from '../../pages/RegistrationPage';
+import {RegistrationPage} from '../../pages/RegistrationPage';
 
 export const AppRouter = () => {
     // const isAuthenticated = true;
@@ -19,7 +18,7 @@ export const AppRouter = () => {
             <Route
                 element={
                     !isAuthenticated ? (
-                        <AuthLayout />
+                        <Outlet />
                     ) : (
                         <Navigate to={`/`} replace />
                     )

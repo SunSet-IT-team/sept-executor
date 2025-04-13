@@ -1,12 +1,12 @@
 import {useTheme} from '@mui/material/styles';
-import { StylesDictionary } from '../../types/share';
+import {StylesDictionary} from '../../../types/share';
 
 export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
 
     return {
         label: {
-          fontWeight: 500
-        }
+            fontWeight: 500,
+        },
     };
 };

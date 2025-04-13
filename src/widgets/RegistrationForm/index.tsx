@@ -6,11 +6,11 @@ import {
     RegistrationFormData,
     registrationForm_defaultValues,
 } from '../../feature/RegistrationForm/model/validation';
-import {InputField} from '../../shared/ui/InputField';
 import {AboutInput} from '../../feature/RegistrationForm/ui/AboutInput';
 import {FileUploadsBlock} from '../../feature/RegistrationForm/ui/FilesUploadBlock';
-import {ConsentCheckbox} from '../../shared/ui/ConsentCheckbox';
+import {ConsentCheckbox} from '../../shared/ui/inputs/ConsentCheckbox';
 import {useStyles} from './styles';
+import {InputField} from '../../shared/ui/inputs/InputField_new';
 
 export const RegistrationForm = () => {
     const styles = useStyles();

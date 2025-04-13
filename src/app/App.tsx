@@ -6,8 +6,8 @@ import {ThemeProvider} from '@mui/material/styles';
 import {appTheme} from './theme';
 import {BrowserRouter} from 'react-router-dom';
 import Static from './static/Static';
-import {CheckIsMobile} from '../feature/CheckIsMobile/CheckIsMobile';
-import { HelmetProvider } from 'react-helmet-async';
+import {CheckIsMobile} from '../feature/CheckIsMobile';
+import {HelmetProvider} from 'react-helmet-async';
 
 function App() {
     return (
