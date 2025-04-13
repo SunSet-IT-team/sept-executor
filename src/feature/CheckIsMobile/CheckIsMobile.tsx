@@ -1,24 +1,22 @@
 import {Box, Typography} from '@mui/material';
 import {FC, PropsWithChildren} from 'react';
 import {useMediaQuery} from 'usehooks-ts';
+import {useStyles} from './styles';
 
 /**
  * Проверка на телеофн
  */
 export const CheckIsMobile: FC<PropsWithChildren> = ({children}) => {
-    const matches = useMediaQuery('(max-width: 767px)');
+    const matches = useMediaQuery('(max-width: 11767px)');
+    const styles = useStyles();
+
     return (
         <div>
             {matches ? (
                 children
             ) : (
-                <Box
-                    display="flex"
-                    alignItems={'center'}
-                    justifyContent={'center'}
-                    minHeight={'100dvh'}
-                >
-                    <Typography variant="h1" textAlign={'center'}>
+                <Box sx={styles.container}>
+                    <Typography variant="h1" sx={styles.title}>
                         Пожалуйста, зайдите с мобильного устройства
                     </Typography>
                 </Box>
