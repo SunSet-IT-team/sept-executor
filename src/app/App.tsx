@@ -7,20 +7,23 @@ import {appTheme} from './theme';
 import {BrowserRouter} from 'react-router-dom';
 import Static from './static/Static';
 import {CheckIsMobile} from '../feature/CheckIsMobile/CheckIsMobile';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
     return (
         <StrictMode>
-            <ThemeProvider theme={appTheme}>
-                <BrowserRouter>
-                    <Provider store={store}>
-                        <Static />
-                        <CheckIsMobile>
-                            <AppRouter />
-                        </CheckIsMobile>
-                    </Provider>
-                </BrowserRouter>
-            </ThemeProvider>
+            <HelmetProvider>
+                <ThemeProvider theme={appTheme}>
+                    <BrowserRouter>
+                        <Provider store={store}>
+                            <Static />
+                            <CheckIsMobile>
+                                <AppRouter />
+                            </CheckIsMobile>
+                        </Provider>
+                    </BrowserRouter>
+                </ThemeProvider>
+            </HelmetProvider>
         </StrictMode>
     );
 }

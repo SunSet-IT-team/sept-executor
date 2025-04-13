@@ -13,13 +13,13 @@ export const AuthLayout = () => {
             <Container maxWidth="lg" sx={styles.container}>
                 <Box className="main" component="main" sx={styles.content}>
                     <ToastContainer />
+                    <Outlet />
                     <Box
                         component="img"
                         sx={styles.logo}
                         alt="Your logo"
                         src="/logo.png"
                     />
-                    <Outlet />
                 </Box>
             </Container>
         </div>
