@@ -11,7 +11,7 @@ export const LoginFormContent: FC = () => {
     return (
         <Stack sx={stackStyles}>
             {signInInputsData.map((el) => (
-                <InputFactory {...el} />
+                <InputFactory {...el} key={el.name} />
             ))}
         </Stack>
     );

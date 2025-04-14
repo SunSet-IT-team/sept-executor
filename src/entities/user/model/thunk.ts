@@ -1,16 +1,17 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {userApi} from '../api';
-import {User} from './types';
+import {Executor} from './types';
 import {AppThunkParams} from '../../../shared/types/share';
+import {mapGetMeDTO} from '../api/mapping';
 
 /**
- * Запрашиваем данные об админе
+ * Запрашиваем данные о себе
  */
-export const fetchAdminData = createAsyncThunk<
-    User | null,
+export const fetchMe = createAsyncThunk<
+    Executor | null,
     undefined,
     AppThunkParams
->('user/fetchAdminData', async (_, {rejectWithValue}) => {
+>('user/fetchMe', async (_, {rejectWithValue}) => {
     try {
         const token = localStorage.getItem('token');
 
@@ -21,13 +22,7 @@ export const fetchAdminData = createAsyncThunk<
         // Значит ошибка
         if (data.error) return null;
 
-        const adminData: User = {
-            id: data.id,
-            email: data.email,
-            login: 'admin',
-        };
-
-        return adminData;
+        return mapGetMeDTO(data.data);
     } catch (error: any) {
         return rejectWithValue(
             error.response?.data?.message || 'Ошибка загрузки заказов'

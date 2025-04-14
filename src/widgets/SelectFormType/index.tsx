@@ -1,6 +1,6 @@
 // widgets/select-form-type/ui/SelectFormTypeWidget.tsx
 import {Box, Stack, Typography} from '@mui/material';
-import { FormTypeCard } from '../../feature/selectFormType/FormTypeCard';
+import {FormTypeCards} from '../../feature/FormTypeCards';
 
 export const SelectFormTypeWidget = () => (
     <Box
@@ -13,7 +13,7 @@ export const SelectFormTypeWidget = () => (
             <Typography variant="h6" textAlign="center">
                 Выберите форму оказания услуг
             </Typography>
-            <FormTypeCard />
+            <FormTypeCards />
         </Stack>
     </Box>
 );

@@ -7,10 +7,44 @@ import {OrdersPage} from '../../pages/OrdersPage';
 import {ServiceFormTypePage} from '../../pages/ServiceFormTypePage';
 import {LoginPage} from '../../pages/LoginPage';
 import {RegistrationPage} from '../../pages/RegistrationPage';
+import {ConfirmationPage} from '../../pages/ConfirmationPage';
+import {useEffect} from 'react';
+import {
+    getCurrentUser,
+    getIsinited,
+    getIsUserLoading,
+} from '../../entities/user/model/selectors';
+import {useAppSelector, useAppDispatch} from '../store/hook';
+import {fetchMe} from '../../entities/user/model/thunk';
+import LoadPage from '../../pages/LoadPage';
 
 export const AppRouter = () => {
-    // const isAuthenticated = true;
-    const isAuthenticated = false;
+    const user = useAppSelector(getCurrentUser);
+    const isinited = useAppSelector(getIsinited);
+    const isLoading = useAppSelector(getIsUserLoading);
+    const token = localStorage.getItem('token');
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (isinited) return;
+
+        const fetching = dispatch(fetchMe());
+
+        return () => {
+            fetching.abort();
+        };
+    }, [isinited]);
+
+    const isAuthenticated = user && isinited && !isLoading;
+
+    if (!isinited && token)
+        return (
+            <Routes>
+                <Route index element={<LoadPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+        );
 
     return (
         <Routes>
@@ -20,26 +54,27 @@ export const AppRouter = () => {
                     !isAuthenticated ? (
                         <Outlet />
                     ) : (
-                        <Navigate to={`/`} replace />
+                        <Navigate to={`/${SlugPages.AUTH}`} />
                     )
                 }
             >
                 <Route path={`/${SlugPages.AUTH}`} element={<AuthPage />} />
-                <Route path={`/${SlugPages.REGISTER}`}>
-                    <Route
-                        index
-                        element={<Navigate to={'choose-form'} replace />}
-                    />
-                    <Route
-                        path={`choose-form`}
-                        element={<ServiceFormTypePage />}
-                    />
-                    <Route
-                        path={`collect-info`}
-                        element={<RegistrationPage />}
-                    />
-                </Route>
+
+                <Route
+                    path={`/${SlugPages.REGISTER_CHOOSE_FORM}`}
+                    element={<ServiceFormTypePage />}
+                />
+                <Route
+                    path={`/${SlugPages.REGISTER_COLLECT_INFO}`}
+                    element={<RegistrationPage />}
+                />
+
                 <Route path={`/${SlugPages.LOGIN}`} element={<LoginPage />} />
+
+                <Route
+                    path={`/${SlugPages.CONFIRM}`}
+                    element={<ConfirmationPage />}
+                />
             </Route>
 
             {/* Приватные маршруты (с шапкой через Layout) */}
@@ -49,7 +84,7 @@ export const AppRouter = () => {
                     isAuthenticated ? (
                         <NavLayout />
                     ) : (
-                        <Navigate to={`/${SlugPages.LOGIN}`} replace />
+                        <Navigate to={`/${SlugPages.AUTH}`} replace />
                     )
                 }
             >

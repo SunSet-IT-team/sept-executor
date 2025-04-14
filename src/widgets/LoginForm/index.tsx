@@ -1,38 +1,53 @@
 import {zodResolver} from '@hookform/resolvers/zod';
 import {Button, Link} from '@mui/material';
-import {FC} from 'react';
+import {FC, useState} from 'react';
 import {FormContainer} from 'react-hook-form-mui';
 import {Link as ReactRouterDomLink} from 'react-router-dom';
 import {signInDefaultsValues} from './data';
-import {signInFormSchema} from './schema';
+import {LoginFormData, signInFormSchema} from './schema';
 import {buttonStyles, linkStyles} from './styles';
 import {toast} from 'react-toastify';
 import {useAppDispatch} from '../../app/store/hook';
 import {LoginFormContent} from './LoginFormContent';
+import {userApi} from '../../entities/user/api';
+import {mapAuthDTO} from '../../entities/user/api/mapping';
+import {auth} from '../../entities/user/model/auth';
+import {setUser} from '../../entities/user/model/slice';
 
 /**
  * Форма авторизации
  */
 export const LoginForm: FC = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const dispatch = useAppDispatch();
 
     /**
      * Вход по логину
      */
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (formData: Required<LoginFormData>) => {
         try {
-            console.log(data);
+            console.log(formData);
 
-            // const res = await SERVICES.AuthService.login(data);
-            // if (!res.success) return;
+            setIsLoading(true);
+            const {data} = await userApi.auth({
+                email: formData.email,
+                password: formData.password,
+            });
 
-            // auth(res.data.token);
-            // dispatch(setUser(mappginServerCustomer(res.data.user)));
+            if (!data.success) {
+                toast.error(data.error);
+                return;
+            }
+
+            auth(data.data.token);
+            dispatch(setUser(mapAuthDTO(data.data)));
         } catch (error) {
             const message = error?.response?.data?.message;
 
             toast.error(message || 'Ошибка авторизации');
         }
+
+        setIsLoading(false);
     };
 
     return (
@@ -57,6 +72,7 @@ export const LoginForm: FC = () => {
                 color="secondary"
                 sx={buttonStyles}
                 type="submit"
+                loading={isLoading}
             >
                 Войти в личный кабинет
             </Button>

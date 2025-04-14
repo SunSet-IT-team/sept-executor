@@ -8,6 +8,7 @@ import {BrowserRouter} from 'react-router-dom';
 import Static from './static/Static';
 import {CheckIsMobile} from '../feature/CheckIsMobile';
 import {HelmetProvider} from 'react-helmet-async';
+import {ToastContainer} from 'react-toastify';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <BrowserRouter>
                         <Provider store={store}>
                             <Static />
+                            <ToastContainer />
                             <CheckIsMobile>
                                 <AppRouter />
                             </CheckIsMobile>

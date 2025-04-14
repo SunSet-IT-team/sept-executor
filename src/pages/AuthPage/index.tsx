@@ -3,6 +3,7 @@ import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
 import {useStyles} from './styles';
+import {SlugPages} from '../../app/routes/pages';
 
 export const AuthPage: FC = () => {
     const styles = useStyles();
@@ -21,7 +22,7 @@ export const AuthPage: FC = () => {
                         variant="contained"
                         sx={styles.firstBtn}
                         component={Link}
-                        to="/login"
+                        to={`/${SlugPages.LOGIN}`}
                     >
                         Войти
                     </Button>
@@ -29,7 +30,7 @@ export const AuthPage: FC = () => {
                         variant="contained"
                         sx={styles.secondBtn}
                         component={Link}
-                        to="/register/choose-form"
+                        to={`/${SlugPages.REGISTER_CHOOSE_FORM}`}
                     >
                         Зарегистрироваться
                     </Button>

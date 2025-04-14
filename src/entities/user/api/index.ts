@@ -5,9 +5,15 @@ import {UserApiMethods} from './types';
  * API для авторизации
  */
 export const userApi: UserApiMethods = {
-    auth: (param) => api.post(`/admin/login`, param),
+    auth: (param) => api.post(`/auth/login/executor`, param),
 
-    getMe: () => api.get(`/admin/me`),
+    getMe: () => api.get(`/executor/me`),
 
     recovery: (param) => api.post(`/admin/recovery`, param),
+
+    register: (param) => api.post(`/auth/register/executor`, param),
+
+    verifyEmail: (param) => api.post(`/auth/verify`, param),
+
+    resendCode: (param) => api.post(`/auth/verify/resend`, param),
 };

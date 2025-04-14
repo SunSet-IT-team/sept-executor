@@ -8,3 +8,5 @@ export const signInFormSchema = z.object({
 
     password: z.string().min(1, {message: 'Поле обязательно для заполнения'}),
 });
+
+export type LoginFormData = z.infer<typeof signInFormSchema>;

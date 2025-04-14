@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://server.eko-kontrol.ru/api', // Базовый URL вашего API
+    baseURL: 'http://localhost:3000/api', // Базовый URL вашего API
     timeout: 10000, // Таймаут запроса
     headers: {
         'Content-Type': 'application/json',

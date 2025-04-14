@@ -1,16 +1,20 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {User} from './types';
+import {ExecutorWorkFormat, Executor} from './types';
 import {logout} from './auth';
-import {fetchAdminData} from './thunk';
+import {fetchMe} from './thunk';
 
 /**
  * Слайс для хранения данных текущего пользователя
  */
 
 interface UserSlice {
-    user: User | null;
+    user: Executor | null;
     isInited: boolean;
     isLoading: boolean;
+    registerData: {
+        workFormat?: ExecutorWorkFormat;
+        email?: string;
+    };
 }
 
 const cachedUser = localStorage.getItem('token')
@@ -18,44 +22,68 @@ const cachedUser = localStorage.getItem('token')
     : null;
 
 const initialState: UserSlice = {
-    user: cachedUser,
-    isInited: cachedUser ? true : false,
+    user: null,
+    // user: cachedUser,
+    isInited: false,
 
-    isLoading: cachedUser ? false : true,
+    isLoading: true,
+
+    registerData: {},
 };
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser(state, action: PayloadAction<User | null>) {
+        /**
+         * Установить актуального пользователя
+         */
+        setUser(state, action: PayloadAction<Executor | null>) {
             state.user = action.payload;
         },
+
+        /**
+         * Очистить пользователя
+         */
         clearUser(state) {
             state.user = null;
             logout();
         },
+
+        /**
+         * Установить тип оказания услуг
+         */
+        setWorkFormat(state, action: PayloadAction<ExecutorWorkFormat>) {
+            state.registerData.workFormat = action.payload;
+        },
+
+        /**
+         * Установить email для регистрации
+         */
+        setRegisterEmail(state, action: PayloadAction<string>) {
+            state.registerData.email = action.payload;
+        },
     },
     extraReducers: (builder) => {
         /**
-         * fetchAdminData
+         * fetchMe
          */
         builder.addCase(
-            fetchAdminData.fulfilled,
-            (state, action: PayloadAction<User | null>) => {
+            fetchMe.fulfilled,
+            (state, action: PayloadAction<Executor | null>) => {
                 state.user = action.payload;
                 state.isInited = true;
                 state.isLoading = false;
 
-                // Кеширование
-                localStorage.setItem(
-                    'cachedUser',
-                    JSON.stringify(action.payload)
-                );
+                // // Кеширование
+                // localStorage.setItem(
+                //     'cachedUser',
+                //     JSON.stringify(action.payload)
+                // );
             }
         );
 
-        builder.addCase(fetchAdminData.rejected, (state) => {
+        builder.addCase(fetchMe.rejected, (state) => {
             state.user = null;
             state.isInited = true;
             state.isLoading = false;
@@ -63,5 +91,7 @@ const userSlice = createSlice({
     },
 });
 
-export const {setUser, clearUser} = userSlice.actions;
+export const {setUser, clearUser, setWorkFormat, setRegisterEmail} =
+    userSlice.actions;
+
 export const userReducer = userSlice.reducer;

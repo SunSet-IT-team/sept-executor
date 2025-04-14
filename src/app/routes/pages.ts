@@ -14,9 +14,19 @@ export enum SlugPages {
     LOGIN = 'login',
 
     /**
-     * Страница Регистрации
+     * Страница Регистрации - выбора формы окаазания услуг
      */
-    REGISTER = 'register',
+    REGISTER_CHOOSE_FORM = 'register/choose-form',
+
+    /**
+     * Страница Регистрации - заполнение формы
+     */
+    REGISTER_COLLECT_INFO = 'register/collect-info',
+
+    /**
+     * Страница подвтерждения
+     */
+    CONFIRM = 'confirm',
 
     /**
      * Чат

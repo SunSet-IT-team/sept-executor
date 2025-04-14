@@ -13,7 +13,7 @@ const RegistrationFormContent = () => {
         <Stack sx={styles.container}>
             {registrationFormData.map((el) => (
                 <Stack key={el.label} sx={styles.input}>
-                    <InputFactory {...el} />
+                    <InputFactory {...el} key={el.name} />
                 </Stack>
             ))}
         </Stack>
