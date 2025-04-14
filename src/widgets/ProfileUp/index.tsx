@@ -20,7 +20,10 @@ const ProfileUp = ({interlocutor}: ProfileUpProps) => {
                 <Typography sx={styles.chatHeaderUserName}>
                     {interlocutor.name}
                 </Typography>
-                <RatingBadge />
+                <RatingBadge
+                    rate={interlocutor.rating.value}
+                    qty={interlocutor.rating.count}
+                />
             </Stack>
         </Box>
     );

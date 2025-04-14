@@ -1,28 +1,29 @@
-import React from 'react';
-import {Box, Typography, styled} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import {useStyles} from './styles';
 
-const RatingBadge = () => {
-    return (
-        <StyledContainer>
-            <StarIcon sx={{color: '#FFD700', fontSize: '18px'}} />
-            <Typography variant="body2" sx={{fontWeight: 600, ml: 0.5}}>
-                4.9
-            </Typography>
-            <Typography variant="body2" sx={{color: 'text.secondary', ml: 0.5}}>
-                85 оценок
-            </Typography>
-        </StyledContainer>
-    );
+type RatingBadgeProps = {
+    rate: number;
+    qty: number;
 };
 
-const StyledContainer = styled(Box)(({theme}) => ({
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderRadius: '20px',
-    padding: '8px 16px',
-    boxShadow: theme.shadows[1],
-}));
+/**
+ * Шаблон вывода информации об рейтинге
+ */
+const RatingBadge = ({rate, qty}: RatingBadgeProps) => {
+    const styles = useStyles();
+
+    return (
+        <Box sx={styles.container}>
+            <StarIcon sx={styles.starIcon} />
+            <Typography variant="body2" sx={styles.rate}>
+                {rate}
+            </Typography>
+            <Typography variant="body2" sx={styles.qty}>
+                {qty} оценок
+            </Typography>
+        </Box>
+    );
+};
 
 export default RatingBadge;
