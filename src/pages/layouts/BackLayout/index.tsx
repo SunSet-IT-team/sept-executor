@@ -8,6 +8,9 @@ type BackLayoutProps = {
     children: ReactNode;
 };
 
+/**
+ * Добавляет сверху кнопку "назад"
+ */
 export const BackLayout: FC<BackLayoutProps> = ({title, children}) => {
     const styles = useStyles();
 

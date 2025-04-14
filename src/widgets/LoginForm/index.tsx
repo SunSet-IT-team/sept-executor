@@ -26,8 +26,6 @@ export const LoginForm: FC = () => {
      */
     const onSubmit = async (formData: Required<LoginFormData>) => {
         try {
-            console.log(formData);
-
             setIsLoading(true);
             const {data} = await userApi.auth({
                 email: formData.email,
@@ -40,6 +38,7 @@ export const LoginForm: FC = () => {
             }
 
             auth(data.data.token);
+
             dispatch(setUser(mapAuthDTO(data.data)));
         } catch (error) {
             const message = error?.response?.data?.message;

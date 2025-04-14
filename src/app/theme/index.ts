@@ -19,7 +19,7 @@ export const appTheme = createTheme({
             white: '#FFFFFF',
         },
         secondary: {
-            main: '#9c27b0', // Фиолетовый
+            main: '#4D4D4D', // Фиолетовый
         },
         error: {
             main: '#d32f2f', // Красный

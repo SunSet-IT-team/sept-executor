@@ -14,6 +14,7 @@ export const useStyles = (): StylesDictionary => {
             borderBottomLeftRadius: '10px',
             WebkitBorderBottomLeftRadius: '10px',
             py: 4,
+            width: '100%',
         },
 
         chatHeaderUser: {

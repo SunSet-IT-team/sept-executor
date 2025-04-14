@@ -4,6 +4,7 @@ export const useStyles = (): StylesDictionary => {
     return {
         layout: {
             position: 'relative',
+            flexGrow: 1,
         },
         navigation: {
             position: 'fixed',

@@ -38,7 +38,7 @@ export const AppRouter = () => {
 
     const isAuthenticated = user && isinited && !isLoading;
 
-    if (!isinited && token)
+    if ((!isinited && token) || isLoading)
         return (
             <Routes>
                 <Route index element={<LoadPage />} />
@@ -82,7 +82,7 @@ export const AppRouter = () => {
                 path="/"
                 element={
                     isAuthenticated ? (
-                        <NavLayout />
+                        <Outlet />
                     ) : (
                         <Navigate to={`/${SlugPages.AUTH}`} replace />
                     )

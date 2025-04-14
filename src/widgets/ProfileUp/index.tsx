@@ -1,7 +1,7 @@
 import {Avatar, Box, Stack, Typography} from '@mui/material';
 import {useStyles} from './styles';
-import {Executor} from '../../entities/chats/model/types';
 import RatingBadge from '../../feature/RatingBadge';
+import {Executor} from '../../entities/user/model/types';
 
 type ProfileUpProps = {
     interlocutor: Executor;
