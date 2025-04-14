@@ -1,13 +1,13 @@
-import {Box, Stack, Typography} from '@mui/material';
+import {Stack, Typography} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {toast} from 'react-toastify';
 import {getUserRegisterData} from '../../../entities/user/model/selectors';
 import {useAppSelector} from '../../../app/store/hook';
 import {ConfirmationForm} from '../../../widgets/ConfirmationForm';
-import {PageTitle} from '../../../feature/PageTitle';
 import {userApi} from '../../../entities/user/api';
 import {BackLayout} from '../../layouts/BackLayout';
+import {useStyles} from './styles';
 
 export const ConfirmationPage: FC = () => {
     const {email} = useAppSelector(getUserRegisterData);

@@ -20,6 +20,7 @@ export const registrationFormSchema = z.object({
         }),
     email: z.string().email('Некорректный email'),
     experience: z.string().min(1, 'Обязательное поле'),
+    city: z.string().min(1, 'Обязательное поле'),
     about: z.string().min(1, 'Обязательное поле'),
     files: z.array(z.any()).length(3, 'Необходимо загрузить все 3 файла'),
     consent: z.boolean().refine((value) => value === true, {

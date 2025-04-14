@@ -66,6 +66,7 @@ export type UserApiRegisterParams = {
     workFormat: ExecutorWorkFormat;
     experience: string;
     about: string;
+    city: string;
     companyName: string;
     profilePhoto?: string;
     registrationDoc?: string;

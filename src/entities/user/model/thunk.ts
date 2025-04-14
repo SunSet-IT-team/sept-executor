@@ -2,7 +2,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {userApi} from '../api';
 import {Executor} from './types';
 import {AppThunkParams} from '../../../shared/types/share';
-import {mapGetMeDTO} from '../api/mapping';
+import {mapExecutorDTO} from '../api/mapping';
 
 /**
  * Запрашиваем данные о себе
@@ -22,7 +22,7 @@ export const fetchMe = createAsyncThunk<
         // Значит ошибка
         if (data.error) return null;
 
-        return mapGetMeDTO(data.data);
+        return mapExecutorDTO(data.data);
     } catch (error: any) {
         return rejectWithValue(
             error.response?.data?.message || 'Ошибка загрузки заказов'

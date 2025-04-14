@@ -26,6 +26,12 @@ export const registrationFormData = [
         required: true,
         errorText: 'Поле обязательно для заполнения',
     },
+    {
+        label: 'Город',
+        name: 'city',
+        required: true,
+        errorText: 'Поле обязательно для заполнения',
+    },
 
     {
         label: 'Пароль',

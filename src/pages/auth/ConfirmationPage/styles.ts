@@ -5,12 +5,6 @@ export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
 
     return {
-        pageContainer: {
-            position: 'relative',
-            py: '26px',
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%',
-        },
+        container: {},
     };
 };

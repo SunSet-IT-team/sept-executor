@@ -1,19 +1,20 @@
 import {FC, useEffect} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {toast} from 'react-toastify';
-import {useNavigate} from 'react-router-dom';
 import {OtpField} from '../../shared/ui/inputs/OtpField';
-import {useAppSelector} from '../../app/store/hook';
+import {useAppDispatch, useAppSelector} from '../../app/store/hook';
 import {getUserRegisterData} from '../../entities/user/model/selectors';
 import {userApi} from '../../entities/user/api';
-import {SlugPages} from '../../app/routes/pages';
+import {auth} from '../../entities/user/model/auth';
+import {mapExecutorDTO} from '../../entities/user/api/mapping';
+import {setUser} from '../../entities/user/model/slice';
 
 /**
  * Шаблон формы подтверждения кода
  */
 export const ConfirmationForm: FC = () => {
     const {email} = useAppSelector(getUserRegisterData);
-    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const {
         control,
@@ -53,8 +54,9 @@ export const ConfirmationForm: FC = () => {
                 setError('verificationСode', {message: 'Неверный код'});
             }
 
-            navigate(`/${SlugPages.LOGIN}`);
-            toast.success('Email подтверждён');
+            auth(data.data.token);
+            dispatch(setUser(mapExecutorDTO(data.data.user)));
+            toast.success(data.data.message);
         } catch (error) {
             const message =
                 error?.response?.data?.message || 'Ошибка авторизации';

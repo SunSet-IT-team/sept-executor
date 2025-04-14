@@ -1,5 +1,5 @@
 import {Executor} from '../model/types';
-import {AuthDTO, GetMeDTO} from './dto';
+import {AuthDTO, ExecutorDTO, GetMeDTO} from './dto';
 
 /**
  * Переводить AuthDTO в  нормальный Executor
@@ -31,28 +31,28 @@ export const mapAuthDTO = (dto: AuthDTO['data']): Executor => {
 };
 
 /**
- * Переводить GetMeDTO в  нормальный Executor
+ * Переводим ExecutorDTO в нормальный Executor
  */
-export const mapGetMeDTO = (dto: GetMeDTO['data']): Executor => {
+export const mapExecutorDTO = (dto: ExecutorDTO): Executor => {
     return {
-        id: dto.id,
-        email: dto.user.email,
-        phone: dto.user.phone,
-        name: dto.companyName,
-        priority: 1000,
-        profileImage: '',
+        id: `${dto.id}`,
+        email: dto.email,
+        phone: dto.profile.phone,
+        name: dto.profile.companyName,
+        priority: dto.profile.priority,
+        profileImage: dto.profile.profilePhoto || '',
 
-        about: dto.about,
-        experience: `${dto.experience}`,
-        workFormat: dto.workFormat,
-        city: 'Москва',
-        orderQty: dto.completedOrders,
+        about: dto.profile.about,
+        experience: `${dto.profile.experience}`,
+        workFormat: dto.profile.workFormat,
+        city: dto.profile.city || 'Москва',
+        orderQty: dto.profile.completedOrders,
         docs: {
             register: '',
             approve: '',
         },
         rating: {
-            value: dto.rating,
+            value: dto.profile.rating,
             count: 10,
         },
     };

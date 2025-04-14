@@ -43,10 +43,8 @@ export const RegistrationForm = () => {
                 companyName: formData.name,
                 workFormat: registerData.workFormat,
                 about: formData.about,
+                city: formData.city,
             });
-
-            console.log('register');
-            console.log(data);
 
             if (!data.success) {
                 const m = data.error || 'Ошибка регистрации';
@@ -54,13 +52,12 @@ export const RegistrationForm = () => {
                 return;
             }
 
-            dispatch(setRegisterEmail(data.data.email));
+            dispatch(setRegisterEmail(data.data.user.email));
+            toast.success(data.data.message);
             navigate(`/${SlugPages.CONFIRM}`);
         } catch (error) {
             const message =
                 error?.response?.data?.message || 'Ошибка Регистрации';
-
-            console.log(message);
 
             toast.error(message);
         }

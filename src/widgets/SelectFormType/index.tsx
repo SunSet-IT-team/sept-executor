@@ -3,12 +3,7 @@ import {Box, Stack, Typography} from '@mui/material';
 import {FormTypeCards} from '../../feature/FormTypeCards';
 
 export const SelectFormTypeWidget = () => (
-    <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        minHeight="100dvh"
-    >
+    <Box display="flex" justifyContent="center" alignItems="center">
         <Stack gap={3} width={300}>
             <Typography variant="h6" textAlign="center">
                 Выберите форму оказания услуг
