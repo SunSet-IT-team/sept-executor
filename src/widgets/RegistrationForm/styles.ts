@@ -8,6 +8,9 @@ export const useStyles = (): StylesDictionary => {
         mainList: {
             mt: '30px',
             px: '15px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
         },
 
         mainInfo: {

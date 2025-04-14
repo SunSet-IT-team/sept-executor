@@ -1,9 +1,8 @@
 import {Stack} from '@mui/material';
 import {FC} from 'react';
 import {signInInputsData} from '../data';
-import {inputStackStyles, stackStyles} from './styles';
-import {InputField} from '../../../shared/ui/inputs/InputField';
-import {PasswordField} from '../../../shared/ui/inputs/PasswordField';
+import {stackStyles} from './styles';
+import InputFactory from '../../../feature/InputFactory';
 
 /**
  * Поля для входа
@@ -11,24 +10,8 @@ import {PasswordField} from '../../../shared/ui/inputs/PasswordField';
 export const LoginFormContent: FC = () => {
     return (
         <Stack sx={stackStyles}>
-            {signInInputsData.map(({label, name, type, required}) => (
-                <Stack key={label} sx={inputStackStyles}>
-                    {name === 'password' ? (
-                        <PasswordField
-                            label={label}
-                            name={name}
-                            type={type}
-                            required={required}
-                        />
-                    ) : (
-                        <InputField
-                            label={label}
-                            name={name}
-                            type={type}
-                            required={required}
-                        />
-                    )}
-                </Stack>
+            {signInInputsData.map((el) => (
+                <InputFactory {...el} />
             ))}
         </Stack>
     );

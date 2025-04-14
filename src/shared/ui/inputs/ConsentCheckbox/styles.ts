@@ -5,15 +5,23 @@ export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
 
     return {
-        container: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            my: 3,
+        label: {
+            '& .MuiFormControlLabel-label': {
+                fontSize: '14px',
+            },
+            '& .MuiFormHelperText-root': {
+                borderColor: 'red',
+                position: 'absolute',
+                width: 'max-content',
+                top: '50px',
+                left: 0,
+                right: 0,
+                display: 'block',
+            },
         },
-        errCheckbox: {
-            '& svg': {
-                fill: '#D32F2F',
+        checkbox: {
+            '& .MuiSvgIcon-root': {
+                color: 'red',
             },
         },
     };

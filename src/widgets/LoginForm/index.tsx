@@ -41,7 +41,6 @@ export const LoginForm: FC = () => {
             resolver={zodResolver(signInFormSchema)}
             defaultValues={signInDefaultsValues}
             mode="onChange"
-            onError={(errors) => console.log('Form errors:', errors)}
         >
             <LoginFormContent />
             <Link

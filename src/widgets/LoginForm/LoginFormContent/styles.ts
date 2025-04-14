@@ -6,7 +6,3 @@ export const stackStyles: SxProps<Theme> = {
     gap: '16px',
     width: '100%',
 };
-
-export const inputStackStyles: SxProps<Theme> = {
-    width: '100%',
-};

@@ -17,6 +17,7 @@ export const InputField: FC<InputFieldProps> = ({
 }) => (
     <TextFieldElement
         name={name}
+        label={label}
         variant="outlined"
         fullWidth
         type={type}

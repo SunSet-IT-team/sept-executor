@@ -27,6 +27,7 @@ export const PasswordField: FC<PasswordFieldProps> = ({
             name={name}
             variant="outlined"
             fullWidth
+            label={label}
             type={showPassword ? 'text' : 'password'}
             error={error}
             helperText={helperText}
