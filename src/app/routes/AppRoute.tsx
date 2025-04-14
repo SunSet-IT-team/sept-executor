@@ -1,13 +1,13 @@
 import {Route, Routes, Navigate, Outlet} from 'react-router-dom';
 import {NavLayout} from '../../pages/layouts/NavLayout';
 import {SlugPages} from './pages';
-import {AuthPage} from '../../pages/AuthPage';
+import {AuthPage} from '../../pages/auth/AuthPage';
 import HomePage from '../../pages/HomePage';
 import {OrdersPage} from '../../pages/OrdersPage';
-import {ServiceFormTypePage} from '../../pages/ServiceFormTypePage';
-import {LoginPage} from '../../pages/LoginPage';
-import {RegistrationPage} from '../../pages/RegistrationPage';
-import {ConfirmationPage} from '../../pages/ConfirmationPage';
+import {ServiceFormTypePage} from '../../pages/auth/ServiceFormTypePage';
+import {LoginPage} from '../../pages/auth/LoginPage';
+import {RegistrationPage} from '../../pages/auth/RegistrationPage';
+import {ConfirmationPage} from '../../pages/auth/ConfirmationPage';
 import {useEffect} from 'react';
 import {
     getCurrentUser,

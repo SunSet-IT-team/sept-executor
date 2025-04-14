@@ -1,9 +1,8 @@
-import {Box} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {PageTitle} from '../../feature/PageTitle';
-import {SelectFormTypeWidget} from '../../widgets/SelectFormType';
+import {SelectFormTypeWidget} from '../../../widgets/SelectFormType';
 import {useStyles} from './styles';
+import {BackLayout} from '../../layouts/BackLayout';
 
 export const ServiceFormTypePage: FC = () => {
     const styles = useStyles();
@@ -13,10 +12,9 @@ export const ServiceFormTypePage: FC = () => {
             <Helmet>
                 <title>Регистрация</title>
             </Helmet>
-            <Box sx={styles.pageContainer}>
-                <PageTitle title="Регистрация" />
+            <BackLayout title="Регистрация">
                 <SelectFormTypeWidget />
-            </Box>
+            </BackLayout>
         </>
     );
 };

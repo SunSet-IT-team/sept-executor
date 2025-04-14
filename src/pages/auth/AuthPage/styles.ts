@@ -1,5 +1,5 @@
 import {useTheme} from '@mui/material/styles';
-import {StylesDictionary} from '../../shared/types/share';
+import {StylesDictionary} from '../../../shared/types/share';
 
 export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
@@ -14,7 +14,7 @@ export const useStyles = (): StylesDictionary => {
         label: {
             textAlign: 'center',
         },
-        firstBtn: {py: '17px', mt: '113px'},
+        firstBtn: {py: '17px', mt: '40px', mb: '20px'},
         secondBtn: {py: '17px'},
     };
 };

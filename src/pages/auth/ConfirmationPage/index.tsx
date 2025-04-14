@@ -2,11 +2,12 @@ import {Box, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {toast} from 'react-toastify';
-import {getUserRegisterData} from '../../entities/user/model/selectors';
-import {useAppSelector} from '../../app/store/hook';
-import {ConfirmationForm} from '../../widgets/ConfirmationForm';
-import {PageTitle} from '../../feature/PageTitle';
-import {userApi} from '../../entities/user/api';
+import {getUserRegisterData} from '../../../entities/user/model/selectors';
+import {useAppSelector} from '../../../app/store/hook';
+import {ConfirmationForm} from '../../../widgets/ConfirmationForm';
+import {PageTitle} from '../../../feature/PageTitle';
+import {userApi} from '../../../entities/user/api';
+import {BackLayout} from '../../layouts/BackLayout';
 
 export const ConfirmationPage: FC = () => {
     const {email} = useAppSelector(getUserRegisterData);
@@ -30,15 +31,7 @@ export const ConfirmationPage: FC = () => {
             <Helmet>
                 <title>Код подтверждения</title>
             </Helmet>
-            <Box
-                position={'relative'}
-                py={'26px'}
-                px={'33px'}
-                minHeight={'100dvh'}
-                display={'flex'}
-                flexDirection={'column'}
-            >
-                <PageTitle title="Код подтверждения" />
+            <BackLayout>
                 <Stack direction={'column'} gap={'25px'} my={'auto'}>
                     <Typography variant="body1" textAlign={'center'}>
                         Введите код подтверждения
@@ -61,7 +54,7 @@ export const ConfirmationPage: FC = () => {
                         </Typography>
                     </Stack>
                 </Stack>
-            </Box>
+            </BackLayout>
         </>
     );
 };

@@ -1,9 +1,10 @@
 import {Box} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {PageTitle} from '../../feature/PageTitle';
-import {RegistrationForm} from '../../widgets/RegistrationForm';
+import {PageTitle} from '../../../feature/PageTitle';
+import {RegistrationForm} from '../../../widgets/RegistrationForm';
 import {useStyles} from './styles';
+import {BackLayout} from '../../layouts/BackLayout';
 
 export const RegistrationPage: FC = () => {
     const styles = useStyles();
@@ -13,10 +14,9 @@ export const RegistrationPage: FC = () => {
             <Helmet>
                 <title>Регистрация</title>
             </Helmet>
-            <Box sx={styles.pageContainer}>
-                <PageTitle title="Регистрация" />
+            <BackLayout title="Регистрация">
                 <RegistrationForm />
-            </Box>
+            </BackLayout>
         </>
     );
 };
