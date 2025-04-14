@@ -19,6 +19,7 @@ import {fetchMe} from '../../entities/user/model/thunk';
 import LoadPage from '../../pages/LoadPage';
 import ProfilePage from '../../pages/ProfilePage';
 import StatsPage from '../../pages/StatsPage';
+import MyreviewsPage from '../../pages/MyReviewsPage';
 
 export const AppRouter = () => {
     const user = useAppSelector(getCurrentUser);
@@ -102,6 +103,11 @@ export const AppRouter = () => {
                 <Route
                     path={`/${SlugPages.STATISTICS}`}
                     element={<StatsPage />}
+                />
+
+                <Route
+                    path={`/${SlugPages.MY_REVIEWS}`}
+                    element={<MyreviewsPage />}
                 />
 
                 <Route path={`/${SlugPages.CHAT}/:chatId`} element={<>Чат</>} />

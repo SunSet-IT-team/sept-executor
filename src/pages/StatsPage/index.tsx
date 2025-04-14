@@ -1,10 +1,6 @@
-import {ordersData} from '../OrdersPage/data';
 import {NavLayout} from '../layouts/NavLayout';
 import {Helmet} from 'react-helmet-async';
 import ProfileLayout from '../layouts/ProfileLayout';
-import { ProfileFeatures } from '../../widgets/Profile/ProfileFeatures';
-import { Box } from '@mui/material';
-import { TechSupportBtn } from '../../feature/Profile/TechSupportBtn';
 import { useStyles } from './styles';
 import { BackLayout } from '../layouts/BackLayout';
 import { StatisticPanel } from '../../widgets/StatisticPanel';
