@@ -1,4 +1,4 @@
-import {Box, Stack, Typography} from '@mui/material';
+import {Box, CircularProgress, Stack, Typography} from '@mui/material';
 import {Order} from '../../entities/order/model/types';
 import OrderCard from '../../entities/order/ui/OrderCard';
 import {useStyles} from './styles';
@@ -44,10 +44,17 @@ const InfinityList = ({
                     <Stack direction={'column'} gap={'12px'}>
                         {children}
                     </Stack>
-
+                    {isLoading && (
+                        <CircularProgress
+                            size={64}
+                            thickness={4}
+                            sx={styles.loader}
+                        />
+                    )}
                     {observedRef !== undefined && <Box ref={observedRef} />}
                 </>
             ) : (
+                !isLoading &&
                 titleNoLength && (
                     <Typography sx={styles.title}>{titleNoLength}</Typography>
                 )

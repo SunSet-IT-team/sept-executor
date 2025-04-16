@@ -1,6 +1,9 @@
 import {Box, Button, Typography} from '@mui/material';
 import {useStyles} from './styles';
 import {Order} from '../../model/types';
+import OrderCardBtns from './OrderCardBtns';
+import {Link} from 'react-router-dom';
+import {SlugPages} from '../../../../app/routes/pages';
 
 type OrderCardProps = {
     order: Order;
@@ -14,23 +17,26 @@ const OrderCard = ({order}: OrderCardProps) => {
 
     return (
         <Box sx={styles.container}>
-            <Box>
+            <Box
+                component={Link}
+                to={`${SlugPages.ORDERS}/${order.id}`}
+                sx={styles.text}
+            >
                 <Typography component="p" sx={styles.title}>
                     Заявка №{order.id}
                 </Typography>
                 <Typography component="p" sx={styles.info}>
-                    Дата: {order.date}
+                    <b>Дата:</b> {order.date}
                 </Typography>
                 <Typography component="p" sx={styles.info}>
-                    Услуга: {order.service.name}
+                    <b>Услуга:</b> {order.service.name}
                 </Typography>
                 <Typography component="p" sx={styles.info}>
-                    Адрес: {order.address}
+                    <b>Адрес:</b> {order.address}
                 </Typography>
             </Box>
             <Box sx={styles.btns}>
-                <Button>Принять</Button>
-                <Button>Отказать</Button>
+                <OrderCardBtns order={order} />
             </Box>
         </Box>
     );

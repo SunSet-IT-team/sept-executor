@@ -4,16 +4,16 @@ import {Helmet} from 'react-helmet-async';
 import ProfileLayout from '../layouts/ProfileLayout';
 import {useEffect} from 'react';
 import {orderApi} from '../../entities/order/api';
-import {useFetchOrders} from '../../entities/order/model/useFetchOrders';
+import {useFetchOrders} from '../../entities/order/model/query/useFetchOrders';
 import InfinityList from '../../feature/InfinityList';
 import OrderCard from '../../entities/order/ui/OrderCard';
+import {OrderStatus} from '../../entities/order/model/types';
 
 /**
  * Домашняя страница
  */
 const HomePage = () => {
-    const {orders, isLoading, ref} = useFetchOrders();
-    console.log(orders);
+    const {orders, isLoading, ref} = useFetchOrders(OrderStatus.PENDING);
 
     return (
         <>

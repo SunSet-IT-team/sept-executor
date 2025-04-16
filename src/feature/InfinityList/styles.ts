@@ -1,5 +1,10 @@
-import {useTheme} from '@mui/material/styles';
+import {keyframes, useTheme} from '@mui/material/styles';
 import {StylesDictionary} from '../../shared/types/share';
+
+const pulse = keyframes`
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+`;
 
 export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
@@ -10,6 +15,13 @@ export const useStyles = (): StylesDictionary => {
             fontSize: '20px',
             fontWeight: 500,
             color: theme.palette.primary.main,
+        },
+        loader: {
+            mt: '12px',
+            mx: 'auto',
+            display: 'block',
+            color: theme.palette.primary.main,
+            animation: `${pulse} 2s ease-in-out infinite`,
         },
     };
 };

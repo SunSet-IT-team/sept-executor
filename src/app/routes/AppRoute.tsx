@@ -89,6 +89,11 @@ export const AppRouter = () => {
                 <Route index element={<HomePage />} />
                 <Route path={`/${SlugPages.ORDERS}`} element={<OrdersPage />} />
 
+                <Route
+                    path={`/${SlugPages.ORDERS}/:orderId`}
+                    element={<>Страница заказа</>}
+                />
+
                 <Route path={`/${SlugPages.PROFILE}`} element={<>Профиль</>} />
 
                 <Route path={`/${SlugPages.CHAT}/:chatId`} element={<>Чат</>} />

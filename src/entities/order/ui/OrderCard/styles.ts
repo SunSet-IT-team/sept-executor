@@ -11,6 +11,7 @@ export const useStyles = (): StylesDictionary => {
             p: '20px',
             pb: '28px',
             display: 'flex',
+            gap: '20px',
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -27,13 +28,18 @@ export const useStyles = (): StylesDictionary => {
             mb: '4px',
             fontSize: '16px',
             color: theme.palette.text.black,
+            letterSpacing: '-0.02rem',
+        },
+
+        text: {
+            textDecoration: 'none',
         },
 
         btns: {
             flexDirection: 'column',
             display: 'flex',
             justifyContent: 'center',
-            gap: '8px',
+            gap: '12px',
         },
     };
 };
