@@ -1,5 +1,5 @@
-import {Executor} from '../model/types';
-import {AuthDTO, ExecutorDTO, GetMeDTO} from './dto';
+import {Address, Customer, Executor} from '../model/types';
+import {AddressDTO, AuthDTO, CustomerDTO, ExecutorDTO, GetMeDTO} from './dto';
 
 /**
  * Переводить AuthDTO в  нормальный Executor
@@ -55,5 +55,33 @@ export const mapExecutorDTO = (dto: ExecutorDTO): Executor => {
             value: dto.profile.rating,
             count: 10,
         },
+    };
+};
+
+/**
+ * Перевод DTO в нормальный вид
+ * для заказчиков
+ */
+export const mapCustomerDTO = (customer: CustomerDTO): Customer => {
+    return {
+        id: `${customer.id}`,
+        name: customer.name,
+        email: customer.email,
+        phone: customer.profile.phone,
+        profileImage: customer.profile.profilePhoto || '',
+        addresses: customer.profile.addresses.map((el) => mapAddressDTO(el)),
+        orderQty: customer.profile.ordersCount,
+        priority: customer.profile.priority,
+    };
+};
+
+/**
+ * Перевод DTO в нормальный вид
+ * для адресов
+ */
+export const mapAddressDTO = (address: AddressDTO): Address => {
+    return {
+        id: `${address.id}`,
+        address: address.value,
     };
 };

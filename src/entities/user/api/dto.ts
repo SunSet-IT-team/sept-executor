@@ -75,3 +75,33 @@ export type ProfileDTO = {
     rating: number;
     workFormat: ExecutorWorkFormat;
 };
+
+/**
+ * Покупатель
+ */
+export type CustomerDTO = {
+    email: string;
+    name: string;
+    id: number;
+    profile: CustomerProfileDTO;
+    role: 'CUSTOMER';
+};
+
+/**
+ * Профиль
+ */
+export type CustomerProfileDTO = {
+    addresses: AddressDTO[];
+    ordersCount: number;
+    phone: string;
+    priority: number;
+    profilePhoto: string | null;
+};
+
+/**
+ * Адресс
+ */
+export type AddressDTO = {
+    id: number;
+    value: string;
+};

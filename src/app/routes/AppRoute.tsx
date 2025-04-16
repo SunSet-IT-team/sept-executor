@@ -27,8 +27,6 @@ export const AppRouter = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (isinited) return;
-
         const fetching = dispatch(fetchMe());
 
         return () => {
@@ -81,7 +79,7 @@ export const AppRouter = () => {
             <Route
                 path="/"
                 element={
-                    isAuthenticated ? (
+                    isAuthenticated || user ? (
                         <Outlet />
                     ) : (
                         <Navigate to={`/${SlugPages.AUTH}`} replace />

@@ -42,3 +42,25 @@ export enum ExecutorWorkFormat {
      */
     SOLE_PROPRIETOR = 'SOLE_PROPRIETOR',
 }
+
+/**
+ * Заказчик
+ */
+export type Customer = {
+    profileImage: string;
+    orderQty: number;
+    addresses: Address[];
+    phone: string;
+    email: string;
+    name: string;
+    id: string;
+    priority: number;
+};
+
+/**
+ * Адрес
+ */
+export type Address = {
+    id: string;
+    address: string;
+};
