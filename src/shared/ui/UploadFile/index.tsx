@@ -5,7 +5,7 @@ import {Theme} from '@emotion/react';
 import {imgStyle, useStyles} from './styles';
 
 interface IProps {
-    onEdit?: (fileContent: string) => void;
+    onEdit?: (file: File) => void;
     sx?: SxProps<Theme>;
 }
 
@@ -20,11 +20,10 @@ export const UploadFile: React.FC<IProps> = ({onEdit, sx}) => {
             setSelectedFile(file);
 
             const reader = new FileReader();
-            reader.onloadend = () => {
-                setPreview(reader.result as string);
-                onEdit(reader.result as string);
-            };
+            reader.onloadend = () => setPreview(reader.result as string);
             reader.readAsDataURL(file);
+
+            onEdit(file);
         }
     };
 

@@ -15,6 +15,7 @@ import {useNavigate} from 'react-router-dom';
 import {setRegisterEmail} from '../../entities/user/model/slice';
 import {useState} from 'react';
 import {SlugPages} from '../../app/routes/pages';
+import {UserApiRegisterParams} from '../../entities/user/api/types';
 
 /**
  * Форма регистрации
@@ -33,18 +34,43 @@ export const RegistrationForm = () => {
             return;
         }
 
+        const executorData: UserApiRegisterParams = {
+            firstName: 'none',
+            lastName: 'none',
+            email: formData.email,
+            password: formData.password,
+            experience: formData.experience,
+            phone: formData.phone,
+            companyName: formData.name,
+            workFormat: registerData.workFormat,
+            about: formData.about,
+            city: formData.city,
+        };
+
+        const params = new FormData();
+
+        Object.keys(executorData).forEach((key) => {
+            params.append(key, executorData[key]);
+        });
+
+        if (formData.files.profilePhoto) {
+            // params.append('profilePhoto', formData.files.profilePhoto);
+            executorData.profilePhoto = formData.files.profilePhoto;
+        }
+
+        if (formData.files.licenseDoc) {
+            // params.append('licenseDoc', formData.files.licenseDoc);
+            executorData.licenseDoc = formData.files.licenseDoc;
+        }
+
+        if (formData.files.registrationDoc) {
+            // params.append('registrationDoc', formData.files.registrationDoc);
+            executorData.registrationDoc = formData.files.registrationDoc;
+        }
+
         try {
             setIsLoading(true);
-            const {data} = await userApi.register({
-                email: formData.email,
-                password: formData.password,
-                experience: formData.experience,
-                phone: formData.phone,
-                companyName: formData.name,
-                workFormat: registerData.workFormat,
-                about: formData.about,
-                city: formData.city,
-            });
+            const {data} = await userApi.register(executorData);
 
             if (!data.success) {
                 const m = data.error || 'Ошибка регистрации';

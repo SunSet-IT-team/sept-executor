@@ -55,6 +55,10 @@ export const registrationFormDefaultValues: RegistrationFormData = {
     email: '',
     experience: '',
     about: '',
-    files: [],
+    files: {
+        profilePhoto: null,
+        registrationDoc: null,
+        licenseDoc: null,
+    },
     consent: false,
 };

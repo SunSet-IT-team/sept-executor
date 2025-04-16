@@ -68,10 +68,11 @@ export type UserApiRegisterParams = {
     about: string;
     city: string;
     companyName: string;
-    profilePhoto?: string;
-    registrationDoc?: string;
-    licenseDoc?: string;
-    otherFiles?: string;
+
+    profilePhoto?: File;
+    registrationDoc?: File;
+    licenseDoc?: File;
+    otherFiles?: File[];
 };
 
 /**

@@ -22,7 +22,23 @@ export const registrationFormSchema = z.object({
     experience: z.string().min(1, 'Обязательное поле'),
     city: z.string().min(1, 'Обязательное поле'),
     about: z.string().min(1, 'Обязательное поле'),
-    files: z.array(z.any()).length(3, 'Необходимо загрузить все 3 файла'),
+    files: z
+        .object({
+            profilePhoto: z.instanceof(File, {
+                message: 'Загрузите фото профиля',
+            }),
+            registrationDoc: z.instanceof(File, {
+                message: 'Загрузите документ о регистрации',
+            }),
+            licenseDoc: z.instanceof(File, {
+                message: 'Загрузите лицензионный документ',
+            }),
+        })
+        .refine(
+            (data) =>
+                data.profilePhoto && data.registrationDoc && data.licenseDoc,
+            {message: 'Необходимо загрузить все 3 файла'}
+        ),
     consent: z.boolean().refine((value) => value === true, {
         message: 'Поле обязательно для заполнения',
     }),

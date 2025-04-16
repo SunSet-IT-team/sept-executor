@@ -1,7 +1,7 @@
 import {Stack, Typography, Box} from '@mui/material';
 import {UploadFileWithLabel} from '../../../../shared/ui/UploadFile/UploadFileWithLabel/UploadFileWithLabel';
 import {useStyles} from './styles';
-import {useFormContext} from 'react-hook-form-mui';
+import {FieldError, useFormContext} from 'react-hook-form-mui';
 
 /**
  * Блок загрузок фотографий
@@ -10,35 +10,39 @@ export const FileUploadsBlock = () => {
     const styles = useStyles();
     const {
         formState: {errors},
-    } = useFormContext();
+    } = useFormContext<{
+        files?: {
+            profilePhoto?: FieldError;
+            registrationDoc?: FieldError;
+            licenseDoc?: FieldError;
+        };
+    }>();
 
-    const filesError = errors.files;
+    const profilePhotoError =
+        (errors.files?.profilePhoto?.message as string) || '';
+    const registrationDocError =
+        (errors.files?.registrationDoc?.message as string) || '';
+    const licenseDocError = (errors.files?.licenseDoc?.message as string) || '';
 
     return (
         <Box>
             <Stack direction="column" sx={styles.container}>
                 <UploadFileWithLabel
-                    name="files"
-                    index={0}
+                    name="files.profilePhoto"
                     label="Фото профиля"
+                    error={profilePhotoError}
                 />
                 <UploadFileWithLabel
-                    name="files"
-                    index={1}
+                    name="files.registrationDoc"
                     label="Свидетельство о регистрации юридического лица"
+                    error={registrationDocError}
                 />
                 <UploadFileWithLabel
-                    name="files"
-                    index={2}
+                    name="files.licenseDoc"
                     label="Разрешение на осуществление деятельности"
+                    error={licenseDocError}
                 />
             </Stack>
-
-            {filesError && (
-                <Typography color="error" sx={styles.errMsg}>
-                    {filesError.message as string}
-                </Typography>
-            )}
         </Box>
     );
 };

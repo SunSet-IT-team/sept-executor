@@ -11,7 +11,10 @@ export const userApi: UserApiMethods = {
 
     recovery: (param) => api.post(`/admin/recovery`, param),
 
-    register: (param) => api.post(`/auth/register/executor`, param),
+    register: (param) =>
+        api.post(`/auth/register/executor`, param, {
+            headers: {'Content-Type': 'multipart/form-data'},
+        }),
 
     verifyEmail: (param) => api.post(`/auth/verify`, param),
 

@@ -7,9 +7,9 @@ import {Controller, useFormContext} from 'react-hook-form-mui';
 
 interface IProps extends ComponentProps<typeof UploadFile> {
     name: string;
-    index: number;
     label: string;
     uploadFileSx?: SxProps<Theme>;
+    error?: string;
 }
 
 /**
@@ -19,35 +19,41 @@ export const UploadFileWithLabel: FC<IProps> = ({
     label,
     sx,
     uploadFileSx,
-    index,
     name,
+    error,
 }) => {
     const {control} = useFormContext();
     const styles = useStyles(sx, uploadFileSx);
 
     return (
-        <Controller
-            name={name}
-            control={control}
-            render={({field}) => {
-                const handleChange = (fileContent: string) => {
-                    const newFiles = [...(field.value || [])];
-                    newFiles[index] = fileContent;
-                    field.onChange(newFiles);
-                };
-
-                return (
-                    <Stack direction={'row'} spacing={2} sx={styles.container}>
-                        <UploadFile
-                            sx={styles.uploadFile}
-                            onEdit={handleChange}
-                        />
-                        <Typography sx={styles.labelContainer}>
-                            <span style={labelStyles}>{label}</span>
-                        </Typography>
-                    </Stack>
-                );
-            }}
-        />
+        <Stack direction="row" spacing={2} sx={styles.container}>
+            <Controller
+                name={name}
+                control={control}
+                render={({field}) => {
+                    return (
+                        <Stack
+                            direction={'row'}
+                            spacing={2}
+                            sx={styles.container}
+                        >
+                            <UploadFile
+                                sx={styles.uploadFile}
+                                onEdit={(file) => field.onChange(file)}
+                            />
+                            <Typography sx={styles.labelContainer}>
+                                <span style={labelStyles}>{label}</span>
+                            </Typography>
+                        </Stack>
+                    );
+                }}
+            />
+            {/* Отображение ошибки для конкретного файла */}
+            {error && (
+                <Typography color="error" sx={styles.errMsg}>
+                    {error}
+                </Typography>
+            )}
+        </Stack>
     );
 };
