@@ -2,6 +2,7 @@ import {AxiosPromise} from 'axios';
 import {
     AcceptOrderDTO,
     CompleteOrderDTO,
+    GetOrder,
     GetOrdersDTO,
     RejectOrderDTO,
 } from './dto';
@@ -33,6 +34,11 @@ export interface OrderApiMethods {
         id: number | string,
         params: any
     ) => AxiosPromise<CompleteOrderDTO>;
+
+    /**
+     * Получить заказ по id
+     */
+    getOrderById: (id: number | string) => AxiosPromise<GetOrder>;
 }
 
 export type OrderApiGetOrdersParams = {

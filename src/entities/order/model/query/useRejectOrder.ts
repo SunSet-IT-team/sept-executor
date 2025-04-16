@@ -19,8 +19,13 @@ export const useRejectOrder = () => {
             return res;
         },
 
-        onSuccess: () => {
+        onSuccess: (data) => {
             queryClient.invalidateQueries({queryKey: ['orders']});
+            console.log(data);
+
+            queryClient.invalidateQueries({
+                queryKey: ['order', `${data.data.data.order.id}`],
+            });
             queryClient.invalidateQueries({
                 queryKey: ['orders', OrderStatus.PENDING],
             });

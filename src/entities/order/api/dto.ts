@@ -17,22 +17,27 @@ export type GetOrdersDTO = ServerAns<{
  * DTO Принятия заказа
  */
 export type AcceptOrderDTO = ServerAns<{
-    data: OrderDTO;
+    message: string;
+    order: OrderDTO;
 }>;
 
 /**
  * DTO Отклонения заказа
  */
 export type RejectOrderDTO = ServerAns<{
-    data: OrderDTO;
+    message: string;
+    order: OrderDTO;
 }>;
 
 /**
  * DTO Завершения заказа
  */
-export type CompleteOrderDTO = ServerAns<{
-    data: OrderDTO;
-}>;
+export type CompleteOrderDTO = ServerAns<OrderDTO>;
+
+/**
+ * DTO получения одного конкретного заказа
+ */
+export type GetOrder = ServerAns<OrderDTO>;
 
 /**
  * DTO Заказа

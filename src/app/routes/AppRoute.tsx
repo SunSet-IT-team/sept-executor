@@ -17,6 +17,7 @@ import {
 import {useAppSelector, useAppDispatch} from '../store/hook';
 import {fetchMe} from '../../entities/user/model/thunk';
 import LoadPage from '../../pages/LoadPage';
+import OrderPage from '../../pages/OrderPage';
 
 export const AppRouter = () => {
     const user = useAppSelector(getCurrentUser);
@@ -92,7 +93,7 @@ export const AppRouter = () => {
 
                 <Route
                     path={`/${SlugPages.ORDERS}/:orderId`}
-                    element={<>Страница заказа</>}
+                    element={<OrderPage />}
                 />
 
                 <Route path={`/${SlugPages.PROFILE}`} element={<>Профиль</>} />

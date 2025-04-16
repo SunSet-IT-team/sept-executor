@@ -19,7 +19,7 @@ const OrderCard = ({order}: OrderCardProps) => {
         <Box sx={styles.container}>
             <Box
                 component={Link}
-                to={`${SlugPages.ORDERS}/${order.id}`}
+                to={`/${SlugPages.ORDERS}/${order.id}`}
                 sx={styles.text}
             >
                 <Typography component="p" sx={styles.title}>

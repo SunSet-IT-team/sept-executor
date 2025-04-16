@@ -17,6 +17,10 @@ export const orderApi: OrderApiMethods = {
         return api.get(url);
     },
 
+    getOrderById: (id) => {
+        return api.get(`/order/${id}`);
+    },
+
     acceptOrder: (id) => {
         return api.post(`/order/${id}/accept`);
     },
