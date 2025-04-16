@@ -7,7 +7,6 @@ import {useAppSelector} from '../../../app/store/hook';
 import {ConfirmationForm} from '../../../widgets/ConfirmationForm';
 import {userApi} from '../../../entities/user/api';
 import {BackLayout} from '../../layouts/BackLayout';
-import {useStyles} from './styles';
 
 export const ConfirmationPage: FC = () => {
     const {email} = useAppSelector(getUserRegisterData);
@@ -21,8 +20,7 @@ export const ConfirmationPage: FC = () => {
             return;
         }
 
-        const data = await userApi.resendCode({email});
-        console.log(data);
+        await userApi.resendCode({email});
         toast.success('Код выслан заново');
     };
 

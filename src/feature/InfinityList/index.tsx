@@ -39,7 +39,7 @@ const InfinityList = ({
 
     return (
         <Box>
-            {children.length ? (
+            {children && children.length ? (
                 <>
                     <Stack direction={'column'} gap={'12px'}>
                         {children}

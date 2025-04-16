@@ -57,11 +57,6 @@ export enum OrderStatus {
     COMPLETED = 'COMPLETED',
 
     /**
-     * Заявка принята
-     */
-    CONFIRMED = 'CONFIRMED',
-
-    /**
      * Заявка отменена
      */
     REJECTED = 'REJECTED',

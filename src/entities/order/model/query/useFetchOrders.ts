@@ -9,12 +9,13 @@ import {OrderStatus} from '../types';
  * Получение всех заказов пользователя
  * c динамическим добавлением
  */
-export const useFetchOrders = (status: OrderStatus) => {
+export const useFetchOrders = (status: OrderStatus | undefined) => {
     const {ref, inView} = useInView();
 
     const {
         data: orders,
         isLoading,
+        isFetchingNextPage,
         fetchNextPage,
         hasNextPage,
         isSuccess,
@@ -47,12 +48,14 @@ export const useFetchOrders = (status: OrderStatus) => {
 
         select: (data) =>
             data.pages.flatMap((page) => {
-                return page.data.data.items.map((el) => mapOrderDTO(el));
+                return (
+                    page?.data?.data?.items?.map((el) => mapOrderDTO(el)) ?? []
+                );
             }),
     });
 
     useEffect(() => {
-        if (inView && hasNextPage && !isLoading) {
+        if (inView && hasNextPage && !isLoading && !isFetchingNextPage) {
             fetchNextPage();
         }
     }, [inView, isSuccess, hasNextPage, fetchNextPage]);

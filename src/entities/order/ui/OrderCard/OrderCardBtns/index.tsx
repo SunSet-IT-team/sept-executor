@@ -6,6 +6,7 @@ import {useStyles} from './styles';
 import {useAcceptOrder} from '../../../model/query/useAcceptOrder';
 import {useRejectOrder} from '../../../model/query/useRejectOrder';
 import {toast} from 'react-toastify';
+import {useState} from 'react';
 
 type OrderCardBtnsProps = {
     order: Order;
@@ -15,6 +16,7 @@ type OrderCardBtnsProps = {
  * Кнопки и логика кнопок для заказа
  */
 const OrderCardBtns = ({order}: OrderCardBtnsProps) => {
+    const [isProcessing, setIsProcessing] = useState(false);
     const {status, id} = order;
 
     const accept = useAcceptOrder();
@@ -30,15 +32,23 @@ const OrderCardBtns = ({order}: OrderCardBtnsProps) => {
 
     /** Обработчик принятия заказа */
     const handleClickAccept = () => {
+        setIsProcessing(true);
         accept.mutate(order.id, {
             onSuccess: () => toast.success('Заказ принят'),
+            onSettled: () => {
+                setIsProcessing(false);
+            },
         });
     };
 
     /** Обработчик отмены заказа */
     const handleClickReject = () => {
+        setIsProcessing(true);
         reject.mutate(order.id, {
             onSuccess: () => toast.success('Заказ отклонён'),
+            onSettled: () => {
+                setIsProcessing(false);
+            },
         });
     };
 
@@ -49,6 +59,7 @@ const OrderCardBtns = ({order}: OrderCardBtnsProps) => {
                     sx={styles.btn}
                     variant="contained"
                     onClick={handleClickClose}
+                    disabled={isProcessing}
                 >
                     Закрыть
                 </Button>
@@ -59,6 +70,7 @@ const OrderCardBtns = ({order}: OrderCardBtnsProps) => {
                         variant="contained"
                         sx={styles.btnWhite}
                         onClick={handleClickAccept}
+                        disabled={isProcessing}
                     >
                         Принять
                     </Button>
@@ -66,6 +78,7 @@ const OrderCardBtns = ({order}: OrderCardBtnsProps) => {
                         variant="contained"
                         sx={styles.btn}
                         onClick={handleClickReject}
+                        disabled={isProcessing}
                     >
                         Отклонить
                     </Button>

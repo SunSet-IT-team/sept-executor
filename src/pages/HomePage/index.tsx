@@ -1,9 +1,6 @@
-import {MyOrdersList} from '../../widgets/MyOrdersList/MyOrdersList';
 import {NavLayout} from '../layouts/NavLayout';
 import {Helmet} from 'react-helmet-async';
 import ProfileLayout from '../layouts/ProfileLayout';
-import {useEffect} from 'react';
-import {orderApi} from '../../entities/order/api';
 import {useFetchOrders} from '../../entities/order/model/query/useFetchOrders';
 import InfinityList from '../../feature/InfinityList';
 import OrderCard from '../../entities/order/ui/OrderCard';
@@ -25,10 +22,12 @@ const HomePage = () => {
                     <InfinityList
                         observedRef={ref}
                         isLoading={isLoading}
-                        titleNoLength="Заказы не найдены"
+                        titleNoLength="Новых заказов пока нет"
                     >
                         {orders !== undefined &&
-                            orders.map((el) => <OrderCard order={el} />)}
+                            orders.map((el) => (
+                                <OrderCard order={el} key={el.id} />
+                            ))}
                     </InfinityList>
                 </NavLayout>
             </ProfileLayout>

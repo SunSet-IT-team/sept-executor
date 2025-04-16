@@ -12,6 +12,7 @@ export const useStyles = (): StylesDictionary => {
     return {
         title: {
             my: '20px',
+            textAlign: 'center',
             fontSize: '20px',
             fontWeight: 500,
             color: theme.palette.primary.main,
