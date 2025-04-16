@@ -14,18 +14,7 @@ export type RegisterDTO = ServerAns<{
  */
 export type AuthDTO = ServerAns<{
     token: string;
-    user: {
-        email: string;
-        firstName: string | null;
-        id: string;
-        lastName: string | null;
-        profile: {
-            about: string;
-            companyName: string;
-            experience: number;
-            workFormat: ExecutorWorkFormat;
-        };
-    };
+    user: ExecutorDTO;
 }>;
 
 /**
@@ -71,7 +60,9 @@ export type ProfileDTO = {
     id: number;
     phone: string;
     priority: number;
-    profilePhoto: null | string;
+    profilePhoto: FileDTO | null;
+    licenseDoc: FileDTO | null;
+    registrationDoc: FileDTO | null;
     rating: number;
     workFormat: ExecutorWorkFormat;
 };
@@ -95,7 +86,7 @@ export type CustomerProfileDTO = {
     ordersCount: number;
     phone: string;
     priority: number;
-    profilePhoto: string | null;
+    profilePhoto: FileDTO | null;
 };
 
 /**
@@ -105,3 +96,12 @@ export type AddressDTO = {
     id: number;
     value: string;
 };
+
+/**
+ * Файл, который приходит с сервера
+ */
+export interface FileDTO {
+    id: number;
+    type?: string;
+    url: string;
+}

@@ -6,6 +6,10 @@ export const useStyles = (): StylesDictionary => {
 
     return {
         container: {
+            position: 'sticky',
+            left: 0,
+            right: 0,
+            top: 0,
             display: 'flex',
             overflowX: 'auto',
             gap: '16px',

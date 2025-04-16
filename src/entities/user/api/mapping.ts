@@ -1,3 +1,4 @@
+import {getImagePath} from '../../../shared/utils/share';
 import {Address, Customer, Executor} from '../model/types';
 import {AddressDTO, AuthDTO, CustomerDTO, ExecutorDTO, GetMeDTO} from './dto';
 
@@ -5,29 +6,7 @@ import {AddressDTO, AuthDTO, CustomerDTO, ExecutorDTO, GetMeDTO} from './dto';
  * Переводить AuthDTO в  нормальный Executor
  */
 export const mapAuthDTO = (dto: AuthDTO['data']): Executor => {
-    const {user} = dto;
-    return {
-        id: user.id,
-        email: user.email,
-        phone: '89999999999',
-        name: user.profile.companyName,
-        priority: 1000,
-        profileImage: '',
-
-        about: user.profile.about,
-        experience: `${user.profile.experience}`,
-        workFormat: user.profile.workFormat,
-        city: 'Москва',
-        orderQty: 100,
-        docs: {
-            register: '',
-            approve: '',
-        },
-        rating: {
-            value: 10,
-            count: 10,
-        },
-    };
+    return mapExecutorDTO(dto.user);
 };
 
 /**
@@ -40,7 +19,15 @@ export const mapExecutorDTO = (dto: ExecutorDTO): Executor => {
         phone: dto.profile.phone,
         name: dto.profile.companyName,
         priority: dto.profile.priority,
-        profileImage: dto.profile.profilePhoto || '',
+        profileImage: dto.profile.profilePhoto
+            ? getImagePath(dto.profile.profilePhoto.url)
+            : '',
+        licenseDoc: dto.profile.licenseDoc
+            ? getImagePath(dto.profile.licenseDoc.url)
+            : '',
+        registrationDoc: dto.profile.licenseDoc
+            ? getImagePath(dto.profile.registrationDoc.url)
+            : '',
 
         about: dto.profile.about,
         experience: `${dto.profile.experience}`,
@@ -68,7 +55,9 @@ export const mapCustomerDTO = (customer: CustomerDTO): Customer => {
         name: customer.name,
         email: customer.email,
         phone: customer.profile.phone,
-        profileImage: customer.profile.profilePhoto || '',
+        profileImage: customer.profile.profilePhoto
+            ? getImagePath(customer.profile.profilePhoto.url)
+            : '',
         addresses: customer.profile.addresses.map((el) => mapAddressDTO(el)),
         orderQty: customer.profile.ordersCount,
         priority: customer.profile.priority,

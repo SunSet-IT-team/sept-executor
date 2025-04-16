@@ -14,7 +14,7 @@ export const useFetchOrders = (status: OrderStatus | undefined) => {
 
     const {
         data: orders,
-        isLoading,
+        isLoading: isFirstLoading,
         isFetchingNextPage,
         fetchNextPage,
         hasNextPage,
@@ -54,11 +54,13 @@ export const useFetchOrders = (status: OrderStatus | undefined) => {
             }),
     });
 
+    const isLoading = isFirstLoading || isFetchingNextPage;
+
     useEffect(() => {
-        if (inView && hasNextPage && !isLoading && !isFetchingNextPage) {
+        if (inView && hasNextPage && !isLoading) {
             fetchNextPage();
         }
-    }, [inView, isSuccess, hasNextPage, fetchNextPage]);
+    }, [inView, isSuccess, hasNextPage, fetchNextPage, isLoading]);
 
     return {orders, isLoading, ref};
 };

@@ -7,7 +7,7 @@ import {OrderApiMethods} from './types';
 export const orderApi: OrderApiMethods = {
     getOrders: (param) => {
         const page = param.page || 1;
-        const limit = param.limit || 1;
+        const limit = param.limit || 10;
         let url = `/order/my?page=${page}&limit=${limit}`;
 
         if (param.status) {

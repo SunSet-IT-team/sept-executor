@@ -34,9 +34,10 @@ export const AppRouter = () => {
         };
     }, [isinited]);
 
-    const isAuthenticated = user && isinited && !isLoading;
+    const isAuthenticated = !!user && token;
+    const isReady = isinited && !isLoading;
 
-    if ((!isinited && token) || isLoading)
+    if (!isReady)
         return (
             <Routes>
                 <Route index element={<LoadPage />} />

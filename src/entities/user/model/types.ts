@@ -8,6 +8,8 @@ export type Executor = {
     phone: string;
     priority: number;
     profileImage: string;
+    licenseDoc: string;
+    registrationDoc: string;
     about: string;
     experience: string;
     workFormat: ExecutorWorkFormat;
