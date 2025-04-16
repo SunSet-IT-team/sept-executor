@@ -15,6 +15,7 @@ export const useStyles = (): StylesDictionary => {
             flexGrow: 1,
             overflowY: 'auto',
             pt: 2,
+            px: '20px',
         },
     };
 };

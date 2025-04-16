@@ -1,4 +1,8 @@
-import {mapAddressDTO} from '../../user/api/mapping';
+import {
+    mapAddressDTO,
+    mapCustomerDTO,
+    mapExecutorDTO,
+} from '../../user/api/mapping';
 import {Order, Service} from '../model/types';
 import {OrderDTO, ServiceDTO} from './dto';
 
@@ -7,14 +11,21 @@ import {OrderDTO, ServiceDTO} from './dto';
  */
 export const mapOrderDTO = (data: OrderDTO): Order => {
     return {
-        address: mapAddressDTO(data.address).address,
-        executor: data.executorId ? null : null,
+        address: data.address ? mapAddressDTO(data.address).address : '',
+        executor: data.executor ? mapExecutorDTO(data.executor) : null,
+        customer: data.customer ? mapCustomerDTO(data.customer) : null,
         comment: data.comment || '',
         payment: data.paymentMethod,
         id: `${data.id}`,
         date: new Date(data.workDate).toLocaleDateString('ru'),
         status: data.status || data.orderStaus,
-        service: mapServiceDTO(data.service),
+        service: data.service
+            ? mapServiceDTO(data.service)
+            : ({
+                  id: 1,
+                  name: 'Заглушка услуги',
+                  priority: 100,
+              } as unknown as Service),
         review: null,
         septicVolume: `${data.septicVolume}`,
         septicDepth: `${data.septicDepth}`,

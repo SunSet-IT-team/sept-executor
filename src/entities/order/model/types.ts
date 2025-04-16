@@ -1,4 +1,4 @@
-import {Executor} from '../../user/model/types';
+import {Customer, Executor} from '../../user/model/types';
 
 /**
  * Заказ
@@ -6,6 +6,7 @@ import {Executor} from '../../user/model/types';
 export type Order = {
     address: string;
     executor?: Executor;
+    customer?: Customer;
     comment?: string;
     payment: string;
     id: string;

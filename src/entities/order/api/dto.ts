@@ -1,4 +1,5 @@
 import {ServerAns} from '../../../shared/types/share';
+import {CustomerDTO, ExecutorDTO} from '../../user/api/dto';
 import {OrderStatus} from '../model/types';
 
 /**
@@ -17,11 +18,10 @@ export type GetOrdersDTO = ServerAns<{
  */
 export type OrderDTO = {
     address: AddressDTO;
-    addressId: number;
     comment: string | null;
-    customerId: number;
+    customer: CustomerDTO;
     distanceToSeptic: number;
-    executorId: number | null;
+    executor: ExecutorDTO;
     id: number;
     objectType: string;
     paymentMethod: string;
@@ -31,7 +31,6 @@ export type OrderDTO = {
     septicDepth: number;
     septicVolume: number;
     service: ServiceDTO | null;
-    serviceId: number;
     orderStaus: OrderStatus;
     status: OrderStatus;
     workDate: string;

@@ -4,14 +4,16 @@ import {Helmet} from 'react-helmet-async';
 import ProfileLayout from '../layouts/ProfileLayout';
 import {useEffect} from 'react';
 import {orderApi} from '../../entities/order/api';
+import {useFetchOrders} from '../../entities/order/model/useFetchOrders';
+import InfinityList from '../../feature/InfinityList';
+import OrderCard from '../../entities/order/ui/OrderCard';
 
 /**
  * Домашняя страница
  */
 const HomePage = () => {
-    useEffect(() => {
-        orderApi.getOrders().then((r) => console.log(r.data));
-    }, []);
+    const {orders, isLoading, ref} = useFetchOrders();
+    console.log(orders);
 
     return (
         <>
@@ -20,7 +22,14 @@ const HomePage = () => {
             </Helmet>
             <ProfileLayout>
                 <NavLayout>
-                    <MyOrdersList orders={[]} />
+                    <InfinityList
+                        observedRef={ref}
+                        isLoading={isLoading}
+                        titleNoLength="Заказы не найдены"
+                    >
+                        {orders !== undefined &&
+                            orders.map((el) => <OrderCard order={el} />)}
+                    </InfinityList>
                 </NavLayout>
             </ProfileLayout>
         </>

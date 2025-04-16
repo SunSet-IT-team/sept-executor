@@ -9,22 +9,26 @@ import Static from './static/Static';
 import {CheckIsMobile} from '../feature/CheckIsMobile';
 import {HelmetProvider} from 'react-helmet-async';
 import {ToastContainer} from 'react-toastify';
+import {QueryClientProvider} from '@tanstack/react-query';
+import {queryClient} from './store/query';
 
 function App() {
     return (
         <StrictMode>
             <HelmetProvider>
-                <ThemeProvider theme={appTheme}>
-                    <BrowserRouter>
-                        <Provider store={store}>
-                            <Static />
-                            <ToastContainer />
-                            <CheckIsMobile>
-                                <AppRouter />
-                            </CheckIsMobile>
-                        </Provider>
-                    </BrowserRouter>
-                </ThemeProvider>
+                <QueryClientProvider client={queryClient}>
+                    <ThemeProvider theme={appTheme}>
+                        <BrowserRouter>
+                            <Provider store={store}>
+                                <Static />
+                                <ToastContainer />
+                                <CheckIsMobile>
+                                    <AppRouter />
+                                </CheckIsMobile>
+                            </Provider>
+                        </BrowserRouter>
+                    </ThemeProvider>
+                </QueryClientProvider>
             </HelmetProvider>
         </StrictMode>
     );

@@ -5,6 +5,10 @@ declare module '@mui/material/styles' {
         black: string;
         white: string;
     }
+
+    interface TypeBackground {
+        order: string;
+    }
 }
 
 export const appTheme = createTheme({
@@ -27,6 +31,7 @@ export const appTheme = createTheme({
         background: {
             default: '#f5f5f5', // Светло-серый фон
             paper: '#ffffff', // Белый для карточек
+            order: '#F3F3F3',
         },
     },
     typography: {
