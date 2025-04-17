@@ -5,7 +5,6 @@ import {OrderStatus} from '../../model/types';
  */
 export const orderStatusDictionary = {
     [OrderStatus.COMPLETED]: 'Завершён',
-    [OrderStatus.COMPLETED]: 'Принят',
     [OrderStatus.REJECTED]: 'Отменён',
     [OrderStatus.IN_PROGRESS]: 'В работе',
     [OrderStatus.PENDING]: 'В ожидании',

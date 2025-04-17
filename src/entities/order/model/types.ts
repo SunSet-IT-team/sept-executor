@@ -15,6 +15,7 @@ export type Order = {
     status: OrderStatus;
     service?: Service;
     review?: Review;
+    report?: ExecutorReport;
     septicVolume: string;
     septicDepth: string;
     septicDistance: string;
@@ -34,8 +35,18 @@ export type Service = {
  * Отзыв
  */
 export type Review = {
+    id: number | string;
     rating: number;
     text: string;
+};
+
+/**
+ * Отчёт
+ */
+export type ExecutorReport = {
+    id: number | string;
+    files: string[];
+    total: number;
 };
 
 /**

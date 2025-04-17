@@ -19,6 +19,9 @@ import {fetchMe} from '../../entities/user/model/thunk';
 import LoadPage from '../../pages/LoadPage';
 import OrderPage from '../../pages/OrderPage';
 import ChatPage from '../../pages/ChatPage';
+import ProfilePage from '../../pages/ProfilePage';
+import MyreviewsPage from '../../pages/MyReviewsPage';
+import StatsPage from '../../pages/StatsPage';
 
 export const AppRouter = () => {
     const user = useAppSelector(getCurrentUser);
@@ -91,7 +94,34 @@ export const AppRouter = () => {
                     element={<OrderPage />}
                 />
 
-                <Route path={`/${SlugPages.PROFILE}`} element={<>Профиль</>} />
+                <Route
+                    path={`/${SlugPages.PROFILE}`}
+                    element={<ProfilePage />}
+                />
+
+                <Route
+                    path={`/${SlugPages.SUPPORT}`}
+                    element={<ProfilePage />}
+                />
+
+                <Route
+                    path={`/${SlugPages.MY_DOCUMENTS}`}
+                    element={<>Документы</>}
+                />
+
+                <Route
+                    path={`/${SlugPages.SETTINGS}`}
+                    element={<>Настройки</>}
+                />
+
+                <Route
+                    path={`/${SlugPages.MY_REVIEWS}`}
+                    element={<MyreviewsPage />}
+                />
+                <Route
+                    path={`/${SlugPages.STATISTICS}`}
+                    element={<StatsPage />}
+                />
 
                 <Route
                     path={`/${SlugPages.CHAT}/:orderId`}

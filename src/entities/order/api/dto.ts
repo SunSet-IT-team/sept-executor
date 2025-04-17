@@ -1,5 +1,5 @@
 import {ServerAns} from '../../../shared/types/share';
-import {CustomerDTO, ExecutorDTO} from '../../user/api/dto';
+import {CustomerDTO, ExecutorDTO, FileDTO} from '../../user/api/dto';
 import {OrderStatus} from '../model/types';
 
 /**
@@ -57,6 +57,8 @@ export type OrderDTO = {
     paymentMethod: string;
     price: number | null;
     priority: number;
+    customerReview: ReviewDTO;
+    reports: ReportDTO[];
     septicConstructionType: string;
     septicDepth: number;
     septicVolume: number;
@@ -81,4 +83,20 @@ export type ServiceDTO = {
     id: string;
     name: string;
     priority: number;
+};
+
+/**
+ * DTO отзыва
+ */
+export type ReviewDTO = {
+    id: number;
+    rating: number;
+    text: string;
+};
+
+export type ReportDTO = {
+    files: FileDTO[];
+    total: number;
+    text: string;
+    id: number;
 };

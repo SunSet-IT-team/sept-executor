@@ -8,18 +8,14 @@ import {
     Box,
 } from '@mui/material';
 import {FC} from 'react';
-import { textFieldSx } from './styles';
+import {textFieldSx} from './styles';
 
 interface IProps {
     rating_score: number;
     review_text: string;
 }
 
-export const OrderReviewShort: FC<IProps> = ({
-    rating_score,
-    review_text,
-}) => {
-
+export const OrderReviewShort: FC<IProps> = ({rating_score, review_text}) => {
     return (
         <Box>
             {/* Заголовок и рейтинг */}
@@ -31,7 +27,7 @@ export const OrderReviewShort: FC<IProps> = ({
                 mb={1}
             >
                 <Typography fontWeight={600}>Мой отзыв</Typography>
-                <Rating readOnly value={rating_score} />
+                <Rating readOnly value={я} />
             </Stack>
 
             {/* Линия под заголовком */}

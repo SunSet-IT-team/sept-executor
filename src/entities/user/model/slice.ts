@@ -17,36 +17,8 @@ interface UserSlice {
     };
 }
 
-const cachedUser = localStorage.getItem('token')
-    ? JSON.parse(localStorage.getItem('cachedUser') ?? '""')
-    : null;
-
-const placeholderUser : UserSlice["user"] = {
-    id: 'dada',
-    name: 'dada',
-    email: 'dada',
-    phone: 'dada',
-    priority: 0,
-    profileImage: '',
-    about: 'dada',
-    experience: 'dada',
-    workFormat: ExecutorWorkFormat.INDIVIDUAL,
-    city: 'dada',
-    orderQty: 0,
-    docs: {
-        register: '',
-        approve: ''
-    },
-    rating: {
-        value: 0,
-        count: 0
-    }
-}
-
 const initialState: UserSlice = {
-    // user: null,
-    // user: cachedUser,
-    user: placeholderUser,
+    user: null,
     isInited: false,
 
     isLoading: true,

@@ -1,10 +1,11 @@
+import {getImagePath} from '../../../shared/utils/share';
 import {
     mapAddressDTO,
     mapCustomerDTO,
     mapExecutorDTO,
 } from '../../user/api/mapping';
-import {Order, Service} from '../model/types';
-import {OrderDTO, ServiceDTO} from './dto';
+import {ExecutorReport, Order, Review, Service} from '../model/types';
+import {OrderDTO, ReportDTO, ReviewDTO, ServiceDTO} from './dto';
 
 /**
  * Переводим OrderDTO в нормальный Order
@@ -21,7 +22,8 @@ export const mapOrderDTO = (data: OrderDTO): Order => {
         date: new Date(data.workDate).toLocaleDateString('ru'),
         status: data.status || data.orderStaus,
         service: mapServiceDTO(data.service),
-        review: null,
+        review: data.customerReview ? mapSReviewDTO(data.customerReview) : null,
+        report: data.reports[0] ? mapReportDTO(data.reports[0]) : null,
         septicVolume: `${data.septicVolume}`,
         septicDepth: `${data.septicDepth}`,
         septicDistance: `${data.distanceToSeptic}`,
@@ -37,5 +39,27 @@ export const mapServiceDTO = (service: ServiceDTO): Service => {
         id: service.id,
         name: service.name,
         priority: service.priority,
+    };
+};
+
+/**
+ * Переводим ReviewDTO в нормальный Review
+ */
+export const mapSReviewDTO = (review: ReviewDTO): Review => {
+    return {
+        id: review.id,
+        rating: review.rating,
+        text: review.text,
+    };
+};
+
+/**
+ * Переводм ReportDTO в нормальный Report
+ */
+export const mapReportDTO = (report: ReportDTO): ExecutorReport => {
+    return {
+        id: report.id,
+        total: report.total,
+        files: report.files.map((el) => getImagePath(el.url)),
     };
 };
