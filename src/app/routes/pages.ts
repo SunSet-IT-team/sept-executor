@@ -39,7 +39,32 @@ export enum SlugPages {
     ORDERS = 'orders',
 
     /**
-     * Заказы
+     * Профиль
      */
     PROFILE = 'profile',
+
+    /**
+     * Мои отзывы
+     */
+    MY_REVIEWS = 'my-reviews',
+
+    /**
+     * Статистика
+     */
+    STATISTICS = 'stats',
+
+    /**
+     * Настройки
+     */
+    SETTINGS = 'settings',
+
+    /**
+     * Мои документы
+     */
+    MY_DOCUMENTS = 'my-documents',
+
+    /**
+     * Тех. поддержка
+     */
+    SUPPORT = 'support',
 }
