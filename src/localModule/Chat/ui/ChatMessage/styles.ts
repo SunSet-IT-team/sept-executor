@@ -14,8 +14,8 @@ export const useStyles = (): StylesDictionary => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-end',
-            backgroundColor: theme.palette.primary.light,
-            color: theme.palette.text.black,
+            backgroundColor: theme.palette.secondary.main,
+            color: theme.palette.text.primary,
         },
 
         myMessage: {
@@ -29,7 +29,7 @@ export const useStyles = (): StylesDictionary => {
             mr: '',
 
             backgroundColor: theme.palette.primary.main,
-            color: theme.palette.text.white,
+            color: 'white',
         },
 
         messageContent: {

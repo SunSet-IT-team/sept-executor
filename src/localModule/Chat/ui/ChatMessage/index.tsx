@@ -4,6 +4,7 @@ import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 import {Stack, Typography} from '@mui/material';
 import {Message} from '../../model/types';
 import {useStyles} from './styles';
+import FileDisplay from '../FileDisplay';
 
 type ChatMessageProps = Message;
 
@@ -16,16 +17,18 @@ export const ChatMessage = ({
     createdAt,
     readed,
     isLoading,
+    fileUrl,
 }: ChatMessageProps) => {
     const styles = useStyles();
 
-    const isMyMessage = senderId == 1;
+    const isMyMessage = senderId == 4;
 
     return (
         <Stack sx={isMyMessage ? styles.myMessage : styles.message}>
             {content && (
                 <Typography sx={styles.messageContent}>{content}</Typography>
             )}
+            {fileUrl && <FileDisplay fileUrl={fileUrl} />}
             <Stack sx={styles.messageAdditional}>
                 <Typography sx={styles.messageTime}>{createdAt}</Typography>
                 {isMyMessage &&

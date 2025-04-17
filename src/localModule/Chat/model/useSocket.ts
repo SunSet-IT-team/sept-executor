@@ -30,11 +30,14 @@ export const useSocket = ({chatId, events}: UseSocketProps) => {
     const socketRef = useRef<Socket | null>(null);
 
     useEffect(() => {
-        const socket = io('http://localhost:3000', {
-            auth: {
-                token: localStorage.getItem('token'),
-            },
-        });
+        const socket = io(
+            import.meta.env.VITE_CHAT_URL || 'http://localhost:3000',
+            {
+                auth: {
+                    token: localStorage.getItem('token'),
+                },
+            }
+        );
 
         socketRef.current = socket;
 
@@ -59,5 +62,5 @@ export const useSocket = ({chatId, events}: UseSocketProps) => {
         };
     }, []);
 
-    return {socket: socketRef.current};
+    return {socket: socketRef};
 };

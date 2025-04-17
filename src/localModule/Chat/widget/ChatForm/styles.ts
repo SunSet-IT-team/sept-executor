@@ -14,22 +14,10 @@ export const useStyles = (): StylesDictionary => {
             borderRadius: 4,
             overflow: 'hidden',
         },
-
         messageForm: {
             gap: '10px',
             px: '20px',
             pb: '20px',
-        },
-
-        messageArea: {
-            '& .MuiInputBase-input': {
-                padding: '10px',
-                '::placeholder': {
-                    fontStyle: 'italic',
-                    textAlign: 'center',
-                    fontSize: '14px',
-                },
-            },
         },
     };
 };

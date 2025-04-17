@@ -1,5 +1,5 @@
 import {AxiosPromise} from 'axios';
-import {GetChatDTO} from './dto';
+import {GetChatMessagesDTO} from './dto';
 
 /**
  * Интерфейс для API чата
@@ -11,7 +11,7 @@ export interface СhatApiMethods {
     getChatMessages: (
         chatId: string | number,
         params: ChatApiGetChatMessagesParams
-    ) => AxiosPromise<GetChatDTO>;
+    ) => AxiosPromise<GetChatMessagesDTO>;
 }
 
 export type ChatApiGetChatMessagesParams = {

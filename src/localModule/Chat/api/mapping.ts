@@ -1,4 +1,5 @@
 import {Message} from '../model/types';
+import {getFilePath} from '../share/utils';
 import {MessageDTO} from './dto';
 
 /**
@@ -10,10 +11,14 @@ export const mapMessageDTO = (msg: MessageDTO): Message => {
         tempId: msg.tempId,
         chatId: msg.chatId,
         content: msg.text,
-        fileUrl: '',
+        fileUrl: msg.files[0] ? getFilePath(msg.files[0].url) : '',
         senderId: msg.senderId,
-        readed: true,
-        createdAt: msg.createdAt,
-        isLoading: false,
+        readed: msg.isReaded,
+        createdAt: new Date(msg.createdAt).toLocaleTimeString('ru-RU', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+        }),
+        isLoading: msg.isLoading,
     };
 };

@@ -2,34 +2,45 @@ import {Stack, Typography} from '@mui/material';
 import {useScrollObserver} from '../../model/useScrollObserver';
 import {ChatMessage} from '../ChatMessage';
 import {useStyles} from './styles';
-import {Message} from '../../model/types';
+import {Chat} from '../../model/types';
+import {useChatMessages} from '../../model/useChatMessages';
+import InfinityList from '../../feature/InfinityList';
 
 type MessageListProps = {
-    messages: Message[];
-    additionalInfo?: string;
+    chat: Chat;
 };
 
 /**
  * Вывод списка сообщений
  */
-const MessageList = ({additionalInfo, messages}: MessageListProps) => {
+const MessageList = ({chat}: MessageListProps) => {
     const styles = useStyles();
+
+    const {data, isLoading, ref} = useChatMessages(chat.id);
+
+    const messages = data || [];
 
     const {messageListRef} = useScrollObserver(messages);
 
     return (
         <Stack sx={styles.messageWrapper}>
-            {additionalInfo && (
+            {chat.additionalInfo && (
                 <Typography sx={styles.additionalInfo}>
-                    {additionalInfo}
+                    {chat.additionalInfo}
                 </Typography>
             )}
 
-            <Stack sx={styles.messageList} ref={messageListRef}>
-                {messages.map((m) => (
+            <InfinityList
+                sx={styles.messageList}
+                listRef={messageListRef}
+                observedRef={ref}
+                isLoading={isLoading}
+                titleNoLength="Сообщений пока нет..."
+            >
+                {messages.reverse().map((m) => (
                     <ChatMessage key={m.id} {...m} />
                 ))}
-            </Stack>
+            </InfinityList>
         </Stack>
     );
 };

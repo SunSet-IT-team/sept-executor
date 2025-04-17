@@ -1,15 +1,15 @@
 import axios from 'axios';
 import {СhatApiMethods} from './types';
 
-const chatApiInstanse = axios.create({
-    baseURL: 'http://localhost:3000/api', // Базовый URL вашего API
+const api = axios.create({
+    baseURL: `${import.meta.env.VITE_CHAT_URL || 'http://localhost:3000'}/api`,
     timeout: 10000, // Таймаут запроса
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-chatApiInstanse.interceptors.request.use(
+api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -22,6 +22,8 @@ chatApiInstanse.interceptors.request.use(
     }
 );
 
+export default api;
+
 /**
  * API для работы с чатом
  */
@@ -30,7 +32,7 @@ export const chatApi: СhatApiMethods = {
         const page = params.page || 1;
         const limit = params.limit || 20;
 
-        const res = chatApiInstanse.get(
+        const res = api.get(
             `/chat/${chatId}/messages?page=${page}&limit=${limit}`
         );
 
