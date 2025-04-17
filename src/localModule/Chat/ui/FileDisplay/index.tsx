@@ -5,16 +5,22 @@ import DownloadIcon from '@mui/icons-material/Download';
 
 type FileDisplayProps = {
     fileUrl: string;
+    isTemp?: boolean;
 };
 
 /**
  * Превью файла, который можно скачать
  */
-const FileDisplay = ({fileUrl}: FileDisplayProps) => {
+const FileDisplay = ({fileUrl, isTemp}: FileDisplayProps) => {
     const [isImage, setIsImage] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
+        if (isTemp) {
+            setIsLoading(false);
+            return;
+        }
+
         const checkIfImage = async () => {
             try {
                 const response = await fetch(fileUrl, {method: 'HEAD'});
@@ -55,6 +61,33 @@ const FileDisplay = ({fileUrl}: FileDisplayProps) => {
         return <Box>Загрузка...</Box>;
     }
 
+    // Для заглушек
+    if (isTemp) {
+        return (
+            <Paper
+                elevation={3}
+                sx={{
+                    width: 200,
+                    height: 200,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundColor: '#f5f5f5',
+                }}
+            >
+                <InsertDriveFileIcon sx={{fontSize: 80, color: '#757575'}} />
+                <Typography variant="caption" sx={{m: 1}}>
+                    Загружаю...
+                </Typography>
+            </Paper>
+        );
+    }
+
     return (
         <Paper
             elevation={3}
@@ -78,7 +111,7 @@ const FileDisplay = ({fileUrl}: FileDisplayProps) => {
                     <InsertDriveFileIcon
                         sx={{fontSize: 80, color: '#757575'}}
                     />
-                    <Typography variant="caption" sx={{mt: 1}}>
+                    <Typography variant="caption" sx={{m: 1}}>
                         {fileUrl.split('/').pop()}
                     </Typography>
                 </>

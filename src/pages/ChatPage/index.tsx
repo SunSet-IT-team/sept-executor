@@ -4,6 +4,7 @@ import {ChatForm} from '../../localModule/Chat';
 import {useFetchChatOrder} from '../../entities/chats/model/useFetchOrderChat';
 import {Navigate, useNavigate, useParams} from 'react-router-dom';
 import {SlugPages} from '../../app/routes/pages';
+import LoadPage from '../LoadPage';
 
 /**
  * Страница чата по заказам
@@ -15,9 +16,9 @@ const ChatPage = () => {
 
     const {data, isPending} = useFetchChatOrder(orderId || 0);
 
-    console.log(data);
-
     if (!orderId) return <Navigate to="/" />;
+
+    if (isPending) return <LoadPage />;
 
     const chat = {
         id: 1,

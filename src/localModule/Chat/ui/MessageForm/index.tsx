@@ -35,16 +35,23 @@ const MessageForm = ({chat, socket}: MessageFormProps) => {
     const handleSend = () => {
         if (disabled) return; // Не отправляем пустые сообщения и в момент загрузки файла
 
+        const tempId = Date.now().toString(); // Используем timestamp как временный ID
         const newMessage: MessageDTO = {
-            id: Date.now().toString(), // Используем timestamp как временный ID
-            tempId: Date.now().toString(),
+            id: tempId,
+            tempId: tempId,
             chatId: chat.id,
             senderId: 4,
             isLoading: true,
             isReaded: false,
             createdAt: new Date().toISOString(),
             text: message,
-            files: [],
+            files: [
+                {
+                    id: `${fileId}`,
+                    mimetype: 'loader',
+                    url: 'placeholder',
+                },
+            ],
             isMine: false,
         };
 

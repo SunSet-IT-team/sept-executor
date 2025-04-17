@@ -35,6 +35,7 @@ export const useStyles = (): StylesDictionary => {
         messageContent: {
             fontSize: '14px',
             wordBreak: 'break-all',
+            mb: 2,
         },
         messageTime: {
             fontSize: '10px',

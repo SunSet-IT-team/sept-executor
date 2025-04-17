@@ -18,6 +18,7 @@ export const ChatMessage = ({
     readed,
     isLoading,
     fileUrl,
+    ...m
 }: ChatMessageProps) => {
     const styles = useStyles();
 
@@ -28,7 +29,12 @@ export const ChatMessage = ({
             {content && (
                 <Typography sx={styles.messageContent}>{content}</Typography>
             )}
-            {fileUrl && <FileDisplay fileUrl={fileUrl} />}
+            {fileUrl && (
+                <FileDisplay
+                    fileUrl={fileUrl}
+                    isTemp={!!(m.tempId == m.id && fileUrl)}
+                />
+            )}
             <Stack sx={styles.messageAdditional}>
                 <Typography sx={styles.messageTime}>{createdAt}</Typography>
                 {isMyMessage &&
