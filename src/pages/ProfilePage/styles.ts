@@ -7,6 +7,7 @@ export const useStyles = (): StylesDictionary => {
     return {
         container: {
             px: '20px',
+            pb: "160px"
         },
     };
 };

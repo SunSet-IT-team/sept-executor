@@ -110,6 +110,10 @@ export const AppRouter = () => {
                     element={<MyreviewsPage />}
                 />
 
+                <Route
+                    path={`/${SlugPages.SUPPORT}/`}
+                    element={<>Тех. поддержка</>}
+                />
                 <Route path={`/${SlugPages.CHAT}/:chatId`} element={<>Чат</>} />
             </Route>
 

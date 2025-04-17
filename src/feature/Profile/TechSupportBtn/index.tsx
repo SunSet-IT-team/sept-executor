@@ -1,6 +1,7 @@
 import {Button} from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useStyles } from './styles';
+import { SlugPages } from '../../../app/routes/pages';
 
 export const TechSupportBtn = () => {
     const styles = useStyles()
@@ -10,7 +11,7 @@ export const TechSupportBtn = () => {
         fullWidth
         sx={styles.root}
         component={Link}
-        to={"#"}
+        to={`/${SlugPages.SUPPORT}`}
     >
         Техподдержка
     </Button>

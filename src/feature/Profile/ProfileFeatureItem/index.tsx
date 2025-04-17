@@ -7,17 +7,20 @@ import {useStyles} from './styles';
 
 interface SidebarItemProps {
     icon: ReactNode;
-    text: string;
+    label: string;
     to: string;
 }
 
-export const ProfileFeatureItem = ({icon, text, to}: SidebarItemProps) => {
+/**
+ * Кнопка с экрана Личный кабинет: Профиль
+ */
+export const ProfileFeatureItem = ({icon, label, to}: SidebarItemProps) => {
     const styles = useStyles();
 
     return (
         <ListItem component={Link} to={to} sx={styles.container}>
-            <ListItemIcon sx={{justifyContent: 'center'}}>{icon}</ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemIcon sx={styles.icon}>{icon}</ListItemIcon>
+            <ListItemText primary={label} />
         </ListItem>
     );
 };

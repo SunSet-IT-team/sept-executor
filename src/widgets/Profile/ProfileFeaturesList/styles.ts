@@ -11,5 +11,3 @@ export const useStyles = (): StylesDictionary => {
         }
     };
 };
-
-export const item_size = {xs: 6};

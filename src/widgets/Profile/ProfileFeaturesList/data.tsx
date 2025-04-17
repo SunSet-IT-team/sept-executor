@@ -9,22 +9,22 @@ import {SlugPages} from '../../../app/routes/pages';
 export const menuItems = [
     {
         icon: <ReviewsIcon />,
-        text: 'Мои отзывы',
+        label: 'Мои отзывы',
         to: `/${SlugPages.MY_REVIEWS}`,
     },
     {
         icon: <StatsIcon />,
-        text: 'Статистика',
+        label: 'Статистика',
         to: `/${SlugPages.STATISTICS}`,
     },
     {
         icon: <StarIcon />,
-        text: 'Настройки',
+        label: 'Настройки',
         to: `/${SlugPages.SETTINGS}`,
     },
     {
         icon: <DocumentAddIcon />,
-        text: 'Мои документы',
+        label: 'Мои документы',
         to: `/${SlugPages.MY_DOCUMENTS}`,
     },
 ];

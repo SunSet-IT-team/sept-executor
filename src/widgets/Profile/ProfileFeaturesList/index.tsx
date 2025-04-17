@@ -1,10 +1,16 @@
 import {ProfileFeatureItem} from '../../../feature/Profile/ProfileFeatureItem';
 import {Grid} from '@mui/material';
 import {menuItems} from './data';
-import {item_size, useStyles} from './styles';
+import {useStyles} from './styles';
+import { useMediaQuery } from 'usehooks-ts';
 
-export const ProfileFeatures = () => {
+/**
+ * Список кнопок в меню профиля.
+ * Экран - Личный кабинет: Профиль
+ */
+export const ProfileFeaturesList = () => {
     const styles = useStyles();
+    const isSmallScreen = useMediaQuery('(max-width:389.98px)');
 
     return (
         <Grid
@@ -13,11 +19,11 @@ export const ProfileFeatures = () => {
             columnSpacing={'10px'}
             sx={styles.container}
         >
-            {menuItems.map((item, index) => (
-                <Grid size={item_size} key={index}>
+            {menuItems.map((item) => (
+                <Grid size={isSmallScreen ? 12 : 6} key={item.label}>
                     <ProfileFeatureItem
                         icon={item.icon}
-                        text={item.text}
+                        label={item.label}
                         to={item.to}
                     />
                 </Grid>

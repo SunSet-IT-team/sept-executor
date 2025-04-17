@@ -16,5 +16,9 @@ export const useStyles = (): StylesDictionary => {
             alignItems: 'center',
             color: 'inherit',
         },
+
+        icon: {
+            justifyContent: "center"
+        }
     };
 };

@@ -62,4 +62,9 @@ export enum SlugPages {
      * Мои документы
      */
     MY_DOCUMENTS = 'my-documents',
+
+    /**
+     * Тех. поддержка
+     */
+    SUPPORT = 'support',
 }
