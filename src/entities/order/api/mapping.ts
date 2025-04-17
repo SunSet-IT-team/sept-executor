@@ -11,7 +11,8 @@ import {OrderDTO, ServiceDTO} from './dto';
  */
 export const mapOrderDTO = (data: OrderDTO): Order => {
     return {
-        address: data.address ? mapAddressDTO(data.address).address : '',
+        address: data.address ? data.address : '',
+        city: data.city ? data.city : '',
         executor: data.executor ? mapExecutorDTO(data.executor) : null,
         customer: data.customer ? mapCustomerDTO(data.customer) : null,
         comment: data.comment || '',
@@ -19,13 +20,7 @@ export const mapOrderDTO = (data: OrderDTO): Order => {
         id: `${data.id}`,
         date: new Date(data.workDate).toLocaleDateString('ru'),
         status: data.status || data.orderStaus,
-        service: data.service
-            ? mapServiceDTO(data.service)
-            : ({
-                  id: 1,
-                  name: 'Заглушка услуги',
-                  priority: 100,
-              } as unknown as Service),
+        service: mapServiceDTO(data.service),
         review: null,
         septicVolume: `${data.septicVolume}`,
         septicDepth: `${data.septicDepth}`,

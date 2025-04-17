@@ -5,6 +5,7 @@ import {Customer, Executor} from '../../user/model/types';
  */
 export type Order = {
     address: string;
+    city?: string;
     executor?: Executor;
     customer?: Customer;
     comment?: string;

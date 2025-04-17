@@ -1,10 +1,10 @@
 import {Box} from '@mui/material';
 import {Helmet} from 'react-helmet-async';
-import {ChatForm} from '../../localModule/Chat';
 import {useFetchChatOrder} from '../../entities/chats/model/useFetchOrderChat';
 import {Navigate, useNavigate, useParams} from 'react-router-dom';
 import {SlugPages} from '../../app/routes/pages';
 import LoadPage from '../LoadPage';
+import {ChatForm} from 'sunset-chat';
 
 /**
  * Страница чата по заказам

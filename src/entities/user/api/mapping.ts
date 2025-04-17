@@ -16,7 +16,7 @@ export const mapExecutorDTO = (dto: ExecutorDTO): Executor => {
     return {
         id: `${dto.id}`,
         email: dto.email,
-        phone: dto.profile.phone,
+        phone: dto.profile?.phone || 'Отсутствует',
         name: dto.profile.companyName,
         priority: dto.profile.priority,
         profileImage: dto.profile.profilePhoto
@@ -34,13 +34,9 @@ export const mapExecutorDTO = (dto: ExecutorDTO): Executor => {
         workFormat: dto.profile.workFormat,
         city: dto.profile.city || 'Москва',
         orderQty: dto.profile.completedOrders,
-        docs: {
-            register: '',
-            approve: '',
-        },
         rating: {
             value: dto.profile.rating,
-            count: 10,
+            count: dto.reviewsCount,
         },
     };
 };

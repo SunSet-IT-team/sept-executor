@@ -15,10 +15,6 @@ export type Executor = {
     workFormat: ExecutorWorkFormat;
     city: string;
     orderQty: number;
-    docs: {
-        register: string;
-        approve: string;
-    };
     rating: {
         value: number;
         count: number;

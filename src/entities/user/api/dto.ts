@@ -43,6 +43,8 @@ export type ExecutorDTO = {
     id: number;
     email: string;
     name: string;
+    reviewsCount: number;
+    ordersCount?: number;
     role: 'EXECUTOR';
     profile: ProfileDTO;
 };

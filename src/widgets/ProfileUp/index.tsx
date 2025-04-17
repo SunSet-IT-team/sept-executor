@@ -16,7 +16,11 @@ const ProfileUp = ({interlocutor}: ProfileUpProps) => {
     return (
         <Box sx={styles.chatHeader}>
             <Stack sx={styles.chatHeaderUser}>
-                <Avatar src="" alt="" sx={styles.chatHeaderUserImage} />
+                <Avatar
+                    src={interlocutor.profileImage}
+                    alt={interlocutor.name}
+                    sx={styles.chatHeaderUserImage}
+                />
                 <Typography sx={styles.chatHeaderUserName}>
                     {interlocutor.name}
                 </Typography>

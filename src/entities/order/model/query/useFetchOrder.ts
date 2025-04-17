@@ -11,7 +11,11 @@ export const useFetchOrder = (id: number | string) => {
         queryFn: () => orderApi.getOrderById(id),
         queryKey: ['order', `${id}`],
         select(data) {
-            return mapOrderDTO(data.data.data);
+            try {
+                return mapOrderDTO(data.data.data);
+            } catch (error) {
+                console.log(error);
+            }
         },
     });
 };

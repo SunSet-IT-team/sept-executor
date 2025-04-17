@@ -46,7 +46,8 @@ export type GetOrder = ServerAns<OrderDTO>;
  * DTO Заказа
  */
 export type OrderDTO = {
-    address: AddressDTO;
+    address: string;
+    city: string;
     comment: string | null;
     customer: CustomerDTO;
     distanceToSeptic: number;
