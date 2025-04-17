@@ -5,8 +5,9 @@ export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
 
     return {
-        container: {
-            pb: "160px"
+        root: {
+            mt: '35px',
+            px: '20px',
         },
     };
 };
