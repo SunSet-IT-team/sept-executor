@@ -1,11 +1,11 @@
 import {FC} from 'react';
 import {Box} from '@mui/material';
-import {ReviewContent} from '../../../feature/ReviewContent';
+import {ReviewContent} from '../ReviewContent';
 import {ReviewTopInfo} from '../ReviewTopInfo';
-import { IReview } from '../model/types';
+import {Review} from '../../../model/types';
 
 interface IProps {
-    review: IReview
+    review: Review;
 }
 
 /**
@@ -15,15 +15,15 @@ interface IProps {
 export const ReviewCard: FC<IProps> = ({review}) => {
     return (
         <Box>
-            <ReviewTopInfo
+            {/* <ReviewTopInfo
                 avatarUrl={review.order.customer.avatarUrl}
-                customer_name={review.order.customer.name}
-                order_date={review.order.date}
-                order_address={review.order.address}
-            />
+                customerName={review.order.customer.name}
+                orderDate={review.order.date}
+                orderAddress={review.order.address}
+            /> */}
             <ReviewContent
-                rating_score={review.review.rating}
-                review_text={review.review.text}
+                ratingScore={review.rating}
+                reviewText={review.text}
             />
         </Box>
     );

@@ -10,23 +10,24 @@ import {FC} from 'react';
 import {useStyles} from './styles';
 
 interface IProps {
-    rating_score: number;
-    review_text: string;
+    ratingScore: number;
+    reviewText: string;
+    name?: string;
 }
 
 /**
  * Нижняя часть карточки отзыва с рейтингом и текстом отзыва.
  * Экран - Личный кабинет: мои отзывы.
  */
-export const ReviewContent: FC<IProps> = ({rating_score, review_text}) => {
+export const ReviewContent: FC<IProps> = ({ratingScore, reviewText, name}) => {
     const styles = useStyles();
 
     return (
         <Box>
             {/* Заголовок и рейтинг */}
             <Stack direction="row" sx={styles.scoreContainer}>
-                <Typography sx={styles.label}>Отзыв</Typography>
-                <Rating readOnly value={rating_score} />
+                <Typography sx={styles.label}>{name || 'Аноним'}</Typography>
+                <Rating readOnly value={ratingScore} />
             </Stack>
 
             {/* Линия под заголовком */}
@@ -38,7 +39,7 @@ export const ReviewContent: FC<IProps> = ({rating_score, review_text}) => {
                 multiline
                 rows={4}
                 variant="standard"
-                defaultValue={review_text}
+                defaultValue={reviewText}
                 sx={styles.textField}
                 slotProps={{input: {disableUnderline: true, readOnly: true}}}
             />

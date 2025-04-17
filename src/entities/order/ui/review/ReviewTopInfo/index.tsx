@@ -4,9 +4,9 @@ import {imageStyle, useStyles} from './styles';
 
 interface IProps {
     avatarUrl: string;
-    customer_name: string;
-    order_date: string;
-    order_address: string;
+    customerName: string;
+    orderDate: string;
+    orderAddress: string;
 }
 
 /**
@@ -15,9 +15,9 @@ interface IProps {
  */
 export const ReviewTopInfo: FC<IProps> = ({
     avatarUrl,
-    customer_name,
-    order_date,
-    order_address,
+    customerName,
+    orderDate,
+    orderAddress,
 }) => {
     const styles = useStyles();
 
@@ -34,18 +34,18 @@ export const ReviewTopInfo: FC<IProps> = ({
 
             {/* Правая часть — текст */}
             <Box>
-                <Typography sx={styles.label}>{customer_name}</Typography>
+                <Typography sx={styles.label}>{customerName}</Typography>
                 <Typography>
                     <Box component="span" sx={styles.label}>
                         Дата:
                     </Box>
-                    {` ${order_date}`}
+                    {` ${orderDate}`}
                 </Typography>
                 <Typography>
                     <Box component="span" sx={styles.label}>
                         Адрес:
                     </Box>
-                    {` ${order_address}`}
+                    {` ${orderAddress}`}
                 </Typography>
             </Box>
         </Stack>

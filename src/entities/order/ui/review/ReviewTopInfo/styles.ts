@@ -1,4 +1,4 @@
-import { StylesDictionary } from "../../../shared/types/share";
+import {StylesDictionary} from '../../../../../shared/types/share';
 
 export const useStyles = (): StylesDictionary => {
     return {
@@ -10,8 +10,8 @@ export const useStyles = (): StylesDictionary => {
         },
 
         label: {
-            fontWeight: 600
-        }
+            fontWeight: 600,
+        },
     };
 };
 

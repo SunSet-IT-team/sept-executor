@@ -35,6 +35,7 @@ export type Service = {
  * Отзыв
  */
 export type Review = {
+    author: Customer;
     id: number | string;
     rating: number;
     text: string;

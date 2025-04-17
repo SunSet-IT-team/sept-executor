@@ -1,4 +1,4 @@
-import {IReview} from '../../entities/review/model/types';
+import {IReview} from '../../entities/order/ui/review/model/types';
 
 export const reviews_data: IReview[] = [
     {

@@ -1,11 +1,11 @@
 import {FC} from 'react';
 import {Stack} from '@mui/material';
-import {ReviewCard} from '../../entities/review/ReviewCard';
-import {IReview} from '../../entities/review/model/types';
-import { useStyles } from './styles';
+import {ReviewCard} from '../../entities/order/ui/review/ReviewCard';
+import {useStyles} from './styles';
+import {Review} from '../../entities/order/model/types';
 
 interface IProps {
-    reviews: IReview[];
+    reviews: Review[];
 }
 
 /**
@@ -13,12 +13,12 @@ interface IProps {
  * Экран - Личный кабинет: мои отзывы.
  */
 export const MyReviewsList: FC<IProps> = ({reviews}) => {
-    const styles = useStyles()
+    const styles = useStyles();
 
     return (
         <Stack spacing={'45px'} sx={styles.root}>
             {reviews.map((review, i) => {
-                return <ReviewCard key={`${i}_${review.review.text}`} review={review} />;
+                return <ReviewCard key={review.id} review={review} />;
             })}
         </Stack>
     );

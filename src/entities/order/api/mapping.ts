@@ -22,7 +22,7 @@ export const mapOrderDTO = (data: OrderDTO): Order => {
         date: new Date(data.workDate).toLocaleDateString('ru'),
         status: data.status || data.orderStaus,
         service: mapServiceDTO(data.service),
-        review: data.customerReview ? mapSReviewDTO(data.customerReview) : null,
+        review: data.customerReview ? mapReviewDTO(data.customerReview) : null,
         report: data.reports[0] ? mapReportDTO(data.reports[0]) : null,
         septicVolume: `${data.septicVolume}`,
         septicDepth: `${data.septicDepth}`,
@@ -45,8 +45,9 @@ export const mapServiceDTO = (service: ServiceDTO): Service => {
 /**
  * Переводим ReviewDTO в нормальный Review
  */
-export const mapSReviewDTO = (review: ReviewDTO): Review => {
+export const mapReviewDTO = (review: ReviewDTO): Review => {
     return {
+        author: mapCustomerDTO(review.author),
         id: review.id,
         rating: review.rating,
         text: review.text,

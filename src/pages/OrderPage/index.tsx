@@ -10,6 +10,8 @@ import {useState} from 'react';
 import {OrderCloseForm} from '../../widgets/OrderCloseForm';
 import LoadPage from '../LoadPage';
 import {OrderStatus} from '../../entities/order/model/types';
+import OrderReview from '../../entities/order/ui/OrderReview';
+import OrderReport from '../../entities/order/ui/OrderReport';
 
 /**
  * Страница одного конкретного заказа
@@ -45,6 +47,8 @@ const OrderPage = () => {
                     {openForm && order.status === OrderStatus.IN_PROGRESS && (
                         <OrderCloseForm orderId={orderId} />
                     )}
+                    {order.report && <OrderReport report={order.report} />}
+                    {order.review && <OrderReview review={order.review} />}
                 </Box>
             </BackLayout>
         </>

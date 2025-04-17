@@ -89,6 +89,7 @@ export type ServiceDTO = {
  * DTO отзыва
  */
 export type ReviewDTO = {
+    author: CustomerDTO;
     id: number;
     rating: number;
     text: string;
