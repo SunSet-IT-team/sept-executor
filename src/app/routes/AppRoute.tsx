@@ -17,6 +17,9 @@ import {
 import {useAppSelector, useAppDispatch} from '../store/hook';
 import {fetchMe} from '../../entities/user/model/thunk';
 import LoadPage from '../../pages/LoadPage';
+import ProfilePage from '../../pages/ProfilePage';
+import StatsPage from '../../pages/StatsPage';
+import MyreviewsPage from '../../pages/MyReviewsPage';
 
 export const AppRouter = () => {
     const user = useAppSelector(getCurrentUser);
@@ -26,25 +29,26 @@ export const AppRouter = () => {
 
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        if (isinited) return;
+    // useEffect(() => {
+    //     if (isinited) return;
 
-        const fetching = dispatch(fetchMe());
+    //     const fetching = dispatch(fetchMe());
 
-        return () => {
-            fetching.abort();
-        };
-    }, [isinited]);
+    //     return () => {
+    //         fetching.abort();
+    //     };
+    // }, [isinited]);
 
-    const isAuthenticated = user && isinited && !isLoading;
+    // const isAuthenticated = user && isinited && !isLoading;
+    const isAuthenticated = true;
 
-    if ((!isinited && token) || isLoading)
-        return (
-            <Routes>
-                <Route index element={<LoadPage />} />
-                <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-        );
+    // if ((!isinited && token) || isLoading)
+    //     return (
+    //         <Routes>
+    //             <Route index element={<LoadPage />} />
+    //             <Route path="*" element={<Navigate to="/" replace />} />
+    //         </Routes>
+    //     );
 
     return (
         <Routes>
@@ -91,8 +95,25 @@ export const AppRouter = () => {
                 <Route index element={<HomePage />} />
                 <Route path={`/${SlugPages.ORDERS}`} element={<OrdersPage />} />
 
-                <Route path={`/${SlugPages.PROFILE}`} element={<>Профиль</>} />
+                <Route
+                    path={`/${SlugPages.PROFILE}`}
+                    element={<ProfilePage />}
+                />
 
+                <Route
+                    path={`/${SlugPages.STATISTICS}`}
+                    element={<StatsPage />}
+                />
+
+                <Route
+                    path={`/${SlugPages.MY_REVIEWS}`}
+                    element={<MyreviewsPage />}
+                />
+
+                <Route
+                    path={`/${SlugPages.SUPPORT}/`}
+                    element={<>Тех. поддержка</>}
+                />
                 <Route path={`/${SlugPages.CHAT}/:chatId`} element={<>Чат</>} />
             </Route>
 
