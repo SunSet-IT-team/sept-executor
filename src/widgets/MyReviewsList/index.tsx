@@ -1,24 +1,24 @@
 import {FC} from 'react';
 import {Stack} from '@mui/material';
-import {ReviewItem} from './ReviewCard';
-import {IOrderWithReviewData} from '../../pages/MyReviewsPage/data';
+import {ReviewCard} from '../../entities/review/ReviewCard';
+import {IReview} from '../../entities/review/model/types';
+import { useStyles } from './styles';
 
 interface IProps {
-    orders: IOrderWithReviewData[];
+    reviews: IReview[];
 }
 
 /**
  * Список отзывов пользователя.
- * Экран - мои отзывы
+ * Экран - Личный кабинет: мои отзывы.
  */
-export const MyReviewsList: FC<IProps> = ({orders}) => {
+export const MyReviewsList: FC<IProps> = ({reviews}) => {
+    const styles = useStyles()
 
     return (
-        <Stack spacing={'45px'} mt={'35px'} px={'20px'}>
-            {orders.map(({customer, orderWithReview}) => {
-                return (
-                    <ReviewItem order={orderWithReview} customer={customer} />
-                );
+        <Stack spacing={'45px'} sx={styles.root}>
+            {reviews.map((review, i) => {
+                return <ReviewCard key={`${i}_${review.review.text}`} review={review} />;
             })}
         </Stack>
     );
