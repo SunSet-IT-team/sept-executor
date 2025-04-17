@@ -10,6 +10,7 @@ import {
 import {InsertDriveFile, Close} from '@mui/icons-material';
 import api from '../../api';
 import {UploadFileDTO} from '../../api/dto';
+import {useStyles} from './styles';
 
 type FileUploaderProps = {
     /**
@@ -56,13 +57,13 @@ const FileUploader = ({
 }: FileUploaderProps) => {
     const [uploadProgress, setUploadProgress] = useState(0);
     const [isUploading, setIsUploading] = useState(false);
-    const [uploadComplete, setUploadComplete] = useState(false);
+
+    const styles = useStyles();
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
             setFile(event.target.files[0]);
             onStartUpload();
-            setUploadComplete(false);
             handleUpload(event.target.files[0]);
         }
     };
@@ -90,8 +91,6 @@ const FileUploader = ({
             });
 
             onSuccessUpload(res.data);
-
-            setUploadComplete(true);
         } catch (error) {
             console.error('Ошибка загрузки:', error);
         } finally {
@@ -101,13 +100,12 @@ const FileUploader = ({
 
     const handleRemoveFile = () => {
         setFile(null);
-        setUploadComplete(false);
         setUploadProgress(0);
         onDelete();
     };
 
     return (
-        <Paper elevation={3} sx={{p: 3, maxWidth: 500}}>
+        <Box sx={styles.box}>
             <Stack spacing={3}>
                 <input
                     accept="*/*"
@@ -119,12 +117,8 @@ const FileUploader = ({
                 />
 
                 {file && (
-                    <Box>
-                        <Box
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="space-between"
-                        >
+                    <Box sx={styles.uploader}>
+                        <Box display="flex" alignItems="center">
                             <Box display="flex" alignItems="center">
                                 <InsertDriveFile color="primary" sx={{mr: 1}} />
                                 <Typography variant="body1">
@@ -143,16 +137,10 @@ const FileUploader = ({
                                 sx={{mt: 2}}
                             />
                         )}
-
-                        {uploadComplete && (
-                            <Typography color="success.main" sx={{mt: 1}}>
-                                Файл успешно загружен!
-                            </Typography>
-                        )}
                     </Box>
                 )}
             </Stack>
-        </Paper>
+        </Box>
     );
 };
 
