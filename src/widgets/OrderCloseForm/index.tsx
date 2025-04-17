@@ -1,67 +1,74 @@
 import {zodResolver} from '@hookform/resolvers/zod';
-import {Button} from '@mui/material';
-import {FC, useState} from 'react';
+import {Box, Button, Typography} from '@mui/material';
+import {useState} from 'react';
 import {FormContainer} from 'react-hook-form-mui';
 
 import {toast} from 'react-toastify';
 import {useStyles} from './styles';
 import InputFactory from '../../feature/InputFactory';
-import {UploadFileWithLabel} from '../../shared/ui/UploadFile/UploadFileWithLabel/UploadFileWithLabel';
 import {OrderCloseData, orderCloseSchema} from './schema';
 import {OrderCloseDefaultValues} from './data';
+import DocsList from './DocsList';
+import {orderApi} from '../../entities/order/api';
+import {OrderApiCompleteOrderParams} from '../../entities/order/api/types';
+import {useConfirmOrder} from '../../entities/order/model/query/useConfirmOrder';
+
+type OrderCloseFormProps = {
+    orderId: number | string;
+};
 
 /**
  * Форма закрытия заявки
  */
-export const OrderCloseForm: FC = () => {
-    const [isLoading, setIsLoading] = useState(false);
-
+export const OrderCloseForm = ({orderId}: OrderCloseFormProps) => {
     const styles = useStyles();
 
+    const {mutate, isPending} = useConfirmOrder();
+
     /**
-     * Вход по логину
+     * При подтверждении заказа
      */
     const onSubmit = async (formData: Required<OrderCloseData>) => {
-        try {
-            setIsLoading(true);
-        } catch (error) {
-            const message = error?.response?.data?.message;
+        const params: OrderApiCompleteOrderParams = {
+            total: formData.total,
+            reportFiles: formData.files.filter((el) => el) as File[],
+        };
 
-            toast.error(message || 'Ошибка авторизации');
-        }
-
-        setIsLoading(false);
+        mutate({id: orderId, params});
     };
 
     return (
-        <FormContainer
-            onSuccess={onSubmit}
-            resolver={zodResolver(orderCloseSchema)}
-            defaultValues={OrderCloseDefaultValues}
-            mode="onChange"
-        >
-            <UploadFileWithLabel
-                name="files.registrationDoc"
-                label="Можно загрузить изображение в формате jpg, png."
-                error={''}
-            />
+        <Box sx={styles.container}>
+            <Typography sx={styles.title} variant="h6">
+                Отчёт
+            </Typography>
 
-            <InputFactory
-                label="Сумма контракта:"
-                required
-                name="total"
-                errorText=""
-            />
-
-            <Button
-                variant="contained"
-                color="secondary"
-                sx={styles.btn}
-                type="submit"
-                loading={isLoading}
+            <FormContainer
+                // Removed the invalid 'control' prop
+                onSuccess={onSubmit}
+                resolver={zodResolver(orderCloseSchema)}
+                defaultValues={OrderCloseDefaultValues}
+                mode="onChange"
             >
-                Закрыть заявку
-            </Button>
-        </FormContainer>
+                <DocsList />
+
+                <InputFactory
+                    label="Сумма контракта:"
+                    required
+                    name="total"
+                    type="number"
+                />
+
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    sx={styles.btn}
+                    type="submit"
+                    loading={isPending}
+                >
+                    Закрыть заявку
+                </Button>
+            </FormContainer>
+        </Box>
     );
 };

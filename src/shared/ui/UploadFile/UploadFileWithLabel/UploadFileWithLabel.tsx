@@ -10,6 +10,7 @@ interface IProps extends ComponentProps<typeof UploadFile> {
     label: string;
     uploadFileSx?: SxProps<Theme>;
     error?: string;
+    accept?: string;
 }
 
 /**
@@ -21,6 +22,7 @@ export const UploadFileWithLabel: FC<IProps> = ({
     uploadFileSx,
     name,
     error,
+    accept,
 }) => {
     const {control} = useFormContext();
     const styles = useStyles(sx, uploadFileSx);
@@ -40,6 +42,7 @@ export const UploadFileWithLabel: FC<IProps> = ({
                             <UploadFile
                                 sx={styles.uploadFile}
                                 onEdit={(file) => field.onChange(file)}
+                                accept={accept}
                             />
                             <Typography sx={styles.labelContainer}>
                                 <span style={labelStyles}>{label}</span>

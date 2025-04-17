@@ -6,20 +6,13 @@ type InputFactory = {
     label: string;
     name: string;
     required: boolean;
-    errorText: string;
     type?: string;
 };
 
 /**
  * Фабрика инпутов
  */
-const InputFactory = ({
-    name,
-    label,
-    type,
-    required,
-    errorText,
-}: InputFactory) => {
+const InputFactory = ({name, label, type, required}: InputFactory) => {
     switch (name) {
         case 'password':
             return (

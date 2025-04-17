@@ -30,7 +30,16 @@ export const orderApi: OrderApiMethods = {
     },
 
     completeOrder: (id, param) => {
-        return api.post(`/order/${id}/complete`, param, {
+        const formDataToSend = new FormData();
+        formDataToSend.append('total', String(param.total));
+
+        param.reportFiles
+            .filter((f: File | null) => f)
+            .forEach((file: File) => {
+                formDataToSend.append('reportFiles', file);
+            });
+
+        return api.post(`/order/${id}/complete`, formDataToSend, {
             headers: {'Content-Type': 'multipart/form-data'},
         });
     },

@@ -32,7 +32,10 @@ export type RejectOrderDTO = ServerAns<{
 /**
  * DTO Завершения заказа
  */
-export type CompleteOrderDTO = ServerAns<OrderDTO>;
+export type CompleteOrderDTO = ServerAns<{
+    reportId: number;
+    order: OrderDTO;
+}>;
 
 /**
  * DTO получения одного конкретного заказа

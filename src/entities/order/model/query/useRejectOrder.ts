@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {orderApi} from '../../api';
-import {Order, OrderStatus} from '../types';
+import {OrderStatus} from '../types';
 
 /**
  * отзаываемся от заказа (меняет статус)

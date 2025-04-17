@@ -9,6 +9,7 @@ import OrderButtons from '../../entities/order/ui/OrderButtons';
 import {useState} from 'react';
 import {OrderCloseForm} from '../../widgets/OrderCloseForm';
 import LoadPage from '../LoadPage';
+import {OrderStatus} from '../../entities/order/model/types';
 
 /**
  * Страница одного конкретного заказа
@@ -32,11 +33,15 @@ const OrderPage = () => {
                 <Box>
                     <OrderMainInfo order={order} />
                     <OrderDetails order={order} />
-                    <OrderButtons
-                        order={order}
-                        handleClickClose={() => setOpenForm(true)}
-                    />
-                    {openForm && <OrderCloseForm />}
+                    {!openForm && (
+                        <OrderButtons
+                            order={order}
+                            handleClickClose={() => setOpenForm(true)}
+                        />
+                    )}
+                    {openForm && order.status === OrderStatus.IN_PROGRESS && (
+                        <OrderCloseForm orderId={orderId} />
+                    )}
                 </Box>
             </BackLayout>
         </>

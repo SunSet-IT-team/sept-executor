@@ -32,7 +32,7 @@ export interface OrderApiMethods {
      */
     completeOrder: (
         id: number | string,
-        params: any
+        params: OrderApiCompleteOrderParams
     ) => AxiosPromise<CompleteOrderDTO>;
 
     /**
@@ -45,4 +45,9 @@ export type OrderApiGetOrdersParams = {
     page?: number;
     limit?: number;
     status?: OrderStatus;
+};
+
+export type OrderApiCompleteOrderParams = {
+    reportFiles: File[];
+    total: number;
 };
