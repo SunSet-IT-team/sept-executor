@@ -2,13 +2,14 @@ import {keepPreviousData, useInfiniteQuery} from '@tanstack/react-query';
 import {chatApi} from '../api';
 import {mapMessageDTO} from '../api/mapping';
 import {useInView} from 'react-intersection-observer';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 /**
  * Динамическое получение сообщений
  */
 export const useChatMessages = (chatId: string | number) => {
     const {ref, inView} = useInView();
+    const [canLoad, setCanLoad] = useState(false);
 
     const {
         data,
@@ -57,10 +58,14 @@ export const useChatMessages = (chatId: string | number) => {
     const isLoading = isFirstLoading || isFetchingNextPage;
 
     useEffect(() => {
-        if (inView && hasNextPage && !isLoading) {
+        if (inView && hasNextPage && !isLoading && canLoad) {
+            setCanLoad(false);
             fetchNextPage();
+            setTimeout(() => {
+                setCanLoad(true); // Для того, чтобы они быстро не подгружались
+            }, 1000);
         }
-    }, [inView, isSuccess, hasNextPage, fetchNextPage, isLoading]);
+    }, [inView, isSuccess, hasNextPage, fetchNextPage, isLoading, canLoad]);
 
-    return {data, isLoading, ref};
+    return {data, isLoading, ref, setCanLoad};
 };

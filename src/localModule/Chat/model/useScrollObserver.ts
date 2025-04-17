@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {Message} from './types';
 
 /**
@@ -6,6 +6,9 @@ import {Message} from './types';
  */
 export const useScrollObserver = (data: Message[]) => {
     const messageListRef = useRef<HTMLDivElement>(null); // Реф на контейнер списка
+
+    // Для того, чтобы сначала инициализировать, а потом можно было запрашивать страницы
+    const [isInited, setIsInited] = useState(false);
 
     // Сразу крутим в низ
     useEffect(() => {
@@ -19,11 +22,17 @@ export const useScrollObserver = (data: Message[]) => {
                 behavior: 'smooth',
             });
         }, 50);
+
+        setTimeout(() => {
+            if (!messageListRef || !messageListRef.current) return;
+
+            setIsInited(true);
+        }, 1000);
     }, [messageListRef.current]);
 
     // Скролл вниз при изменении messages
     useEffect(() => {
-        if (!messageListRef || !messageListRef.current) return;
+        if (!messageListRef || !messageListRef.current || !isInited) return;
 
         // Если скролл уже внизу или почти внизу — скроллим
         const {scrollTop, scrollHeight, clientHeight} = messageListRef.current;
@@ -44,5 +53,6 @@ export const useScrollObserver = (data: Message[]) => {
 
     return {
         messageListRef,
+        isInited,
     };
 };
