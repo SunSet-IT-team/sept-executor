@@ -1,4 +1,4 @@
-import {ProfileFeatureItem} from '../../../feature/Profile/ProfileFeatureItem';
+import { ProfileFeatureItem } from '../../feature/ProfileFeatureItem';
 import {Grid, useMediaQuery} from '@mui/material';
 import {menuItems} from './data';
 import {useStyles} from './styles';

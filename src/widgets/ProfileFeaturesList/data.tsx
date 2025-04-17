@@ -2,9 +2,9 @@ import {
     CheckCircleOutline as ReviewsIcon,
     InfoOutline as StatsIcon,
 } from '@mui/icons-material';
-import {StarIcon} from '../../../shared/ui/icons/StarIcon';
-import {DocumentAddIcon} from '../../../shared/ui/icons/DocumentAddIcon';
-import {SlugPages} from '../../../app/routes/pages';
+import { StarIcon } from '../../shared/ui/icons/StarIcon';
+import { DocumentAddIcon } from '../../shared/ui/icons/DocumentAddIcon';
+import { SlugPages } from '../../app/routes/pages';
 
 export const menuItems = [
     {

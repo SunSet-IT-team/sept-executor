@@ -1,9 +1,9 @@
 import {NavLayout} from '../layouts/NavLayout';
 import {Helmet} from 'react-helmet-async';
 import ProfileLayout from '../layouts/ProfileLayout';
-import { ProfileFeaturesList } from '../../widgets/Profile/ProfileFeaturesList';
+import { ProfileFeaturesList } from '../../widgets/ProfileFeaturesList';
 import { Box } from '@mui/material';
-import { TechSupportBtn } from '../../feature/Profile/TechSupportBtn';
+import { TechSupportBtn } from '../../feature/TechSupportBtn';
 import { useStyles } from './styles';
 
 /**
