@@ -2,10 +2,8 @@ import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 import {Stack, Typography} from '@mui/material';
+import {Message} from '../../model/types';
 import {useStyles} from './styles';
-import {useAppSelector} from '../../../app/store/hook';
-import {getCurrentUser} from '../../../entities/user/model/selectors';
-import {Message} from '../../../entities/chats/model/types';
 
 type ChatMessageProps = Message;
 
@@ -21,9 +19,7 @@ export const ChatMessage = ({
 }: ChatMessageProps) => {
     const styles = useStyles();
 
-    const user = useAppSelector(getCurrentUser);
-
-    const isMyMessage = senderId == user?.id;
+    const isMyMessage = senderId == 1;
 
     return (
         <Stack sx={isMyMessage ? styles.myMessage : styles.message}>

@@ -1,12 +1,17 @@
 import {AxiosPromise} from 'axios';
-import {GetAllDto} from './dto';
+import {GetOrderChatDTO, GetAdminChatDTO} from './dto';
 
 /**
  * Интерфейс для API чатов
  */
 export interface ChatsApiMethods {
     /**
-     * Получить все чаты
+     * Получить чат по заказу
      */
-    getAll: () => AxiosPromise<GetAllDto>;
+    getOrderChat: (orderId: number | string) => AxiosPromise<GetOrderChatDTO>;
+
+    /**
+     * Получить чат с поддержкой
+     */
+    getAdminChat: () => AxiosPromise<GetAdminChatDTO>;
 }

@@ -27,7 +27,7 @@ const OrderButtons = ({order, handleClickClose}: OrderButtonsProps) => {
     const navigate = useNavigate();
 
     const handleClickChat = () => {
-        navigate(`/${SlugPages.ORDERS}/${order.id}`);
+        navigate(`/${SlugPages.CHAT}/${order.id}`);
     };
 
     /** Обработчик принятия заказа */

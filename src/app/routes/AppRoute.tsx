@@ -18,6 +18,7 @@ import {useAppSelector, useAppDispatch} from '../store/hook';
 import {fetchMe} from '../../entities/user/model/thunk';
 import LoadPage from '../../pages/LoadPage';
 import OrderPage from '../../pages/OrderPage';
+import ChatPage from '../../pages/ChatPage';
 
 export const AppRouter = () => {
     const user = useAppSelector(getCurrentUser);
@@ -50,13 +51,7 @@ export const AppRouter = () => {
         <Routes>
             {/* Публичные маршруты (без шапки) */}
             <Route
-                element={
-                    !isAuthenticated ? (
-                        <Outlet />
-                    ) : (
-                        <Navigate to={`/${SlugPages.AUTH}`} />
-                    )
-                }
+                element={!isAuthenticated ? <Outlet /> : <Navigate to={`/`} />}
             >
                 <Route path={`/${SlugPages.AUTH}`} element={<AuthPage />} />
 
@@ -98,7 +93,10 @@ export const AppRouter = () => {
 
                 <Route path={`/${SlugPages.PROFILE}`} element={<>Профиль</>} />
 
-                <Route path={`/${SlugPages.CHAT}/:chatId`} element={<>Чат</>} />
+                <Route
+                    path={`/${SlugPages.CHAT}/:orderId`}
+                    element={<ChatPage />}
+                />
             </Route>
 
             {/* Резервный маршрут (404 или редирект) */}

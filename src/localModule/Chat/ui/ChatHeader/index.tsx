@@ -1,12 +1,15 @@
 import {Avatar, Box, Stack, Typography} from '@mui/material';
-import {Chat} from '../../../entities/chats/model/types';
+import {ChatUser} from '../../model/types';
 import {useStyles} from './styles';
 
 type ChatHeaderProps = {
-    interlocutor: Chat['interlocutor'];
+    chatUser: ChatUser;
 };
 
-const ChatHeader = ({interlocutor}: ChatHeaderProps) => {
+/**
+ * Шапка чата
+ */
+const ChatHeader = ({chatUser}: ChatHeaderProps) => {
     const styles = useStyles();
 
     return (
@@ -14,7 +17,7 @@ const ChatHeader = ({interlocutor}: ChatHeaderProps) => {
             <Stack sx={styles.chatHeaderUser}>
                 <Avatar src="" alt="" sx={styles.chatHeaderUserImage} />
                 <Typography sx={styles.chatHeaderUserName}>
-                    {interlocutor.name}
+                    {chatUser.name}
                 </Typography>
             </Stack>
         </Box>

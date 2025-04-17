@@ -1,8 +1,8 @@
 import {Stack, Typography} from '@mui/material';
-import {Message} from '../../../entities/chats/model/types';
-import {ChatMessage} from './ChatMessage';
+import {useScrollObserver} from '../../model/useScrollObserver';
+import {ChatMessage} from '../ChatMessage';
 import {useStyles} from './styles';
-import {useScrollObserver} from '../model/useScrollObserver';
+import {Message} from '../../model/types';
 
 type MessageListProps = {
     messages: Message[];

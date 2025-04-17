@@ -1,6 +1,17 @@
-import {Chat} from '../model/types';
+import {ServerAns} from '../../../shared/types/share';
 
 /**
- * DTO для получения всех чатов
+ * DTO для получения чата по заказу
  */
-export type GetAllDto = Chat[];
+export type GetOrderChatDTO = ServerAns<{
+    message?: string;
+    chat: any;
+}>;
+
+/**
+ * DTO для получения чата с поддержкой
+ */
+export type GetAdminChatDTO = ServerAns<{
+    message?: string;
+    chat: any;
+}>;
