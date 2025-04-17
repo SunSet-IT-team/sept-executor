@@ -1,15 +1,18 @@
 import {NavLayout} from '../layouts/NavLayout';
 import {Helmet} from 'react-helmet-async';
 import ProfileLayout from '../layouts/ProfileLayout';
-import { useStyles } from './styles';
-import { BackLayout } from '../layouts/BackLayout';
-import { StatisticPanel } from '../../widgets/StatisticPanel';
+import {BackLayout} from '../layouts/BackLayout';
+import {StatisticPanel} from '../../widgets/StatisticPanel';
+import {stats_data} from './data';
+import {Box} from '@mui/material';
+import {useStyles} from './styles';
 
 /**
  * Страница статистики
  */
 const StatsPage = () => {
-    const styles = useStyles()
+    const styles = useStyles();
+
     return (
         <>
             <Helmet>
@@ -17,9 +20,11 @@ const StatsPage = () => {
             </Helmet>
             <ProfileLayout>
                 <NavLayout>
-                    <BackLayout title='Статистика'>
-                      <StatisticPanel/>
-                    </BackLayout> 
+                    <BackLayout title="Статистика">
+                        <Box sx={styles.container}>
+                            <StatisticPanel stats={stats_data} />
+                        </Box>
+                    </BackLayout>
                 </NavLayout>
             </ProfileLayout>
         </>

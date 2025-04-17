@@ -1,5 +1,6 @@
 import { Theme } from "@emotion/react";
 import { Stack, SxProps, Typography } from "@mui/material";
+import { useStyles } from "./styles";
 
 interface IncomeCardProps {
     incomeForMonth: string
@@ -7,53 +8,27 @@ interface IncomeCardProps {
     sx?: SxProps<Theme>
 }
 
+/**
+ * Карточка статистики дохода в месяц/за весь период.
+ * Экран - Личный кабинет: статистика
+ */
 export const IncomeCard: React.FC<IncomeCardProps> = ({
     incomeForMonth,
     incomeTotal,
     sx
 }) => {
+    const styles = useStyles(sx)
+
     return (
-        <Stack
-            direction={'row'}
-            spacing={2}
-            sx={{
-                p: '25px 35px',
-                border: '1px solid',
-                borderRadius: '20px',
-                borderColor: 'primary.main',
-                ...sx
-            }}
-        >
-            <Stack
-                direction={'column'}
-                spacing={'6px'}
-                sx={{
-                    flex: '1 1 auto',
-                    textAlign: 'center',
-                }}
-            >
-                <Typography
-                    sx={{
-                        fontSize: '24px',
-                    }}
-                >
+        <Stack direction={'row'} spacing={2} sx={styles.root}>
+            <Stack direction={'column'} spacing={'6px'} sx={styles.rowItem}>
+                <Typography sx={styles.rowItem__value}>
                     {incomeForMonth}
                 </Typography>
                 <Typography>доход за месяц</Typography>
             </Stack>
-            <Stack
-                direction={'column'}
-                spacing={'6px'}
-                sx={{
-                    flex: '1 1 auto',
-                    textAlign: 'center',
-                }}
-            >
-                <Typography
-                    sx={{
-                        fontSize: '24px',
-                    }}
-                >
+            <Stack direction={'column'} spacing={'6px'} sx={styles.rowItem}>
+                <Typography sx={styles.rowItem__value}>
                     {incomeTotal}
                 </Typography>
                 <Typography>доход за весь период</Typography>

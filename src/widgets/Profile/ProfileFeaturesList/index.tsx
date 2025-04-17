@@ -1,8 +1,7 @@
 import {ProfileFeatureItem} from '../../../feature/Profile/ProfileFeatureItem';
-import {Grid} from '@mui/material';
+import {Grid, useMediaQuery} from '@mui/material';
 import {menuItems} from './data';
 import {useStyles} from './styles';
-import { useMediaQuery } from 'usehooks-ts';
 
 /**
  * Список кнопок в меню профиля.
