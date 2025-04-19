@@ -1,5 +1,5 @@
 import {useTheme} from '@mui/material/styles';
-import { StylesDictionary } from '../../../shared/types/share';
+import {StylesDictionary} from '../../shared/types/share';
 
 export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
@@ -18,7 +18,7 @@ export const useStyles = (): StylesDictionary => {
         },
 
         icon: {
-            justifyContent: "center"
-        }
+            justifyContent: 'center',
+        },
     };
 };

@@ -4,7 +4,6 @@ import ProfileLayout from '../layouts/ProfileLayout';
 import {useStyles} from './styles';
 import {BackLayout} from '../layouts/BackLayout';
 import {MyReviewsList} from '../../widgets/MyReviewsList';
-import {reviews_data} from './data';
 import {Box} from '@mui/material';
 
 /**
@@ -23,7 +22,7 @@ const MyreviewsPage = () => {
                 <NavLayout>
                     <BackLayout title="Мои отзывы">
                         <Box sx={styles.container}>
-                            <MyReviewsList reviews={reviews_data} />
+                            <MyReviewsList reviews={[]} />
                         </Box>
                     </BackLayout>
                 </NavLayout>

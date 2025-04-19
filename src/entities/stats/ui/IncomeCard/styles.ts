@@ -1,8 +1,8 @@
 import {SxProps, useTheme} from '@mui/material/styles';
-import { StylesDictionary } from '../../../shared/types/share';
-import { Theme } from '@emotion/react';
+import {Theme} from '@emotion/react';
+import {StylesDictionary} from '../../../../shared/types/share';
 
-export const useStyles = (sx : SxProps<Theme>): StylesDictionary => {
+export const useStyles = (sx: SxProps<Theme>): StylesDictionary => {
     const theme = useTheme();
 
     return {
