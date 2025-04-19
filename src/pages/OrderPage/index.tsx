@@ -25,8 +25,6 @@ const OrderPage = () => {
 
     const {data: order} = useFetchOrder(orderId);
 
-    console.log(order);
-
     if (!order) return <LoadPage />;
 
     return (

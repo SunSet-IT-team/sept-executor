@@ -22,6 +22,9 @@ import ChatPage from '../../pages/ChatPage';
 import ProfilePage from '../../pages/ProfilePage';
 import MyreviewsPage from '../../pages/MyReviewsPage';
 import StatsPage from '../../pages/StatsPage';
+import SupportPage from '../../pages/SupportPage/Support';
+import SupportChatPage from '../../pages/SupportPage/SupportChat';
+import SettingPage from '../../pages/SettingPage';
 
 export const AppRouter = () => {
     const user = useAppSelector(getCurrentUser);
@@ -101,7 +104,12 @@ export const AppRouter = () => {
 
                 <Route
                     path={`/${SlugPages.SUPPORT}`}
-                    element={<ProfilePage />}
+                    element={<SupportPage />}
+                />
+
+                <Route
+                    path={`/${SlugPages.SUPPORT}/:chatId`}
+                    element={<SupportChatPage />}
                 />
 
                 <Route
@@ -111,7 +119,7 @@ export const AppRouter = () => {
 
                 <Route
                     path={`/${SlugPages.SETTINGS}`}
-                    element={<>Настройки</>}
+                    element={<SettingPage />}
                 />
 
                 <Route

@@ -14,4 +14,9 @@ export interface ChatsApiMethods {
      * Получить чат с поддержкой
      */
     getAdminChat: () => AxiosPromise<GetAdminChatDTO>;
+
+    /**
+     * Создать чат с поддержкой
+     */
+    createAdminChat: (params: string) => AxiosPromise<GetAdminChatDTO>;
 }
