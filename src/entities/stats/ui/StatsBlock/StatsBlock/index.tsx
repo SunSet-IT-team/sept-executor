@@ -5,9 +5,9 @@ import {useStyles} from './styles';
 
 interface IProps {
     title: string;
-    callsAmoute: string;
-    closedAmoute: string;
-    rejectedAmoute: string;
+    callsAmoute: string | number;
+    closedAmoute: string | number;
+    rejectedAmoute: string | number;
     sx?: SxProps<Theme>;
 }
 

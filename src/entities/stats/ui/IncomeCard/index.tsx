@@ -1,11 +1,11 @@
-import { Theme } from "@emotion/react";
-import { Stack, SxProps, Typography } from "@mui/material";
-import { useStyles } from "./styles";
+import {Theme} from '@emotion/react';
+import {Stack, SxProps, Typography} from '@mui/material';
+import {useStyles} from './styles';
 
 interface IncomeCardProps {
-    incomeForMonth: string
-    incomeTotal: string
-    sx?: SxProps<Theme>
+    incomeForMonth: string | number;
+    incomeTotal: string | number;
+    sx?: SxProps<Theme>;
 }
 
 /**
@@ -15,9 +15,9 @@ interface IncomeCardProps {
 export const IncomeCard: React.FC<IncomeCardProps> = ({
     incomeForMonth,
     incomeTotal,
-    sx
+    sx,
 }) => {
-    const styles = useStyles(sx)
+    const styles = useStyles(sx);
 
     return (
         <Stack direction={'row'} spacing={2} sx={styles.root}>

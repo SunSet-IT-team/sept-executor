@@ -25,6 +25,7 @@ import StatsPage from '../../pages/StatsPage';
 import SupportPage from '../../pages/SupportPage/Support';
 import SupportChatPage from '../../pages/SupportPage/SupportChat';
 import SettingPage from '../../pages/SettingPage';
+import DocsPage from '../../pages/DocsPage';
 
 export const AppRouter = () => {
     const user = useAppSelector(getCurrentUser);
@@ -114,7 +115,7 @@ export const AppRouter = () => {
 
                 <Route
                     path={`/${SlugPages.MY_DOCUMENTS}`}
-                    element={<>Документы</>}
+                    element={<DocsPage />}
                 />
 
                 <Route

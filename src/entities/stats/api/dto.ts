@@ -1,4 +1,10 @@
-export type Stats = {
+import {ServerAns} from '../../../shared/types/share';
+
+/**
+ * DTO для получения статистики
+ */
+export type GetStatsDTO = ServerAns<{
+    rating: number;
     income: {
         month: number;
         total: number;
@@ -13,4 +19,4 @@ export type Stats = {
         closed: number;
         rejected: number;
     };
-};
+}>;

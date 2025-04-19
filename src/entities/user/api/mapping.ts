@@ -19,14 +19,14 @@ export const mapExecutorDTO = (dto: ExecutorDTO): Executor => {
         phone: dto.profile?.phone || 'Отсутствует',
         name: dto.profile.companyName,
         priority: dto.profile.priority,
-        profileImage: dto.profile.profilePhoto
-            ? getImagePath(dto.profile.profilePhoto.url)
+        profileImage: dto.profile.profilePhotos
+            ? getImagePath(dto.profile.profilePhotos[0].url)
             : '',
-        licenseDoc: dto.profile.licenseDoc
-            ? getImagePath(dto.profile.licenseDoc.url)
+        licenseDoc: dto.profile.licenseDocs
+            ? getImagePath(dto.profile.licenseDocs[0].url)
             : '',
-        registrationDoc: dto.profile.licenseDoc
-            ? getImagePath(dto.profile.registrationDoc.url)
+        registrationDoc: dto.profile.registrationDocs
+            ? getImagePath(dto.profile.registrationDocs[0].url)
             : '',
 
         about: dto.profile.about,
@@ -36,7 +36,7 @@ export const mapExecutorDTO = (dto: ExecutorDTO): Executor => {
         orderQty: dto.profile.completedOrders,
         rating: {
             value: dto.profile.rating,
-            count: dto.reviewsCount,
+            count: dto.reviewCount,
         },
     };
 };

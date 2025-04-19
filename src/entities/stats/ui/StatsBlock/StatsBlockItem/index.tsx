@@ -3,7 +3,7 @@ import {useStyles} from './styles';
 
 interface IProps {
     title: string;
-    value: string;
+    value: string | number;
 }
 
 export const StatsBlockItem = ({title, value}: IProps) => {

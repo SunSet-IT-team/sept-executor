@@ -1,12 +1,12 @@
 import {FC} from 'react';
-import {IncomeCard} from '../../entities/stats/IncomeCard';
 import {Box} from '@mui/material';
-import {StatsBlock} from '../../entities/stats/StatsBlock/StatsBlock';
-import {IStats} from '../../entities/stats/model/types';
+import {Stats} from '../../entities/stats/model/types';
 import {useStyles} from './styles';
+import {StatsBlock} from '../../entities/stats/ui/StatsBlock/StatsBlock';
+import {IncomeCard} from '../../entities/stats/ui/IncomeCard';
 
 interface IProps {
-    stats: IStats;
+    stats: Stats;
 }
 
 /**
@@ -19,21 +19,21 @@ export const StatisticPanel: FC<IProps> = ({stats}) => {
     return (
         <Box>
             <IncomeCard
-                incomeForMonth={stats.incomeForMonth}
-                incomeTotal={stats.incomeTotal}
+                incomeForMonth={stats.income.month}
+                incomeTotal={stats.income.total}
             />
             <StatsBlock
                 title={'Данные за последний месяц'}
-                callsAmoute={stats.stats_for_month.callsAmoute}
-                closedAmoute={stats.stats_for_month.closedAmoute}
-                rejectedAmoute={stats.stats_for_month.rejectedAmoute}
+                callsAmoute={stats.statsMonth.calls}
+                closedAmoute={stats.statsMonth.closed}
+                rejectedAmoute={stats.statsMonth.rejected}
                 sx={styles.firstStatsBlock}
             />
             <StatsBlock
                 title={'Общая статистика за все время'}
-                callsAmoute={stats.stats_total.callsAmoute}
-                closedAmoute={stats.stats_total.closedAmoute}
-                rejectedAmoute={stats.stats_total.rejectedAmoute}
+                callsAmoute={stats.statsTotal.calls}
+                closedAmoute={stats.statsTotal.closed}
+                rejectedAmoute={stats.statsTotal.rejected}
                 sx={styles.secondStatsBlock}
             />
         </Box>
