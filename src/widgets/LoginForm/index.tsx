@@ -13,6 +13,7 @@ import {userApi} from '../../entities/user/api';
 import {mapAuthDTO} from '../../entities/user/api/mapping';
 import {auth} from '../../entities/user/model/auth';
 import {setUser} from '../../entities/user/model/slice';
+import {SlugPages} from '../../app/routes/pages';
 
 /**
  * Форма авторизации
@@ -58,7 +59,7 @@ export const LoginForm: FC = () => {
         >
             <LoginFormContent />
             <Link
-                to="/forgot-password"
+                to={`/${SlugPages.RESET}`}
                 variant="body1"
                 color="secondary"
                 component={ReactRouterDomLink}

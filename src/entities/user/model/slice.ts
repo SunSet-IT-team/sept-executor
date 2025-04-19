@@ -15,6 +15,10 @@ interface UserSlice {
         workFormat?: ExecutorWorkFormat;
         email?: string;
     };
+    resetData: {
+        password?: string;
+        email?: string;
+    };
 }
 
 const initialState: UserSlice = {
@@ -24,6 +28,8 @@ const initialState: UserSlice = {
     isLoading: true,
 
     registerData: {},
+
+    resetData: {},
 };
 
 const userSlice = createSlice({
@@ -58,7 +64,21 @@ const userSlice = createSlice({
         setRegisterEmail(state, action: PayloadAction<string>) {
             state.registerData.email = action.payload;
         },
+
+        /**
+         * Установить данные для сброса пароля
+         */
+        setResetData(
+            state,
+            action: PayloadAction<{
+                password?: string;
+                email?: string;
+            }>
+        ) {
+            state.resetData = action.payload;
+        },
     },
+
     extraReducers: (builder) => {
         /**
          * fetchMe
@@ -86,7 +106,12 @@ const userSlice = createSlice({
     },
 });
 
-export const {setUser, clearUser, setWorkFormat, setRegisterEmail} =
-    userSlice.actions;
+export const {
+    setUser,
+    clearUser,
+    setWorkFormat,
+    setRegisterEmail,
+    setResetData,
+} = userSlice.actions;
 
 export const userReducer = userSlice.reducer;

@@ -29,6 +29,11 @@ export enum SlugPages {
     CONFIRM = 'confirm',
 
     /**
+     * Страница сброса паролья
+     */
+    RESET = 'reset',
+
+    /**
      * Чат
      */
     CHAT = 'chat',

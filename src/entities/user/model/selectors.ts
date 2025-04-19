@@ -20,3 +20,8 @@ export const getIsUserLoading = (state: RootState) => state.user.isLoading;
  */
 export const getUserRegisterData = (state: RootState) =>
     state.user.registerData;
+
+/**
+ * Получить дату для сброса пароля
+ */
+export const getUserResetData = (state: RootState) => state.user.resetData;

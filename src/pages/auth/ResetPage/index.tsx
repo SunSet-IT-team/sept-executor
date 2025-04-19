@@ -1,21 +1,20 @@
 import {Box} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {PageTitle} from '../../../feature/PageTitle';
 import {useStyles} from './styles';
-import {LoginForm} from '../../../widgets/LoginForm';
 import {BackLayout} from '../../layouts/BackLayout';
+import {ResetForm} from '../../../widgets/ResetForm';
 
 /**
- * Страница логина
+ * Страница сброса пароля
  */
-export const LoginPage: FC = () => {
+export const ResetPage: FC = () => {
     const styles = useStyles();
 
     return (
         <>
             <Helmet>
-                <title>Вход</title>
+                <title>Сброс пароля</title>
             </Helmet>
             <BackLayout title="Вход">
                 <Box sx={styles.logoContainer}>
@@ -26,7 +25,7 @@ export const LoginPage: FC = () => {
                         src="/logo.png"
                     />
                 </Box>
-                <LoginForm />
+                <ResetForm />
             </BackLayout>
         </>
     );

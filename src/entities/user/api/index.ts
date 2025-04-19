@@ -9,8 +9,6 @@ export const userApi: UserApiMethods = {
 
     getMe: () => api.get(`/executor/me`),
 
-    recovery: (param) => api.post(`/admin/recovery`, param),
-
     register: (param) =>
         api.post(`/auth/register/executor`, param, {
             headers: {'Content-Type': 'multipart/form-data'},
@@ -19,4 +17,8 @@ export const userApi: UserApiMethods = {
     verifyEmail: (param) => api.post(`/auth/verify`, param),
 
     resendCode: (param) => api.post(`/auth/verify/resend`, param),
+
+    sendResetPasswordCode: (param) => api.post(`/auth/password/forgot`, param),
+
+    resetPassword: (param) => api.post(`/auth/password/reset`, param),
 };

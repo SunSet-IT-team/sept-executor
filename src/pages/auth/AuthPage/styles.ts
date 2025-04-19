@@ -16,5 +16,15 @@ export const useStyles = (): StylesDictionary => {
         },
         firstBtn: {py: '17px', mt: '40px', mb: '20px'},
         secondBtn: {py: '17px'},
+        logoContainer: {
+            width: '100%',
+            aspectRatio: '3/1', // Замените на реальное соотношение вашего лого
+            position: 'relative',
+        },
+        logo: {
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+        },
     };
 };

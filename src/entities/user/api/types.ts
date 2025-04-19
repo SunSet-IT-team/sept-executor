@@ -39,11 +39,18 @@ export interface UserApiMethods {
     resendCode: (param: UserApiResendCodeParams) => AxiosPromise<ResendCodeDTO>;
 
     /**
+     * Отправить код для сброса пароля
+     */
+    sendResetPasswordCode: (
+        param: UserApiSendResetCodeParams
+    ) => AxiosPromise<ServerAns<{message: string}>>;
+
+    /**
      * Сбросить пароль
      */
-    recovery: (
-        param: UserApiRecoveryParams
-    ) => AxiosPromise<ServerAns<{token: string}>>;
+    resetPassword: (
+        param: UserApiResetPasswordParams
+    ) => AxiosPromise<ServerAns<{message: string}>>;
 }
 
 /**
@@ -90,10 +97,17 @@ export type UserApiResendCodeParams = {
 };
 
 /**
+ * Параметры для отправки кода на сброс
+ */
+export type UserApiSendResetCodeParams = {
+    email: string;
+};
+
+/**
  * Параметры для сброса пароля
  */
-export type UserApiRecoveryParams = {
+export type UserApiResetPasswordParams = {
     code: string;
     newPassword: string;
-    confirmPassword: string;
+    email: string;
 };

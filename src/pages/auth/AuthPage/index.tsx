@@ -15,12 +15,14 @@ export const AuthPage: FC = () => {
                 <title>Авторизация</title>
             </Helmet>
             <BackLayout>
-                <Box
-                    component="img"
-                    sx={styles.logo}
-                    alt="Your logo"
-                    src="/logo.png"
-                />
+                <Box sx={styles.logoContainer}>
+                    <Box
+                        component="img"
+                        sx={styles.logo}
+                        alt="Your logo"
+                        src="/logo.png"
+                    />
+                </Box>
                 <Button
                     variant="contained"
                     sx={styles.firstBtn}
