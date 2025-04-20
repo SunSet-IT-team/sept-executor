@@ -2,9 +2,13 @@ import {NavLayout} from '../layouts/NavLayout';
 import {Helmet} from 'react-helmet-async';
 import ProfileLayout from '../layouts/ProfileLayout';
 import {useStyles} from './styles';
-import {BackLayout} from '../layouts/BackLayout';
-import {MyReviewsList} from '../../widgets/MyReviewsList';
+import {BackLayoutProfile} from '../layouts/BackLayoutProfile';
 import {Box} from '@mui/material';
+import {useAppSelector} from '../../app/store/hook';
+import {getCurrentUser} from '../../entities/user/model/selectors';
+import {useFetchReviews} from '../../entities/order/model/query/useFetchReviews';
+import InfinityList from '../../feature/InfinityList';
+import {ReviewCard} from '../../entities/order/ui/review/ReviewCard';
 
 /**
  * Страница отзывов.
@@ -12,6 +16,8 @@ import {Box} from '@mui/material';
  */
 const MyreviewsPage = () => {
     const styles = useStyles();
+    const user = useAppSelector(getCurrentUser);
+    const {reviews, isLoading, ref} = useFetchReviews(Number(user.id));
 
     return (
         <>
@@ -20,11 +26,23 @@ const MyreviewsPage = () => {
             </Helmet>
             <ProfileLayout>
                 <NavLayout>
-                    <BackLayout title="Мои отзывы">
+                    <BackLayoutProfile title="Мои отзывы">
                         <Box sx={styles.container}>
-                            <MyReviewsList reviews={[]} />
+                            <InfinityList
+                                observedRef={ref}
+                                isLoading={isLoading}
+                                titleNoLength="Заказы не найдены"
+                            >
+                                {reviews &&
+                                    reviews.map((review) => (
+                                        <ReviewCard
+                                            key={review.id}
+                                            review={review}
+                                        />
+                                    ))}
+                            </InfinityList>
                         </Box>
-                    </BackLayout>
+                    </BackLayoutProfile>
                 </NavLayout>
             </ProfileLayout>
         </>

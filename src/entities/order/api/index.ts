@@ -43,4 +43,12 @@ export const orderApi: OrderApiMethods = {
             headers: {'Content-Type': 'multipart/form-data'},
         });
     },
+
+    getReviews: (param) => {
+        const page = param.page || 1;
+        const limit = param.limit || 10;
+        let url = `/review/?page=${page}&limit=${limit}&targetId=${param.targetId}`;
+
+        return api.get(url);
+    },
 };

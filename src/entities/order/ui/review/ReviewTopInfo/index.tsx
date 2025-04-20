@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {Box, Stack, Typography} from '@mui/material';
+import {Avatar, Box, Stack, Typography} from '@mui/material';
 import {imageStyle, useStyles} from './styles';
 
 interface IProps {
@@ -25,11 +25,7 @@ export const ReviewTopInfo: FC<IProps> = ({
         <Stack direction="row" spacing={2} alignItems="flex-start">
             {/* Левая часть — аватар */}
             <Box sx={styles.imageContainerStyle}>
-                <img
-                    src={avatarUrl}
-                    alt={`Customer avatar`}
-                    style={imageStyle}
-                />
+                <Avatar sx={imageStyle} src={avatarUrl} alt={customerName} />
             </Box>
 
             {/* Правая часть — текст */}
@@ -41,12 +37,14 @@ export const ReviewTopInfo: FC<IProps> = ({
                     </Box>
                     {` ${orderDate}`}
                 </Typography>
-                <Typography>
-                    <Box component="span" sx={styles.label}>
-                        Адрес:
-                    </Box>
-                    {` ${orderAddress}`}
-                </Typography>
+                {orderAddress && (
+                    <Typography>
+                        <Box component="span" sx={styles.label}>
+                            Адрес:
+                        </Box>
+                        {` ${orderAddress}`}
+                    </Typography>
+                )}
             </Box>
         </Stack>
     );

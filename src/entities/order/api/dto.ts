@@ -43,6 +43,17 @@ export type CompleteOrderDTO = ServerAns<{
 export type GetOrder = ServerAns<OrderDTO>;
 
 /**
+ * DTO получения заказов
+ */
+export type GetReviews = ServerAns<{
+    items: ReviewDTO[];
+    total: number;
+    page: number;
+    pages: number;
+    limit: number;
+}>;
+
+/**
  * DTO Заказа
  */
 export type OrderDTO = {
@@ -93,6 +104,8 @@ export type ReviewDTO = {
     id: number;
     rating: number;
     text: string;
+    target: ExecutorDTO;
+    createdAt: string;
 };
 
 export type ReportDTO = {

@@ -6,7 +6,8 @@ export const useStyles = (): StylesDictionary => {
 
     return {
         container: {
-            pb: "160px"
+            minHeight: '20px',
+            flexGrow: 1,
         },
     };
 };

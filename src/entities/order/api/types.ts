@@ -4,6 +4,7 @@ import {
     CompleteOrderDTO,
     GetOrder,
     GetOrdersDTO,
+    GetReviews,
     RejectOrderDTO,
 } from './dto';
 import {OrderStatus} from '../model/types';
@@ -39,12 +40,23 @@ export interface OrderApiMethods {
      * Получить заказ по id
      */
     getOrderById: (id: number | string) => AxiosPromise<GetOrder>;
+
+    /**
+     * Получить отзывы
+     */
+    getReviews: (params: OrderApiGetReviewsParams) => AxiosPromise<GetReviews>;
 }
 
 export type OrderApiGetOrdersParams = {
     page?: number;
     limit?: number;
     status?: OrderStatus;
+};
+
+export type OrderApiGetReviewsParams = {
+    page?: number;
+    limit?: number;
+    targetId: number;
 };
 
 export type OrderApiCompleteOrderParams = {

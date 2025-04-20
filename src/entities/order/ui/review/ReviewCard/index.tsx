@@ -15,15 +15,19 @@ interface IProps {
 export const ReviewCard: FC<IProps> = ({review}) => {
     return (
         <Box>
-            {/* <ReviewTopInfo
-                avatarUrl={review.order.customer.avatarUrl}
-                customerName={review.order.customer.name}
-                orderDate={review.order.date}
-                orderAddress={review.order.address}
-            /> */}
+            {review.author && (
+                <ReviewTopInfo
+                    avatarUrl={review.author.profileImage}
+                    customerName={review.author.name}
+                    orderDate={review.date}
+                    orderAddress={''}
+                />
+            )}
+
             <ReviewContent
                 ratingScore={review.rating}
                 reviewText={review.text}
+                name={review.author.name}
             />
         </Box>
     );
