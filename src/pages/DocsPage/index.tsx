@@ -1,12 +1,12 @@
 import {Box, Stack, Typography} from '@mui/material';
 import {Helmet} from 'react-helmet-async';
-import {data} from 'react-router-dom';
 import {BackLayoutProfile} from '../layouts/BackLayoutProfile';
 import {NavLayout} from '../layouts/NavLayout';
 import ProfileLayout from '../layouts/ProfileLayout';
 import {useAppSelector} from '../../app/store/hook';
 import {getCurrentUser} from '../../entities/user/model/selectors';
 import FileDisplay from '../../shared/ui/FileDisplay';
+import {useStyles} from './styles';
 
 /**
  * Страница с документами
@@ -14,7 +14,7 @@ import FileDisplay from '../../shared/ui/FileDisplay';
 const DocsPage = () => {
     const user = useAppSelector(getCurrentUser);
 
-    console.log(user);
+    const styles = useStyles();
 
     return (
         <>
@@ -25,8 +25,8 @@ const DocsPage = () => {
                 <NavLayout>
                     <BackLayoutProfile title="Мои документы">
                         <Stack>
-                            <Box>
-                                <Typography>
+                            <Box sx={styles.docBlock}>
+                                <Typography sx={styles.title}>
                                     Свидетельство о регистрации юридического
                                     лица
                                 </Typography>
@@ -38,8 +38,8 @@ const DocsPage = () => {
                                     <Typography>Отсутствует</Typography>
                                 )}
                             </Box>
-                            <Box>
-                                <Typography>
+                            <Box sx={styles.docBlock}>
+                                <Typography sx={styles.title}>
                                     Разрешение на осуществление деятельности
                                 </Typography>
                                 {user.licenseDoc ? (

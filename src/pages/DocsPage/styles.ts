@@ -5,8 +5,16 @@ export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
 
     return {
-        container: {
-            pb: '140px',
+        docBlock: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            mb: 3,
+        },
+        title: {
+            fontWeight: 500,
+            mb: 2,
+            fontSize: '14px',
         },
     };
 };
