@@ -2,6 +2,7 @@ import {AxiosPromise} from 'axios';
 import {ServerAns} from '../../../shared/types/share';
 import {
     AuthDTO,
+    ChangeMeDTO,
     GetMeDTO,
     RegisterDTO,
     ResendCodeDTO,
@@ -27,6 +28,11 @@ export interface UserApiMethods {
      * Получить информацию о себе
      */
     register: (param: UserApiRegisterParams) => AxiosPromise<RegisterDTO>;
+
+    /**
+     * Получить информацию о себе
+     */
+    changeMe: (param: UserApiChangeMeParams) => AxiosPromise<ChangeMeDTO>;
 
     /**
      * Подтверждение почты
@@ -80,6 +86,20 @@ export type UserApiRegisterParams = {
     registrationDoc?: File;
     licenseDoc?: File;
     otherFiles?: File[];
+};
+
+/**
+ * Параметры для изменения профиля
+ */
+export type UserApiChangeMeParams = {
+    email?: string;
+    phone?: string;
+    city?: string;
+    workFormat?: ExecutorWorkFormat;
+    experience?: string;
+    about?: string;
+    companyName?: string;
+    profilePhoto?: File;
 };
 
 /**

@@ -14,6 +14,11 @@ export const userApi: UserApiMethods = {
             headers: {'Content-Type': 'multipart/form-data'},
         }),
 
+    changeMe: (param) =>
+        api.patch(`/executor/me`, param, {
+            headers: {'Content-Type': 'multipart/form-data'},
+        }),
+
     verifyEmail: (param) => api.post(`/auth/verify`, param),
 
     resendCode: (param) => api.post(`/auth/verify/resend`, param),

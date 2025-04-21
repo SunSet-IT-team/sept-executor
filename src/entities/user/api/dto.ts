@@ -10,6 +10,11 @@ export type RegisterDTO = ServerAns<{
 }>;
 
 /**
+ * DTO для получения обновления данных
+ */
+export type ChangeMeDTO = ServerAns<ExecutorDTO>;
+
+/**
  * DTO получения токена
  */
 export type AuthDTO = ServerAns<{

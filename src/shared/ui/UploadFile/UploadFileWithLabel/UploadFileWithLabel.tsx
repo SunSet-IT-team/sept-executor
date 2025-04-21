@@ -42,6 +42,7 @@ export const UploadFileWithLabel: FC<IProps> = ({
                             <UploadFile
                                 sx={styles.uploadFile}
                                 onEdit={(file) => field.onChange(file)}
+                                value={field.value}
                                 accept={accept}
                             />
                             <Typography sx={styles.labelContainer}>

@@ -79,9 +79,6 @@ export const ConfirmationForm: FC = () => {
                 code,
             });
 
-            console.log('resetPassword');
-            console.log(data);
-
             if (!data.success) {
                 const m = data.error || 'Ошибка сервера';
                 toast.error(m);

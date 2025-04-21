@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Box} from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
@@ -8,16 +8,27 @@ interface IProps {
     onEdit?: (file: File) => void;
     sx?: object;
     accept?: string; // Пример: "image/*,application/pdf"
+    value?: null | File;
 }
 
 export const UploadFile: React.FC<IProps> = ({
     onEdit,
     sx,
     accept = 'image/*,.heic',
+    value = null,
 }) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [preview, setPreview] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (value instanceof File) {
+            setSelectedFile(value);
+            const reader = new FileReader();
+            reader.onloadend = () => setPreview(reader.result as string);
+            reader.readAsDataURL(value);
+        }
+    }, [value]);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];

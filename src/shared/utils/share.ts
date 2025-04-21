@@ -10,3 +10,21 @@ export const getImagePath = (path?: string) => {
 
     return host + normalPath;
 };
+
+/**
+ * Получить файл по url
+ */
+export async function urlToFile(url: string): Promise<File> {
+    const res = await fetch(url);
+    const blob = await res.blob();
+
+    // Пытаемся получить имя файла из URL
+    const urlParts = url.split('/');
+    const fileName = urlParts[urlParts.length - 1] || 'file';
+
+    // Определяем MIME-тип из заголовка ответа
+    const contentType =
+        res.headers.get('Content-Type') || 'application/octet-stream';
+
+    return new File([blob], fileName, {type: contentType});
+}
