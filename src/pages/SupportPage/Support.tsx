@@ -68,6 +68,7 @@ const SupportPage = () => {
     const supportChatUser: ChatUser = {
         id: 0,
         name: 'Поддержка',
+        imagePath: '/support.png',
     };
 
     return (
@@ -113,6 +114,8 @@ const SupportPage = () => {
                                         whiteSpace: 'nowrap',
                                         border: 'solid 1px black',
                                         p: 2,
+                                        color: 'black',
+                                        background: '#3975CF33',
                                     }}
                                 >
                                     {question}
@@ -131,6 +134,8 @@ const SupportPage = () => {
                                     mt: 2,
                                     textTransform: 'none',
                                     border: 'solid 1px black',
+                                    color: 'black',
+                                    background: '#3975CF33',
                                     p: 2,
                                 }}
                             >
