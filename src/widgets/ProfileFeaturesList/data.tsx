@@ -1,14 +1,12 @@
-import {
-    CheckCircleOutline as ReviewsIcon,
-    InfoOutline as StatsIcon,
-} from '@mui/icons-material';
-import { StarIcon } from '../../shared/ui/icons/StarIcon';
-import { DocumentAddIcon } from '../../shared/ui/icons/DocumentAddIcon';
-import { SlugPages } from '../../app/routes/pages';
+import {InfoOutline as StatsIcon} from '@mui/icons-material';
+import {StarIcon} from '../../shared/ui/icons/StarIcon';
+import {DocumentAddIcon} from '../../shared/ui/icons/DocumentAddIcon';
+import {SlugPages} from '../../app/routes/pages';
+import {ProfileDone} from '../../shared/ui/icons/ProfileDone';
 
 export const menuItems = [
     {
-        icon: <ReviewsIcon />,
+        icon: <ProfileDone />,
         label: 'Мои отзывы',
         to: `/${SlugPages.MY_REVIEWS}`,
     },

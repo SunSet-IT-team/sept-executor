@@ -12,6 +12,7 @@ export const useStyles = (): StylesDictionary => {
             py: '12px',
             width: '140px',
             fontSize: '14px',
+            lineHeight: '21px',
         },
         btnWhite: {
             background: theme.palette.background.paper,
@@ -21,6 +22,7 @@ export const useStyles = (): StylesDictionary => {
             width: '140px',
             fontSize: '14px',
             fontWeight: '400',
+            lineHeight: '21px',
         },
     };
 };

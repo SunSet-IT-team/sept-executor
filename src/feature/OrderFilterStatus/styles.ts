@@ -21,7 +21,7 @@ export const useStyles = (): StylesDictionary => {
                 height: '4px',
             },
             '&::-webkit-scrollbar-thumb': {
-                backgroundColor: 'primary.main',
+                backgroundColor: 'secondary.main',
             },
         },
 
@@ -31,15 +31,18 @@ export const useStyles = (): StylesDictionary => {
             textTransform: 'none',
             fontWeight: '500',
             fontSize: '16px',
-            border: '1px solid #ddd',
+            border: 'none',
             whiteSpace: 'nowrap',
+            color: theme.palette.text.black,
         },
         selectedButton: {
             minWidth: '120px',
             marginRight: theme.spacing(1),
             textTransform: 'none',
             fontWeight: 'bold',
-            border: `2px solid ${theme.palette.primary.main}`,
+            color: theme.palette.secondary.main,
+            textDecoration: 'underline',
+            border: `none`,
             whiteSpace: 'nowrap',
         },
     };

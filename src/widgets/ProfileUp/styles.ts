@@ -12,7 +12,7 @@ export const useStyles = (): StylesDictionary => {
             top: 0,
             right: 0,
             borderBottomLeftRadius: '10px',
-            WebkitBorderBottomLeftRadius: '10px',
+            borderBottomRightRadius: '10px',
             py: 4,
             width: '100%',
         },
@@ -36,7 +36,7 @@ export const useStyles = (): StylesDictionary => {
             borderRadius: '10px',
             width: 108,
             height: 108,
-            backgroundColor: '#D9D9D9',
+            backgroundColor: theme.palette.background.blue,
         },
     };
 };

@@ -16,7 +16,7 @@ export const useStyles = (): StylesDictionary => {
         btn: {
             background: theme.palette.primary.main,
             color: theme.palette.text.white,
-            borderRadius: '20px',
+            borderRadius: '10px',
             py: '12px',
             width: '100%',
             fontSize: '14px',

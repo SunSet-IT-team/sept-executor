@@ -25,8 +25,8 @@ export const FormTypeCards = () => {
             {types.map((type) => (
                 <Button
                     key={type}
+                    color="primary"
                     variant="contained"
-                    sx={{backgroundColor: '#ddd', color: '#000', py: 2}}
                     onClick={() => handleSelect(type)}
                 >
                     {mapExecutorTypeToLabel(type)}

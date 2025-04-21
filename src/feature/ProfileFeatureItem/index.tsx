@@ -20,7 +20,7 @@ export const ProfileFeatureItem = ({icon, label, to}: SidebarItemProps) => {
     return (
         <ListItem component={Link} to={to} sx={styles.container}>
             <ListItemIcon sx={styles.icon}>{icon}</ListItemIcon>
-            <ListItemText primary={label} />
+            <ListItemText primary={label} sx={styles.text} />
         </ListItem>
     );
 };

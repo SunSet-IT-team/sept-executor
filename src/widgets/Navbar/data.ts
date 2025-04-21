@@ -13,7 +13,7 @@ export const menuItems = [
         title: 'Главная',
         icon: {
             url: '/icons/recycled_water.svg',
-            activeUrl: '/logo.png',
+            activeUrl: '/logo_icon.png',
             size: 28,
         },
     },

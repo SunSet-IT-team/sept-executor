@@ -18,11 +18,19 @@ export const useStyles = (sx: SxProps<Theme>): StylesDictionary => {
         rowItem: {
             flex: '1 1 auto',
             textAlign: 'center',
+            fontWeight: 500,
+        },
+
+        text: {
+            fontWeight: 500,
+            lineHeight: '21px',
+            fontSize: '16px',
         },
 
         rowItem__value: {
             fontSize: '24px',
-            color: 'primary.main',
+            color: 'secondary.main',
+            lineHeight: '21px',
             fontWeight: 'inherit',
         },
     };

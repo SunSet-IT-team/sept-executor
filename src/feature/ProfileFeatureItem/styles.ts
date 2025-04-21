@@ -19,6 +19,22 @@ export const useStyles = (): StylesDictionary => {
 
         icon: {
             justifyContent: 'center',
+            '& svg': {
+                width: '32px',
+                height: '32px',
+                fill: theme.palette.primary.main,
+            },
+        },
+
+        text: {
+            fontWeight: 500,
+            m: 0,
+            mt: 0.5,
+            lineHeight: '21px',
+            '& span': {
+                fontWeight: 500,
+                lineHeight: '21px',
+            },
         },
     };
 };

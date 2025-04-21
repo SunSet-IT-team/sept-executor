@@ -27,7 +27,7 @@ export const appTheme = createTheme({
             gray: '#4D4D4D',
         },
         secondary: {
-            main: '#D9D9D9', // Фиолетовый
+            main: '#3FBC14', // Фиолетовый
         },
         error: {
             main: '#d32f2f', // Красный
@@ -73,7 +73,18 @@ export const appTheme = createTheme({
                     textTransform: 'none',
                 },
             },
+            styleOverrides: {
+                // Стили для primary кнопки в состоянии загрузки
+                containedPrimary: {
+                    '&.Mui-disabled': {
+                        background: '#3975CF33',
+                        opacity: 0.7,
+                        color: 'transparent',
+                    },
+                },
+            },
         },
+
         MuiBottomNavigation: {
             styleOverrides: {
                 root: {
@@ -97,6 +108,17 @@ export const appTheme = createTheme({
                     '&.Mui-selected .MuiBottomNavigationAction-label': {
                         fontSize: '13px',
                         color: 'white',
+                    },
+                },
+            },
+        },
+
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#3975CF33',
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#3975CF33',
                     },
                 },
             },

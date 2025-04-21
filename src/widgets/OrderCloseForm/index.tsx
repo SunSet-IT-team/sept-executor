@@ -61,7 +61,7 @@ export const OrderCloseForm = ({orderId}: OrderCloseFormProps) => {
 
                 <Button
                     variant="contained"
-                    color="secondary"
+                    color="primary"
                     sx={styles.btn}
                     type="submit"
                     loading={isPending}

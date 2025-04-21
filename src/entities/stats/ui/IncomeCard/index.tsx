@@ -25,13 +25,13 @@ export const IncomeCard: React.FC<IncomeCardProps> = ({
                 <Typography sx={styles.rowItem__value}>
                     {incomeForMonth}
                 </Typography>
-                <Typography>доход за месяц</Typography>
+                <Typography sx={styles.text}>доход за месяц</Typography>
             </Stack>
             <Stack direction={'column'} spacing={'6px'} sx={styles.rowItem}>
                 <Typography sx={styles.rowItem__value}>
                     {incomeTotal}
                 </Typography>
-                <Typography>доход за весь период</Typography>
+                <Typography sx={styles.text}>доход за весь период</Typography>
             </Stack>
         </Stack>
     );

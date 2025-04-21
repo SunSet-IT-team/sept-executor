@@ -69,7 +69,7 @@ export const LoginForm: FC = () => {
             </Link>
             <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 sx={buttonStyles}
                 type="submit"
                 loading={isLoading}
