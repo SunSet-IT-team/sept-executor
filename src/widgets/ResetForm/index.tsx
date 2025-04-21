@@ -7,7 +7,7 @@ import {ResetFormData, resetFormSchema} from './schema';
 import {buttonStyles} from './styles';
 import {toast} from 'react-toastify';
 import {useAppDispatch} from '../../app/store/hook';
-import {LoginFormContent} from './ResetFormContent';
+import {ResetFormContent} from './ResetFormContent';
 import {userApi} from '../../entities/user/api';
 import {setResetData} from '../../entities/user/model/slice';
 import {useNavigate} from 'react-router-dom';
@@ -59,7 +59,7 @@ export const ResetForm: FC = () => {
                 Укажите e-mail, указанный при регистрации, и новый пароль. На
                 почту придет код подтверждения.
             </Typography>
-            <LoginFormContent />
+            <ResetFormContent />
             <Button
                 variant="contained"
                 color="secondary"

@@ -5,9 +5,9 @@ import {stackStyles} from './styles';
 import InputFactory from '../../../feature/InputFactory';
 
 /**
- * Поля для входа
+ * Поля для сброса пароля
  */
-export const LoginFormContent: FC = () => {
+export const ResetFormContent: FC = () => {
     return (
         <Stack sx={stackStyles}>
             {resetInputsData.map((el) => (
