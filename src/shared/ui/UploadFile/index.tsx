@@ -3,7 +3,8 @@ import {Box} from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import {imgStyle, useStyles} from './styles';
-import {isHeicSupported} from '../../utils/share';
+import {convertHeicToPng, isHeicSupported} from '../../utils/share';
+import LoadPage from '../../../pages/LoadPage';
 
 interface IProps {
     onEdit?: (file: File) => void;
@@ -18,6 +19,7 @@ export const UploadFile: React.FC<IProps> = ({
     accept = 'image/*,.heic',
     value = null,
 }) => {
+    const [isLoading, setIsLoading] = useState(false);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [preview, setPreview] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -29,12 +31,7 @@ export const UploadFile: React.FC<IProps> = ({
         }
     }, [value]);
 
-    const generatePreview = (file: File) => {
-        if (file.type === 'image/heic' && !isHeicSupported()) {
-            setPreview(null); // HEIC не поддерживается
-            return;
-        }
-
+    const generatePreview = async (file: File) => {
         if (file.type.startsWith('image/')) {
             const reader = new FileReader();
             reader.onloadend = () => setPreview(reader.result as string);
@@ -44,13 +41,27 @@ export const UploadFile: React.FC<IProps> = ({
         }
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsLoading(true);
+
         const file = e.target.files?.[0];
         if (!file) return;
 
-        setSelectedFile(file);
-        generatePreview(file);
-        onEdit(file);
+        let timeFile = file;
+
+        if (
+            (file.type === 'image/heic' ||
+                file.name.toLowerCase().endsWith('.heic')) &&
+            !isHeicSupported()
+        ) {
+            timeFile = await convertHeicToPng(file);
+        }
+
+        setSelectedFile(timeFile);
+        generatePreview(timeFile);
+        onEdit(timeFile);
+
+        setIsLoading(false);
     };
     const handleBoxClick = () => {
         fileInputRef.current?.click();
@@ -61,7 +72,9 @@ export const UploadFile: React.FC<IProps> = ({
     return (
         <Box sx={styles.rootContainer}>
             <Box onClick={handleBoxClick} sx={styles.container}>
-                {selectedFile ? (
+                {isLoading ? (
+                    <LoadPage />
+                ) : selectedFile ? (
                     preview ? (
                         <img src={preview} alt="Preview" style={imgStyle} />
                     ) : (
