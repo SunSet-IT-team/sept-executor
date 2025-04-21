@@ -1,3 +1,5 @@
+import {SlugPages} from '../../app/routes/pages';
+
 export const menuItems = [
     {
         href: '/orders',
@@ -20,6 +22,11 @@ export const menuItems = [
     {
         href: '/profile',
         title: 'Профиль',
+        avaiableHref: [
+            SlugPages.SETTINGS,
+            SlugPages.STATISTICS,
+            SlugPages.MY_DOCUMENTS,
+        ],
         icon: {
             url: '/icons/user.svg',
             activeUrl: '/icons/user_active.svg',

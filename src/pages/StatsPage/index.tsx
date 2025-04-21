@@ -2,7 +2,7 @@ import {NavLayout} from '../layouts/NavLayout';
 import {Helmet} from 'react-helmet-async';
 import ProfileLayout from '../layouts/ProfileLayout';
 import {StatisticPanel} from '../../widgets/StatisticPanel';
-import {Box} from '@mui/material';
+import {Box, CircularProgress} from '@mui/material';
 import {useStyles} from './styles';
 import LoadPage from '../LoadPage';
 import {StatsApi} from '../../entities/stats/api';
@@ -27,8 +27,6 @@ const StatsPage = () => {
 
     const styles = useStyles();
 
-    if (!data) return <LoadPage />;
-
     return (
         <>
             <Helmet>
@@ -38,7 +36,15 @@ const StatsPage = () => {
                 <NavLayout>
                     <BackLayoutProfile title="Статистика">
                         <Box sx={styles.container}>
-                            <StatisticPanel stats={data} />
+                            {data ? (
+                                <StatisticPanel stats={data} />
+                            ) : (
+                                <CircularProgress
+                                    size={64}
+                                    thickness={4}
+                                    sx={styles.loader}
+                                />
+                            )}
                         </Box>
                     </BackLayoutProfile>
                 </NavLayout>

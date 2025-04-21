@@ -1,5 +1,5 @@
 import {BottomNavigation, BottomNavigationAction, Box} from '@mui/material';
-import {CSSProperties, FC, useLayoutEffect, useState} from 'react';
+import {FC, useLayoutEffect, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {menuItems} from './data';
 import {useStyles} from './styles';
@@ -12,9 +12,18 @@ export const Navbar: FC = () => {
     const styles = useStyles();
 
     useLayoutEffect(() => {
-        const index = menuItems.findIndex(
-            (item) => item.href === location.pathname
-        );
+        const index = menuItems.findIndex((item) => {
+            if (item.avaiableHref) {
+                const fineSome = item.avaiableHref.find(
+                    (el) => `/${el}` == location.pathname
+                );
+
+                if (fineSome) return true;
+            }
+
+            return item.href === location.pathname;
+        });
+
         if (index !== -1) setActiveMenuItem(index);
     }, [location.pathname]);
     return (
