@@ -6,7 +6,7 @@ export const useStyles = (): StylesDictionary => {
 
     return {
         container: {
-            background: theme.palette.background.order,
+            background: theme.palette.background.blue,
             borderRadius: '20px',
             p: '20px',
             pb: '28px',
@@ -21,7 +21,7 @@ export const useStyles = (): StylesDictionary => {
             mb: '20px',
             fontSize: '20px',
             fontWeight: 500,
-            color: theme.palette.primary.main,
+            color: theme.palette.text.gray,
         },
 
         info: {

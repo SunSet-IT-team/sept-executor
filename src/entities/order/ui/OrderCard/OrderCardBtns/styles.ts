@@ -20,6 +20,7 @@ export const useStyles = (): StylesDictionary => {
             py: '12px',
             width: '140px',
             fontSize: '14px',
+            fontWeight: '400',
         },
     };
 };

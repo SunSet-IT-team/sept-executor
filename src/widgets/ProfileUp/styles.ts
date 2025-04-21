@@ -6,7 +6,7 @@ export const useStyles = (): StylesDictionary => {
 
     return {
         chatHeader: {
-            backgroundColor: '#4D4D4D',
+            background: theme.palette.background.gradient,
             position: 'sticky',
             left: 0,
             top: 0,

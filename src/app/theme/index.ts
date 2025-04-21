@@ -4,23 +4,27 @@ declare module '@mui/material/styles' {
     interface TypeText {
         black: string;
         white: string;
+        gray: string;
     }
 
     interface TypeBackground {
-        order: string;
+        blue: string;
+        gray: string;
+        gradient: string;
     }
 }
 
 export const appTheme = createTheme({
     palette: {
         primary: {
-            main: '#4D4D4D',
+            main: '#3975CF',
             dark: '#1565c0',
             light: '#D9D9D9',
         },
         text: {
             black: '#000000',
             white: '#FFFFFF',
+            gray: '#4D4D4D',
         },
         secondary: {
             main: '#D9D9D9', // Фиолетовый
@@ -29,13 +33,15 @@ export const appTheme = createTheme({
             main: '#d32f2f', // Красный
         },
         background: {
+            gradient: 'linear-gradient(to right, #3975CF, #3FBC14)',
             default: '#f5f5f5', // Светло-серый фон
             paper: '#ffffff', // Белый для карточек
-            order: '#F3F3F3',
+            gray: '#F3F3F3',
+            blue: '#3975CF33',
         },
     },
     typography: {
-        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+        fontFamily: '"Jost", "Helvetica", "Arial", sans-serif',
         h1: {
             fontSize: '2.5rem',
             fontWeight: 500,
@@ -71,7 +77,7 @@ export const appTheme = createTheme({
         MuiBottomNavigation: {
             styleOverrides: {
                 root: {
-                    backgroundColor: '#4D4D4D',
+                    background: 'linear-gradient(to right, #3975CF, #3FBC14)',
                     borderRadius: '40px',
                     minHeight: '71px',
                     position: 'relative',
