@@ -6,7 +6,7 @@ import {
     getUserRegisterData,
     getUserResetData,
 } from '../../../entities/user/model/selectors';
-import {useAppDispatch, useAppSelector} from '../../../app/store/hook';
+import {useAppSelector} from '../../../app/store/hook';
 import {ConfirmationForm} from '../../../widgets/ConfirmationForm';
 import {userApi} from '../../../entities/user/api';
 import {BackLayout} from '../../layouts/BackLayout';

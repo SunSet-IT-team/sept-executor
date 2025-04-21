@@ -31,7 +31,7 @@ const MyreviewsPage = () => {
                             <InfinityList
                                 observedRef={ref}
                                 isLoading={isLoading}
-                                titleNoLength="Заказы не найдены"
+                                titleNoLength="Отзывы не найдены"
                             >
                                 {reviews &&
                                     reviews.map((review) => (

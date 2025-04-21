@@ -51,7 +51,7 @@ export const mapReviewDTO = (review: ReviewDTO): Review => {
         id: review.id,
         rating: review.rating,
         text: review.text,
-        target: mapExecutorDTO(review.target),
+        target: review.target ? mapExecutorDTO(review.target) : null,
         date: new Date(review.createdAt).toLocaleDateString('ru') || '',
     };
 };

@@ -10,6 +10,8 @@ export const useFetchOrder = (id: number | string) => {
     return useQuery({
         queryFn: () => orderApi.getOrderById(id),
         queryKey: ['order', `${id}`],
+        staleTime: 0, // всегда считается "протухшим"
+        refetchOnWindowFocus: true,
         select(data) {
             try {
                 return mapOrderDTO(data.data.data);

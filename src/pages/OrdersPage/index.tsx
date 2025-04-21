@@ -29,6 +29,7 @@ export const OrdersPage: FC = () => {
                         titleNoLength="Заказы не найдены"
                     >
                         {orders &&
+                            orders.filter((el) => el).length &&
                             orders.map((el) => (
                                 <OrderCard order={el} key={el.id} />
                             ))}

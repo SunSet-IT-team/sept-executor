@@ -38,6 +38,8 @@ export const useFetchOrders = (status: OrderStatus | undefined) => {
         queryKey: ['orders', status],
         initialPageParam: 1,
         placeholderData: keepPreviousData,
+        staleTime: 0, // всегда считается "протухшим"
+        refetchOnWindowFocus: true,
 
         getNextPageParam: (data) => {
             let nextPage = data.data.data.page + 1;
