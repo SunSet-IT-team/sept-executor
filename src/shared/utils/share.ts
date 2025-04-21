@@ -28,3 +28,9 @@ export async function urlToFile(url: string): Promise<File> {
 
     return new File([blob], fileName, {type: contentType});
 }
+
+// Проверка поддержки HEIC в браузере
+export const isHeicSupported = () => {
+    const canvas = document.createElement('canvas');
+    return canvas.toDataURL('image/heic').indexOf('data:image/heic') === 0;
+};

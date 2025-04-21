@@ -3,6 +3,7 @@ import {Box} from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import {imgStyle, useStyles} from './styles';
+import {isHeicSupported} from '../../utils/share';
 
 interface IProps {
     onEdit?: (file: File) => void;
@@ -24,29 +25,33 @@ export const UploadFile: React.FC<IProps> = ({
     useEffect(() => {
         if (value instanceof File) {
             setSelectedFile(value);
-            const reader = new FileReader();
-            reader.onloadend = () => setPreview(reader.result as string);
-            reader.readAsDataURL(value);
+            generatePreview(value);
         }
     }, [value]);
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-
-        setSelectedFile(file);
+    const generatePreview = (file: File) => {
+        if (file.type === 'image/heic' && !isHeicSupported()) {
+            setPreview(null); // HEIC не поддерживается
+            return;
+        }
 
         if (file.type.startsWith('image/')) {
             const reader = new FileReader();
             reader.onloadend = () => setPreview(reader.result as string);
             reader.readAsDataURL(file);
         } else {
-            setPreview(null); // Не изображение — превью не нужно
+            setPreview(null); // не изображение
         }
-
-        onEdit(file);
     };
 
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setSelectedFile(file);
+        generatePreview(file);
+        onEdit(file);
+    };
     const handleBoxClick = () => {
         fileInputRef.current?.click();
     };
