@@ -69,6 +69,10 @@ export const SettingForm = () => {
             changeMeData.city = formData.city;
         }
 
+        if (formData.newPassword) {
+            changeMeData.password = formData.newPassword;
+        }
+
         if (formData.about !== user.about) {
             changeMeData.about = formData.about;
         }

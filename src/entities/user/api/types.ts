@@ -100,6 +100,7 @@ export type UserApiChangeMeParams = {
     about?: string;
     companyName?: string;
     profilePhoto?: File;
+    password?: string;
 };
 
 /**
