@@ -4,6 +4,11 @@
 
 export enum SlugPages {
     /**
+     * Страница выбора точки входа
+     */
+    CHOOSE_AUTH = 'choose-auth',
+
+    /**
      * Страница авторизации
      */
     AUTH = 'auth',

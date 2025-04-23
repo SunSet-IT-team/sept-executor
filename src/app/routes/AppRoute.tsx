@@ -27,6 +27,7 @@ import SupportChatPage from '../../pages/SupportPage/SupportChat';
 import SettingPage from '../../pages/SettingPage';
 import DocsPage from '../../pages/DocsPage';
 import {ResetPage} from '../../pages/auth/ResetPage';
+import {ChooseAuthPage} from '../../pages/auth/ChooseAuthPage';
 
 export const AppRouter = () => {
     const user = useAppSelector(getCurrentUser);
@@ -61,6 +62,11 @@ export const AppRouter = () => {
             <Route
                 element={!isAuthenticated ? <Outlet /> : <Navigate to={`/`} />}
             >
+                <Route
+                    path={`/${SlugPages.CHOOSE_AUTH}`}
+                    element={<ChooseAuthPage />}
+                />
+
                 <Route path={`/${SlugPages.AUTH}`} element={<AuthPage />} />
 
                 <Route
@@ -89,7 +95,7 @@ export const AppRouter = () => {
                     isAuthenticated || user ? (
                         <Outlet />
                     ) : (
-                        <Navigate to={`/${SlugPages.AUTH}`} replace />
+                        <Navigate to={`/${SlugPages.CHOOSE_AUTH}`} replace />
                     )
                 }
             >
