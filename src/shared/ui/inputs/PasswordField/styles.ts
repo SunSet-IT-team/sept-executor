@@ -1,16 +1,5 @@
-import {SxProps, Theme} from '@mui/material';
-import {useTheme} from '@mui/material/styles';
-import {StylesDictionary} from '../../../types/share';
-
-export const useStyles = (): StylesDictionary => {
-    const theme = useTheme();
-
-    return {
-        label: {
-            fontWeight: 500,
-        },
-    };
-};
+import { Theme } from "@emotion/react";
+import { SxProps } from "@mui/material";
 
 export const labelStyles: SxProps<Theme> = {
     mb: 1,

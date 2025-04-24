@@ -1,8 +1,8 @@
-import {Stack} from '@mui/material';
-import InputFactory from '../../../feature/InputFactory';
+import {Box, Stack, Typography} from '@mui/material';
 import {useStyles} from './styles';
 import {settingFormData} from '../data';
 import SettingFormFactoryInput from '../SettingFormFactoryInput';
+import {requiredAsteriskStyles} from '../../../shared/ui/inputs/InputField/styles';
 
 type SettingFormContentProps = {
     editName: string;
@@ -20,16 +20,31 @@ const SettingFormContent = ({
 
     return (
         <Stack sx={styles.container}>
-            {settingFormData.map((el) => (
-                <Stack key={el.label} sx={styles.input}>
-                    <SettingFormFactoryInput
-                        {...el}
-                        key={el.name}
-                        editName={editName}
-                        onClickEdit={onClickEdit}
-                    />
-                </Stack>
-            ))}
+            {settingFormData.map(({label, ...el}) => {
+                return (
+                    <Stack key={label} sx={styles.input}>
+                        <Box sx={styles.input}>
+                            <Typography
+                                variant="subtitle1"
+                                sx={styles.labelStyles}
+                            >
+                                {label}
+                                {el.required && (
+                                    <span style={requiredAsteriskStyles}>
+                                        *
+                                    </span>
+                                )}
+                            </Typography>
+                            <SettingFormFactoryInput
+                                {...el}
+                                key={el.name}
+                                editName={editName}
+                                onClickEdit={onClickEdit}
+                            />
+                        </Box>
+                    </Stack>
+                );
+            })}
         </Stack>
     );
 };
