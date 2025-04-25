@@ -39,7 +39,7 @@ export const RegistrationForm = () => {
             lastName: 'none',
             email: formData.email,
             password: formData.password,
-            experience: formData.experience,
+            experience: `${formData.experience}`,
             phone: formData.phone,
             companyName: formData.name,
             workFormat: registerData.workFormat,

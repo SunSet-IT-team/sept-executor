@@ -11,6 +11,7 @@ export const useStyles = (
     return {
         container: {
             alignItems: 'center',
+            width: '100%',
             ...sx,
         },
         uploadFile: {
@@ -19,9 +20,9 @@ export const useStyles = (
             ...uploadFileSx,
         },
         labelContainer: {
-          textAlign: "center",
-          flex: "1 1 auto"
-        }
+            textAlign: 'center',
+            flex: '1 1 auto',
+        },
     };
 };
 

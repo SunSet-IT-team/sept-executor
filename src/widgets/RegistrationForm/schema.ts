@@ -19,9 +19,21 @@ export const registrationFormSchema = z.object({
             message: 'Введите корректный российский номер телефона',
         }),
     email: z.string().email('Некорректный email'),
-    experience: z.string().min(1, 'Обязательное поле'),
-    city: z.string().min(1, 'Обязательное поле'),
-    about: z.string().min(1, 'Обязательное поле'),
+    experience: z.coerce
+        .number()
+        .int('Опыт должен быть целым числом')
+        .nonnegative('Опыт не может быть отрицательным')
+        .min(0, 'Минимальное значение - 0'),
+    city: z
+        .string({
+            required_error: 'Обязательное поле',
+        })
+        .min(1, 'Обязательное поле'),
+    about: z
+        .string({
+            required_error: 'Обязательное поле',
+        })
+        .min(1, 'Обязательное поле'),
     files: z
         .object({
             profilePhoto: z.instanceof(File, {
@@ -42,7 +54,11 @@ export const registrationFormSchema = z.object({
     consent: z.boolean().refine((value) => value === true, {
         message: 'Поле обязательно для заполнения',
     }),
-    password: z.string().min(1, {message: 'Поле обязательно для заполнения'}),
+    password: z
+        .string({
+            required_error: 'Обязательное поле',
+        })
+        .min(1, {message: 'Поле обязательно для заполнения'}),
 });
 
 export type RegistrationFormData = z.infer<typeof registrationFormSchema>;

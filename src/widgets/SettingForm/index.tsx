@@ -61,8 +61,8 @@ export const SettingForm = () => {
             changeMeData.email = formData.email;
         }
 
-        if (formData.experience !== user.experience) {
-            changeMeData.experience = formData.experience;
+        if (`${formData.experience}` !== user.experience) {
+            changeMeData.experience = `${formData.experience}`;
         }
 
         if (formData.city !== user.city) {

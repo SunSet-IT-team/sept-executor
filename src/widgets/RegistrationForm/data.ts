@@ -21,10 +21,11 @@ export const registrationFormData = [
         errorText: 'Поле обязательно для заполнения',
     },
     {
-        label: 'Опыт работы',
+        label: 'Опыт работы (в годах)',
         name: 'experience',
         required: true,
         errorText: 'Поле обязательно для заполнения',
+        type: 'number',
     },
     {
         label: 'Город',
@@ -53,7 +54,7 @@ export const registrationFormDefaultValues: RegistrationFormData = {
     name: '',
     phone: '',
     email: '',
-    experience: '',
+    experience: 0,
     about: '',
     files: {
         profilePhoto: null,

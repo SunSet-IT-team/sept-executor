@@ -53,7 +53,7 @@ export const settingFormDefaultValues: SettingFormData = {
     name: '',
     phone: '',
     email: '',
-    experience: '',
+    experience: 0,
     about: '',
     city: '',
     newPassword: '',

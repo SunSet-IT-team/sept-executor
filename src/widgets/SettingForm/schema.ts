@@ -19,7 +19,11 @@ export const settingFormSchema = z.object({
             message: 'Введите корректный российский номер телефона',
         }),
     email: z.string().email('Некорректный email'),
-    experience: z.string().min(1, 'Обязательное поле'),
+    experience: z.coerce
+        .number()
+        .int('Опыт должен быть целым числом')
+        .nonnegative('Опыт не может быть отрицательным')
+        .min(0, 'Минимальное значение - 0'),
     city: z.string().min(1, 'Обязательное поле'),
     about: z.string().min(1, 'Обязательное поле'),
     newPassword: z
