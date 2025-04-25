@@ -21,7 +21,10 @@ const useSettingFormInitData = (
                 formMethods.setValue('name', executor.name);
                 formMethods.setValue('phone', executor.phone);
                 formMethods.setValue('email', executor.email);
-                formMethods.setValue('experience', executor.experience);
+                formMethods.setValue(
+                    'experience',
+                    parseInt(executor.experience)
+                );
                 formMethods.setValue('city', executor.city);
                 formMethods.setValue('about', executor.about);
 
