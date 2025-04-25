@@ -1,5 +1,5 @@
-import { ProfileFeatureItem } from '../../feature/ProfileFeatureItem';
-import {Grid, useMediaQuery} from '@mui/material';
+import {ProfileFeatureItem} from '../../feature/ProfileFeatureItem';
+import {Grid} from '@mui/material';
 import {menuItems} from './data';
 import {useStyles} from './styles';
 
@@ -9,7 +9,6 @@ import {useStyles} from './styles';
  */
 export const ProfileFeaturesList = () => {
     const styles = useStyles();
-    const isSmallScreen = useMediaQuery('(max-width:389.98px)');
 
     return (
         <Grid
@@ -19,7 +18,7 @@ export const ProfileFeaturesList = () => {
             sx={styles.container}
         >
             {menuItems.map((item) => (
-                <Grid size={isSmallScreen ? 12 : 6} key={item.label}>
+                <Grid size={6} key={item.label}>
                     <ProfileFeatureItem
                         icon={item.icon}
                         label={item.label}

@@ -11,6 +11,7 @@ export const useStyles = (): StylesDictionary => {
             borderRadius: '20px',
             borderColor: 'primary.main',
             flex: '1 1 auto',
+            width: '33%',
             textAlign: 'center',
         },
     };

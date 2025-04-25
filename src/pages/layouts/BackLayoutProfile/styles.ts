@@ -13,7 +13,6 @@ export const useStyles = (): StylesDictionary => {
             flexDirection: 'column',
             width: '100%',
             maxWidth: '620px',
-            px: '20px',
         },
         title: {
             height: '1px',
