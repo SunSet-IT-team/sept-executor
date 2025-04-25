@@ -21,6 +21,7 @@ const InputFactory = ({name, label, type, required}: InputFactory) => {
                     name={name}
                     type={type}
                     required={required}
+                    variant={'outlined'}
                 />
             );
 
