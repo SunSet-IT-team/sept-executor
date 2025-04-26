@@ -9,23 +9,23 @@ export const useStyles = (): StylesDictionary => {
         label: {
             fontWeight: 500,
         },
-    };
-};
 
-export const labelStyles: SxProps<Theme> = {
-    mb: 1,
-    fontWeight: 500,
-    fontSize: "1rem"
+        labelStyles: {
+            mb: 1,
+            fontWeight: 500,
+            fontSize: '1rem',
+        },
+
+        textFieldStyles: {
+            '& .MuiInputBase-input': {
+                padding: '10px',
+            },
+        },
+    };
 };
 
 export const requiredAsteriskStyles = {
     color: 'red',
     marginLeft: '2px',
     marginTop: '-10px',
-};
-
-export const textFieldStyles: SxProps<Theme> = {
-    '& .MuiInputBase-input': {
-        padding: '10px',
-    },
 };

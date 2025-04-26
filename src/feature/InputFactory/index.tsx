@@ -4,6 +4,7 @@ import {PasswordField} from '../../shared/ui/inputs/PasswordField';
 
 type InputFactory = {
     label: string;
+    labelPosition?: 'start' | 'center' | 'end';
     name: string;
     required: boolean;
     type?: string;
@@ -12,12 +13,19 @@ type InputFactory = {
 /**
  * Фабрика инпутов
  */
-const InputFactory = ({name, label, type, required}: InputFactory) => {
+const InputFactory = ({
+    name,
+    label,
+    labelPosition,
+    type,
+    required,
+}: InputFactory) => {
     switch (name) {
         case 'password':
             return (
                 <PasswordField
                     label={label}
+                    labelPosition={labelPosition}
                     name={name}
                     type={type}
                     required={required}
@@ -29,6 +37,7 @@ const InputFactory = ({name, label, type, required}: InputFactory) => {
             return (
                 <AboutField
                     label={label}
+                    labelPosition={labelPosition}
                     name={name}
                     type={type}
                     required={required}
@@ -39,6 +48,7 @@ const InputFactory = ({name, label, type, required}: InputFactory) => {
             return (
                 <InputField
                     label={label}
+                    labelPosition={labelPosition}
                     name={name}
                     type={type}
                     required={required}

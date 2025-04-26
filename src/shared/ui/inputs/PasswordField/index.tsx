@@ -2,14 +2,13 @@ import {useState, FC} from 'react';
 import {
     IconButton,
     InputAdornment,
-    TextFieldProps,
     Box,
     Typography,
-    OutlinedTextFieldProps
+    OutlinedTextFieldProps,
 } from '@mui/material';
 import {Visibility, VisibilityOff} from '@mui/icons-material';
 import {TextFieldElement} from 'react-hook-form-mui';
-import {labelStyles, requiredAsteriskStyles} from './styles';
+import {useStyles, requiredAsteriskStyles} from './styles';
 
 interface PasswordFieldProps extends OutlinedTextFieldProps {
     labelPosition?: 'start' | 'center' | 'end';
@@ -27,16 +26,19 @@ export const PasswordField: FC<PasswordFieldProps> = ({
     helperText,
 }) => {
     const [showPassword, setShowPassword] = useState(false);
+    const styles = useStyles();
 
     return (
-        <Box width={"100%"}>
+        <Box width={'100%'}>
             <Typography
                 variant="subtitle1"
-                sx={labelStyles}
+                sx={styles.labelStyles}
                 textAlign={labelPosition}
             >
                 {label}
-                {required && <span style={requiredAsteriskStyles}>*</span>}
+                {label && required && (
+                    <span style={requiredAsteriskStyles}>*</span>
+                )}
             </Typography>
             <TextFieldElement
                 name={name}
