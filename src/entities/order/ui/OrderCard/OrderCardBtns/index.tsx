@@ -64,6 +64,17 @@ const OrderCardBtns = ({order}: OrderCardBtnsProps) => {
                     Закрыть
                 </Button>
             )}
+            {(status === OrderStatus.COMPLETED ||
+                status === OrderStatus.REJECTED) && (
+                <Button
+                    sx={styles.btn}
+                    variant="contained"
+                    onClick={handleClickClose}
+                    disabled={isProcessing}
+                >
+                    Посмотреть
+                </Button>
+            )}
             {status === OrderStatus.PENDING && (
                 <>
                     <Button
