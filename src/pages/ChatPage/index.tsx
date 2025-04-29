@@ -1,5 +1,5 @@
-import {Box} from '@mui/material';
 import {Navigate, useParams} from 'react-router-dom';
+import {Box} from '@mui/material';
 import {Helmet} from 'react-helmet-async';
 import {useFetchChatOrder} from '../../entities/chats/model/useFetchOrderChat';
 import LoadPage from '../LoadPage';
