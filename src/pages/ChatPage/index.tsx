@@ -1,7 +1,7 @@
 import {Box} from '@mui/material';
+import {Navigate, useParams} from 'react-router-dom';
 import {Helmet} from 'react-helmet-async';
 import {useFetchChatOrder} from '../../entities/chats/model/useFetchOrderChat';
-import {Navigate, useParams} from 'react-router-dom';
 import LoadPage from '../LoadPage';
 import {useHandleBack} from '../../feature/PageTitle/useHandleBack';
 import {useAppSelector} from '../../app/store/hook';
