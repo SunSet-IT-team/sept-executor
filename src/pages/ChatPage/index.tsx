@@ -34,6 +34,7 @@ const ChatPage = () => {
         messages: [],
         currentUserId: user.id,
         additionalInfo: data.data.data.theme,
+        newMessages: 0,
         chatUser: {
             id: notCurrentUser.userId,
             name: notCurrentUser.user.name,

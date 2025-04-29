@@ -2195,9 +2195,10 @@ stylis@4.2.0:
 
 "sunset-chat@git+https://github.com/SunSet-IT-team/sunset-chat.git":
   version "1.0.0"
-  resolved "git+https://github.com/SunSet-IT-team/sunset-chat.git#2a9dd675be100d1496237773c9866d049bc926cd"
+  resolved "git+https://github.com/SunSet-IT-team/sunset-chat.git#6d3974d319fe91843b5eff56d2f061ea8bd2795d"
   dependencies:
     react-intersection-observer "^9.16.0"
+    react-toastify "^11.0.5"
     socket.io-client "^4.8.1"
 
 supports-color@^7.1.0:
