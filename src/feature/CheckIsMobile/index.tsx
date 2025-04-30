@@ -7,7 +7,7 @@ import {useStyles} from './styles';
  * Проверка на телеофн
  */
 export const CheckIsMobile: FC<PropsWithChildren> = ({children}) => {
-    const matches = useMediaQuery('(max-width: 11767px)');
+    const matches = useMediaQuery('(max-width: 760px)');
     const styles = useStyles();
 
     return (
