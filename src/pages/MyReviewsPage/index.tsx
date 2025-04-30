@@ -1,14 +1,13 @@
 import {NavLayout} from '../layouts/NavLayout';
 import {Helmet} from 'react-helmet-async';
-import ProfileLayout from '../layouts/ProfileLayout';
 import {useStyles} from './styles';
-import {BackLayoutProfile} from '../layouts/BackLayoutProfile';
 import {Box} from '@mui/material';
 import {useAppSelector} from '../../app/store/hook';
 import {getCurrentUser} from '../../entities/user/model/selectors';
 import {useFetchReviews} from '../../entities/order/model/query/useFetchReviews';
 import InfinityList from '../../feature/InfinityList';
 import {ReviewCard} from '../../entities/order/ui/review/ReviewCard';
+import {BackLayout} from '../layouts/BackLayout';
 
 /**
  * Страница отзывов.
@@ -24,27 +23,25 @@ const MyreviewsPage = () => {
             <Helmet>
                 <title>Мои отзывы</title>
             </Helmet>
-            <ProfileLayout>
+            <BackLayout title="Мои отзывы">
                 <NavLayout>
-                    <BackLayoutProfile title="Мои отзывы">
-                        <Box sx={styles.container}>
-                            <InfinityList
-                                observedRef={ref}
-                                isLoading={isLoading}
-                                titleNoLength="Отзывы не найдены"
-                            >
-                                {reviews &&
-                                    reviews.map((review) => (
-                                        <ReviewCard
-                                            key={review.id}
-                                            review={review}
-                                        />
-                                    ))}
-                            </InfinityList>
-                        </Box>
-                    </BackLayoutProfile>
+                    <Box sx={styles.container}>
+                        <InfinityList
+                            observedRef={ref}
+                            isLoading={isLoading}
+                            titleNoLength="Отзывы не найдены"
+                        >
+                            {reviews &&
+                                reviews.map((review) => (
+                                    <ReviewCard
+                                        key={review.id}
+                                        review={review}
+                                    />
+                                ))}
+                        </InfinityList>
+                    </Box>
                 </NavLayout>
-            </ProfileLayout>
+            </BackLayout>
         </>
     );
 };
