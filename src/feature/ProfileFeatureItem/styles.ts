@@ -8,6 +8,7 @@ export const useStyles = (): StylesDictionary => {
         container: {
             display: 'flex',
             flexDirection: 'column',
+            alignContent: 'center',
             p: '20px',
             borderRadius: '20px',
             border: '1px solid',
@@ -15,6 +16,9 @@ export const useStyles = (): StylesDictionary => {
             height: '103px',
             alignItems: 'center',
             color: 'inherit',
+            '@media (max-width: 365px)': {
+                px: '8px',
+            },
         },
 
         icon: {
@@ -31,6 +35,7 @@ export const useStyles = (): StylesDictionary => {
             m: 0,
             mt: 0.5,
             lineHeight: '21px',
+            height: '21px',
             '& span': {
                 fontWeight: 500,
                 lineHeight: '21px',
