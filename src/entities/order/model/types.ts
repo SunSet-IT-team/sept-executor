@@ -57,14 +57,14 @@ export type ExecutorReport = {
  */
 export enum OrderStatus {
     /**
-     * В ожидании
-     */
-    PENDING = 'PENDING',
-
-    /**
      * В работе
      */
     IN_PROGRESS = 'IN_PROGRESS',
+
+    /**
+     * В ожидании
+     */
+    PENDING = 'PENDING',
 
     /**
      * Выполнен

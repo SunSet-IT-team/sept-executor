@@ -19,6 +19,7 @@ export const useStyles = (): StylesDictionary => {
             bgcolor: 'background.paper',
             '&::-webkit-scrollbar': {
                 height: '4px',
+                backgroundColor: '#e0e0e0',
             },
             '&::-webkit-scrollbar-thumb': {
                 backgroundColor: 'secondary.main',
