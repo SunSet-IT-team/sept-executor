@@ -11,6 +11,7 @@ import {HelmetProvider} from 'react-helmet-async';
 import {ToastContainer} from 'react-toastify';
 import {QueryClientProvider} from '@tanstack/react-query';
 import {queryClient} from './store/query';
+import InstallPWAModal from '../feature/InstallPWA';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                                 <ToastContainer />
                                 <CheckIsMobile>
                                     <AppRouter />
+                                    <InstallPWAModal />
                                 </CheckIsMobile>
                             </Provider>
                         </BrowserRouter>
