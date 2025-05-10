@@ -20,28 +20,15 @@ const SettingFormContent = ({
 
     return (
         <Stack sx={styles.container}>
-            {settingFormData.map(({label, ...el}) => {
+            {settingFormData.map((el) => {
                 return (
-                    <Stack key={label} sx={styles.input}>
-                        <Box sx={styles.input}>
-                            <Typography
-                                variant="subtitle1"
-                                sx={styles.labelStyles}
-                            >
-                                {label}
-                                {el.required && (
-                                    <span style={requiredAsteriskStyles}>
-                                        *
-                                    </span>
-                                )}
-                            </Typography>
-                            <SettingFormFactoryInput
-                                {...el}
-                                key={el.name}
-                                editName={editName}
-                                onClickEdit={onClickEdit}
-                            />
-                        </Box>
+                    <Stack key={el.label} sx={styles.input}>
+                        <SettingFormFactoryInput
+                            {...el}
+                            key={el.name}
+                            editName={editName}
+                            onClickEdit={onClickEdit}
+                        />
                     </Stack>
                 );
             })}
